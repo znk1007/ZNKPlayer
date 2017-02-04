@@ -1,0 +1,653 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2708E4991E45B2DC00B34944 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4981E45B2DC00B34944 /* main.m */; };
+		2708E49C1E45B2DC00B34944 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E49B1E45B2DC00B34944 /* AppDelegate.m */; };
+		2708E49F1E45B2DC00B34944 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E49E1E45B2DC00B34944 /* ViewController.m */; };
+		2708E4A21E45B2DC00B34944 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2708E4A01E45B2DC00B34944 /* Main.storyboard */; };
+		2708E4A41E45B2DC00B34944 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2708E4A31E45B2DC00B34944 /* Assets.xcassets */; };
+		2708E4A71E45B2DC00B34944 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2708E4A51E45B2DC00B34944 /* LaunchScreen.storyboard */; };
+		2708E4B21E45B2DC00B34944 /* ZNKPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4B11E45B2DC00B34944 /* ZNKPlayerTests.m */; };
+		2708E4BD1E45B2DC00B34944 /* ZNKPlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4BC1E45B2DC00B34944 /* ZNKPlayerUITests.m */; };
+		2708E4E51E45B31C00B34944 /* NSArray+ZNKMASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4CD1E45B31C00B34944 /* NSArray+ZNKMASAdditions.m */; };
+		2708E4E61E45B31C00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4D01E45B31C00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.m */; };
+		2708E4E71E45B31C00B34944 /* View+ZNKMASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4D21E45B31C00B34944 /* View+ZNKMASAdditions.m */; };
+		2708E4E81E45B31C00B34944 /* ViewController+ZNKMASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4D51E45B31C00B34944 /* ViewController+ZNKMASAdditions.m */; };
+		2708E4E91E45B31C00B34944 /* ZNKMASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4D71E45B31C00B34944 /* ZNKMASCompositeConstraint.m */; };
+		2708E4EA1E45B31C00B34944 /* ZNKMASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4DA1E45B31C00B34944 /* ZNKMASConstraint.m */; };
+		2708E4EB1E45B31C00B34944 /* ZNKMASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4DC1E45B31C00B34944 /* ZNKMASConstraintMaker.m */; };
+		2708E4EC1E45B31C00B34944 /* ZNKMASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4DE1E45B31C00B34944 /* ZNKMASLayoutConstraint.m */; };
+		2708E4ED1E45B31C00B34944 /* ZNKMASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4E21E45B31C00B34944 /* ZNKMASViewAttribute.m */; };
+		2708E4EE1E45B31C00B34944 /* ZNKMASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4E41E45B31C00B34944 /* ZNKMASViewConstraint.m */; };
+		2708E4F01E45B33700B34944 /* ZNKPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2708E4EF1E45B33700B34944 /* ZNKPlayer.bundle */; };
+		2708E4F21E45B34100B34944 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2708E4F11E45B34100B34944 /* IJKMediaFramework.framework */; };
+		2708E4F51E45B37200B34944 /* ZNKPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4F41E45B37200B34944 /* ZNKPlayer.m */; };
+		2708E4FA1E45CA3B00B34944 /* ZNKBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4F91E45CA3B00B34944 /* ZNKBaseView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2708E4AE1E45B2DC00B34944 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2708E48C1E45B2DC00B34944 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2708E4931E45B2DC00B34944;
+			remoteInfo = ZNKPlayer;
+		};
+		2708E4B91E45B2DC00B34944 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2708E48C1E45B2DC00B34944 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2708E4931E45B2DC00B34944;
+			remoteInfo = ZNKPlayer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2708E4941E45B2DC00B34944 /* ZNKPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZNKPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2708E4981E45B2DC00B34944 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2708E49A1E45B2DC00B34944 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2708E49B1E45B2DC00B34944 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2708E49D1E45B2DC00B34944 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2708E49E1E45B2DC00B34944 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2708E4A11E45B2DC00B34944 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2708E4A31E45B2DC00B34944 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2708E4A61E45B2DC00B34944 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2708E4A81E45B2DC00B34944 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2708E4AD1E45B2DC00B34944 /* ZNKPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZNKPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2708E4B11E45B2DC00B34944 /* ZNKPlayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZNKPlayerTests.m; sourceTree = "<group>"; };
+		2708E4B31E45B2DC00B34944 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2708E4B81E45B2DC00B34944 /* ZNKPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZNKPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2708E4BC1E45B2DC00B34944 /* ZNKPlayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZNKPlayerUITests.m; sourceTree = "<group>"; };
+		2708E4BE1E45B2DC00B34944 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2708E4CC1E45B31C00B34944 /* NSArray+ZNKMASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ZNKMASAdditions.h"; sourceTree = "<group>"; };
+		2708E4CD1E45B31C00B34944 /* NSArray+ZNKMASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ZNKMASAdditions.m"; sourceTree = "<group>"; };
+		2708E4CE1E45B31C00B34944 /* NSArray+ZNKMASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ZNKMASShorthandAdditions.h"; sourceTree = "<group>"; };
+		2708E4CF1E45B31C00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+ZNKMASDebugAdditions.h"; sourceTree = "<group>"; };
+		2708E4D01E45B31C00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+ZNKMASDebugAdditions.m"; sourceTree = "<group>"; };
+		2708E4D11E45B31C00B34944 /* View+ZNKMASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+ZNKMASAdditions.h"; sourceTree = "<group>"; };
+		2708E4D21E45B31C00B34944 /* View+ZNKMASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+ZNKMASAdditions.m"; sourceTree = "<group>"; };
+		2708E4D31E45B31C00B34944 /* View+ZNKMASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+ZNKMASShorthandAdditions.h"; sourceTree = "<group>"; };
+		2708E4D41E45B31C00B34944 /* ViewController+ZNKMASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+ZNKMASAdditions.h"; sourceTree = "<group>"; };
+		2708E4D51E45B31C00B34944 /* ViewController+ZNKMASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+ZNKMASAdditions.m"; sourceTree = "<group>"; };
+		2708E4D61E45B31C00B34944 /* ZNKMASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMASCompositeConstraint.h; sourceTree = "<group>"; };
+		2708E4D71E45B31C00B34944 /* ZNKMASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKMASCompositeConstraint.m; sourceTree = "<group>"; };
+		2708E4D81E45B31C00B34944 /* ZNKMASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZNKMASConstraint+Private.h"; sourceTree = "<group>"; };
+		2708E4D91E45B31C00B34944 /* ZNKMASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMASConstraint.h; sourceTree = "<group>"; };
+		2708E4DA1E45B31C00B34944 /* ZNKMASConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKMASConstraint.m; sourceTree = "<group>"; };
+		2708E4DB1E45B31C00B34944 /* ZNKMASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMASConstraintMaker.h; sourceTree = "<group>"; };
+		2708E4DC1E45B31C00B34944 /* ZNKMASConstraintMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKMASConstraintMaker.m; sourceTree = "<group>"; };
+		2708E4DD1E45B31C00B34944 /* ZNKMASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMASLayoutConstraint.h; sourceTree = "<group>"; };
+		2708E4DE1E45B31C00B34944 /* ZNKMASLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKMASLayoutConstraint.m; sourceTree = "<group>"; };
+		2708E4DF1E45B31C00B34944 /* ZNKMasonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMasonry.h; sourceTree = "<group>"; };
+		2708E4E01E45B31C00B34944 /* ZNKMASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMASUtilities.h; sourceTree = "<group>"; };
+		2708E4E11E45B31C00B34944 /* ZNKMASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMASViewAttribute.h; sourceTree = "<group>"; };
+		2708E4E21E45B31C00B34944 /* ZNKMASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKMASViewAttribute.m; sourceTree = "<group>"; };
+		2708E4E31E45B31C00B34944 /* ZNKMASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMASViewConstraint.h; sourceTree = "<group>"; };
+		2708E4E41E45B31C00B34944 /* ZNKMASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKMASViewConstraint.m; sourceTree = "<group>"; };
+		2708E4EF1E45B33700B34944 /* ZNKPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZNKPlayer.bundle; sourceTree = "<group>"; };
+		2708E4F11E45B34100B34944 /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IJKMediaFramework.framework; sourceTree = "<group>"; };
+		2708E4F31E45B37200B34944 /* ZNKPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKPlayer.h; sourceTree = "<group>"; };
+		2708E4F41E45B37200B34944 /* ZNKPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKPlayer.m; sourceTree = "<group>"; };
+		2708E4F81E45CA3B00B34944 /* ZNKBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKBaseView.h; sourceTree = "<group>"; };
+		2708E4F91E45CA3B00B34944 /* ZNKBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKBaseView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2708E4911E45B2DC00B34944 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2708E4F21E45B34100B34944 /* IJKMediaFramework.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2708E4AA1E45B2DC00B34944 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2708E4B51E45B2DC00B34944 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2708E48B1E45B2DC00B34944 = {
+			isa = PBXGroup;
+			children = (
+				2708E4961E45B2DC00B34944 /* ZNKPlayer */,
+				2708E4B01E45B2DC00B34944 /* ZNKPlayerTests */,
+				2708E4BB1E45B2DC00B34944 /* ZNKPlayerUITests */,
+				2708E4951E45B2DC00B34944 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2708E4951E45B2DC00B34944 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2708E4941E45B2DC00B34944 /* ZNKPlayer.app */,
+				2708E4AD1E45B2DC00B34944 /* ZNKPlayerTests.xctest */,
+				2708E4B81E45B2DC00B34944 /* ZNKPlayerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2708E4961E45B2DC00B34944 /* ZNKPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				2708E4CA1E45B30500B34944 /* ZNKPlayerFramework */,
+				2708E49A1E45B2DC00B34944 /* AppDelegate.h */,
+				2708E49B1E45B2DC00B34944 /* AppDelegate.m */,
+				2708E49D1E45B2DC00B34944 /* ViewController.h */,
+				2708E49E1E45B2DC00B34944 /* ViewController.m */,
+				2708E4A01E45B2DC00B34944 /* Main.storyboard */,
+				2708E4A31E45B2DC00B34944 /* Assets.xcassets */,
+				2708E4A51E45B2DC00B34944 /* LaunchScreen.storyboard */,
+				2708E4A81E45B2DC00B34944 /* Info.plist */,
+				2708E4971E45B2DC00B34944 /* Supporting Files */,
+			);
+			path = ZNKPlayer;
+			sourceTree = "<group>";
+		};
+		2708E4971E45B2DC00B34944 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2708E4981E45B2DC00B34944 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2708E4B01E45B2DC00B34944 /* ZNKPlayerTests */ = {
+			isa = PBXGroup;
+			children = (
+				2708E4B11E45B2DC00B34944 /* ZNKPlayerTests.m */,
+				2708E4B31E45B2DC00B34944 /* Info.plist */,
+			);
+			path = ZNKPlayerTests;
+			sourceTree = "<group>";
+		};
+		2708E4BB1E45B2DC00B34944 /* ZNKPlayerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2708E4BC1E45B2DC00B34944 /* ZNKPlayerUITests.m */,
+				2708E4BE1E45B2DC00B34944 /* Info.plist */,
+			);
+			path = ZNKPlayerUITests;
+			sourceTree = "<group>";
+		};
+		2708E4CA1E45B30500B34944 /* ZNKPlayerFramework */ = {
+			isa = PBXGroup;
+			children = (
+				2708E4F11E45B34100B34944 /* IJKMediaFramework.framework */,
+				2708E4EF1E45B33700B34944 /* ZNKPlayer.bundle */,
+				2708E4CB1E45B31C00B34944 /* ZNKMasonry */,
+				2708E4F81E45CA3B00B34944 /* ZNKBaseView.h */,
+				2708E4F91E45CA3B00B34944 /* ZNKBaseView.m */,
+				2708E4F31E45B37200B34944 /* ZNKPlayer.h */,
+				2708E4F41E45B37200B34944 /* ZNKPlayer.m */,
+			);
+			path = ZNKPlayerFramework;
+			sourceTree = "<group>";
+		};
+		2708E4CB1E45B31C00B34944 /* ZNKMasonry */ = {
+			isa = PBXGroup;
+			children = (
+				2708E4CC1E45B31C00B34944 /* NSArray+ZNKMASAdditions.h */,
+				2708E4CD1E45B31C00B34944 /* NSArray+ZNKMASAdditions.m */,
+				2708E4CE1E45B31C00B34944 /* NSArray+ZNKMASShorthandAdditions.h */,
+				2708E4CF1E45B31C00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.h */,
+				2708E4D01E45B31C00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.m */,
+				2708E4D11E45B31C00B34944 /* View+ZNKMASAdditions.h */,
+				2708E4D21E45B31C00B34944 /* View+ZNKMASAdditions.m */,
+				2708E4D31E45B31C00B34944 /* View+ZNKMASShorthandAdditions.h */,
+				2708E4D41E45B31C00B34944 /* ViewController+ZNKMASAdditions.h */,
+				2708E4D51E45B31C00B34944 /* ViewController+ZNKMASAdditions.m */,
+				2708E4D61E45B31C00B34944 /* ZNKMASCompositeConstraint.h */,
+				2708E4D71E45B31C00B34944 /* ZNKMASCompositeConstraint.m */,
+				2708E4D81E45B31C00B34944 /* ZNKMASConstraint+Private.h */,
+				2708E4D91E45B31C00B34944 /* ZNKMASConstraint.h */,
+				2708E4DA1E45B31C00B34944 /* ZNKMASConstraint.m */,
+				2708E4DB1E45B31C00B34944 /* ZNKMASConstraintMaker.h */,
+				2708E4DC1E45B31C00B34944 /* ZNKMASConstraintMaker.m */,
+				2708E4DD1E45B31C00B34944 /* ZNKMASLayoutConstraint.h */,
+				2708E4DE1E45B31C00B34944 /* ZNKMASLayoutConstraint.m */,
+				2708E4DF1E45B31C00B34944 /* ZNKMasonry.h */,
+				2708E4E01E45B31C00B34944 /* ZNKMASUtilities.h */,
+				2708E4E11E45B31C00B34944 /* ZNKMASViewAttribute.h */,
+				2708E4E21E45B31C00B34944 /* ZNKMASViewAttribute.m */,
+				2708E4E31E45B31C00B34944 /* ZNKMASViewConstraint.h */,
+				2708E4E41E45B31C00B34944 /* ZNKMASViewConstraint.m */,
+			);
+			path = ZNKMasonry;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2708E4931E45B2DC00B34944 /* ZNKPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2708E4C11E45B2DC00B34944 /* Build configuration list for PBXNativeTarget "ZNKPlayer" */;
+			buildPhases = (
+				2708E4901E45B2DC00B34944 /* Sources */,
+				2708E4911E45B2DC00B34944 /* Frameworks */,
+				2708E4921E45B2DC00B34944 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZNKPlayer;
+			productName = ZNKPlayer;
+			productReference = 2708E4941E45B2DC00B34944 /* ZNKPlayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2708E4AC1E45B2DC00B34944 /* ZNKPlayerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2708E4C41E45B2DC00B34944 /* Build configuration list for PBXNativeTarget "ZNKPlayerTests" */;
+			buildPhases = (
+				2708E4A91E45B2DC00B34944 /* Sources */,
+				2708E4AA1E45B2DC00B34944 /* Frameworks */,
+				2708E4AB1E45B2DC00B34944 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2708E4AF1E45B2DC00B34944 /* PBXTargetDependency */,
+			);
+			name = ZNKPlayerTests;
+			productName = ZNKPlayerTests;
+			productReference = 2708E4AD1E45B2DC00B34944 /* ZNKPlayerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2708E4B71E45B2DC00B34944 /* ZNKPlayerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2708E4C71E45B2DC00B34944 /* Build configuration list for PBXNativeTarget "ZNKPlayerUITests" */;
+			buildPhases = (
+				2708E4B41E45B2DC00B34944 /* Sources */,
+				2708E4B51E45B2DC00B34944 /* Frameworks */,
+				2708E4B61E45B2DC00B34944 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2708E4BA1E45B2DC00B34944 /* PBXTargetDependency */,
+			);
+			name = ZNKPlayerUITests;
+			productName = ZNKPlayerUITests;
+			productReference = 2708E4B81E45B2DC00B34944 /* ZNKPlayerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2708E48C1E45B2DC00B34944 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = HM;
+				TargetAttributes = {
+					2708E4931E45B2DC00B34944 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = MA75X9QV5V;
+						ProvisioningStyle = Automatic;
+					};
+					2708E4AC1E45B2DC00B34944 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = MA75X9QV5V;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2708E4931E45B2DC00B34944;
+					};
+					2708E4B71E45B2DC00B34944 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = MA75X9QV5V;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2708E4931E45B2DC00B34944;
+					};
+				};
+			};
+			buildConfigurationList = 2708E48F1E45B2DC00B34944 /* Build configuration list for PBXProject "ZNKPlayer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2708E48B1E45B2DC00B34944;
+			productRefGroup = 2708E4951E45B2DC00B34944 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2708E4931E45B2DC00B34944 /* ZNKPlayer */,
+				2708E4AC1E45B2DC00B34944 /* ZNKPlayerTests */,
+				2708E4B71E45B2DC00B34944 /* ZNKPlayerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2708E4921E45B2DC00B34944 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2708E4F01E45B33700B34944 /* ZNKPlayer.bundle in Resources */,
+				2708E4A71E45B2DC00B34944 /* LaunchScreen.storyboard in Resources */,
+				2708E4A41E45B2DC00B34944 /* Assets.xcassets in Resources */,
+				2708E4A21E45B2DC00B34944 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2708E4AB1E45B2DC00B34944 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2708E4B61E45B2DC00B34944 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2708E4901E45B2DC00B34944 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2708E49F1E45B2DC00B34944 /* ViewController.m in Sources */,
+				2708E4FA1E45CA3B00B34944 /* ZNKBaseView.m in Sources */,
+				2708E4EB1E45B31C00B34944 /* ZNKMASConstraintMaker.m in Sources */,
+				2708E4EE1E45B31C00B34944 /* ZNKMASViewConstraint.m in Sources */,
+				2708E4E81E45B31C00B34944 /* ViewController+ZNKMASAdditions.m in Sources */,
+				2708E4ED1E45B31C00B34944 /* ZNKMASViewAttribute.m in Sources */,
+				2708E4E91E45B31C00B34944 /* ZNKMASCompositeConstraint.m in Sources */,
+				2708E4F51E45B37200B34944 /* ZNKPlayer.m in Sources */,
+				2708E4EC1E45B31C00B34944 /* ZNKMASLayoutConstraint.m in Sources */,
+				2708E49C1E45B2DC00B34944 /* AppDelegate.m in Sources */,
+				2708E4E71E45B31C00B34944 /* View+ZNKMASAdditions.m in Sources */,
+				2708E4E51E45B31C00B34944 /* NSArray+ZNKMASAdditions.m in Sources */,
+				2708E4EA1E45B31C00B34944 /* ZNKMASConstraint.m in Sources */,
+				2708E4991E45B2DC00B34944 /* main.m in Sources */,
+				2708E4E61E45B31C00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2708E4A91E45B2DC00B34944 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2708E4B21E45B2DC00B34944 /* ZNKPlayerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2708E4B41E45B2DC00B34944 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2708E4BD1E45B2DC00B34944 /* ZNKPlayerUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2708E4AF1E45B2DC00B34944 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2708E4931E45B2DC00B34944 /* ZNKPlayer */;
+			targetProxy = 2708E4AE1E45B2DC00B34944 /* PBXContainerItemProxy */;
+		};
+		2708E4BA1E45B2DC00B34944 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2708E4931E45B2DC00B34944 /* ZNKPlayer */;
+			targetProxy = 2708E4B91E45B2DC00B34944 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2708E4A01E45B2DC00B34944 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2708E4A11E45B2DC00B34944 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2708E4A51E45B2DC00B34944 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2708E4A61E45B2DC00B34944 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2708E4BF1E45B2DC00B34944 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2708E4C01E45B2DC00B34944 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2708E4C21E45B2DC00B34944 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MA75X9QV5V;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ZNKPlayer/ZNKPlayerFramework",
+				);
+				INFOPLIST_FILE = ZNKPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.HM.ZNKPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2708E4C31E45B2DC00B34944 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MA75X9QV5V;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ZNKPlayer/ZNKPlayerFramework",
+				);
+				INFOPLIST_FILE = ZNKPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.HM.ZNKPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2708E4C51E45B2DC00B34944 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = MA75X9QV5V;
+				INFOPLIST_FILE = ZNKPlayerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.HM.ZNKPlayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZNKPlayer.app/ZNKPlayer";
+			};
+			name = Debug;
+		};
+		2708E4C61E45B2DC00B34944 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = MA75X9QV5V;
+				INFOPLIST_FILE = ZNKPlayerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.HM.ZNKPlayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZNKPlayer.app/ZNKPlayer";
+			};
+			name = Release;
+		};
+		2708E4C81E45B2DC00B34944 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = MA75X9QV5V;
+				INFOPLIST_FILE = ZNKPlayerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.HM.ZNKPlayerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = ZNKPlayer;
+			};
+			name = Debug;
+		};
+		2708E4C91E45B2DC00B34944 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = MA75X9QV5V;
+				INFOPLIST_FILE = ZNKPlayerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.HM.ZNKPlayerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = ZNKPlayer;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2708E48F1E45B2DC00B34944 /* Build configuration list for PBXProject "ZNKPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2708E4BF1E45B2DC00B34944 /* Debug */,
+				2708E4C01E45B2DC00B34944 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2708E4C11E45B2DC00B34944 /* Build configuration list for PBXNativeTarget "ZNKPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2708E4C21E45B2DC00B34944 /* Debug */,
+				2708E4C31E45B2DC00B34944 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2708E4C41E45B2DC00B34944 /* Build configuration list for PBXNativeTarget "ZNKPlayerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2708E4C51E45B2DC00B34944 /* Debug */,
+				2708E4C61E45B2DC00B34944 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2708E4C71E45B2DC00B34944 /* Build configuration list for PBXNativeTarget "ZNKPlayerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2708E4C81E45B2DC00B34944 /* Debug */,
+				2708E4C91E45B2DC00B34944 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2708E48C1E45B2DC00B34944 /* Project object */;
+}
