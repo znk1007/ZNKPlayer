@@ -27,8 +27,10 @@
 		2708E4EE1E45B31C00B34944 /* ZNKMASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4E41E45B31C00B34944 /* ZNKMASViewConstraint.m */; };
 		2708E4F01E45B33700B34944 /* ZNKPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2708E4EF1E45B33700B34944 /* ZNKPlayer.bundle */; };
 		2708E4F21E45B34100B34944 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2708E4F11E45B34100B34944 /* IJKMediaFramework.framework */; };
-		2708E4F51E45B37200B34944 /* ZNKPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4F41E45B37200B34944 /* ZNKPlayer.m */; };
-		2708E4FA1E45CA3B00B34944 /* ZNKBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4F91E45CA3B00B34944 /* ZNKBaseView.m */; };
+		2708E5051E47F4A400B34944 /* ZNKBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4FD1E47F4A400B34944 /* ZNKBaseView.m */; };
+		2708E5061E47F4A400B34944 /* ZNKNetworkListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5001E47F4A400B34944 /* ZNKNetworkListener.m */; };
+		2708E5071E47F4A400B34944 /* ZNKNetworkSpeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5021E47F4A400B34944 /* ZNKNetworkSpeed.m */; };
+		2708E5081E47F4A400B34944 /* ZNKPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5041E47F4A400B34944 /* ZNKPlayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,10 +94,14 @@
 		2708E4E41E45B31C00B34944 /* ZNKMASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKMASViewConstraint.m; sourceTree = "<group>"; };
 		2708E4EF1E45B33700B34944 /* ZNKPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZNKPlayer.bundle; sourceTree = "<group>"; };
 		2708E4F11E45B34100B34944 /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IJKMediaFramework.framework; sourceTree = "<group>"; };
-		2708E4F31E45B37200B34944 /* ZNKPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKPlayer.h; sourceTree = "<group>"; };
-		2708E4F41E45B37200B34944 /* ZNKPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKPlayer.m; sourceTree = "<group>"; };
-		2708E4F81E45CA3B00B34944 /* ZNKBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKBaseView.h; sourceTree = "<group>"; };
-		2708E4F91E45CA3B00B34944 /* ZNKBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKBaseView.m; sourceTree = "<group>"; };
+		2708E4FC1E47F4A400B34944 /* ZNKBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKBaseView.h; sourceTree = "<group>"; };
+		2708E4FD1E47F4A400B34944 /* ZNKBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKBaseView.m; sourceTree = "<group>"; };
+		2708E4FF1E47F4A400B34944 /* ZNKNetworkListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKNetworkListener.h; sourceTree = "<group>"; };
+		2708E5001E47F4A400B34944 /* ZNKNetworkListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKNetworkListener.m; sourceTree = "<group>"; };
+		2708E5011E47F4A400B34944 /* ZNKNetworkSpeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKNetworkSpeed.h; sourceTree = "<group>"; };
+		2708E5021E47F4A400B34944 /* ZNKNetworkSpeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKNetworkSpeed.m; sourceTree = "<group>"; };
+		2708E5031E47F4A400B34944 /* ZNKPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKPlayer.h; sourceTree = "<group>"; };
+		2708E5041E47F4A400B34944 /* ZNKPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKPlayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,13 +196,10 @@
 		2708E4CA1E45B30500B34944 /* ZNKPlayerFramework */ = {
 			isa = PBXGroup;
 			children = (
+				2708E4FB1E47F4A400B34944 /* ZNKPlayerClasses */,
 				2708E4F11E45B34100B34944 /* IJKMediaFramework.framework */,
 				2708E4EF1E45B33700B34944 /* ZNKPlayer.bundle */,
 				2708E4CB1E45B31C00B34944 /* ZNKMasonry */,
-				2708E4F81E45CA3B00B34944 /* ZNKBaseView.h */,
-				2708E4F91E45CA3B00B34944 /* ZNKBaseView.m */,
-				2708E4F31E45B37200B34944 /* ZNKPlayer.h */,
-				2708E4F41E45B37200B34944 /* ZNKPlayer.m */,
 			);
 			path = ZNKPlayerFramework;
 			sourceTree = "<group>";
@@ -231,6 +234,30 @@
 				2708E4E41E45B31C00B34944 /* ZNKMASViewConstraint.m */,
 			);
 			path = ZNKMasonry;
+			sourceTree = "<group>";
+		};
+		277DA1AD1E46C6D900832E88 /* ZNKPlayerClasses */ = {
+			isa = PBXGroup;
+			children = (
+				277DA1AE1E46C6D900832E88 /* ZNKBaseView.h */,
+				277DA1AF1E46C6D900832E88 /* ZNKBaseView.m */,
+				277DA1B41E46C8B700832E88 /* ZNKNetworkListener.h */,
+				277DA1B51E46C8B700832E88 /* ZNKNetworkListener.m */,
+				277DA1B01E46C6D900832E88 /* ZNKPlayer.h */,
+				277DA1B11E46C6D900832E88 /* ZNKPlayer.m */,
+			);
+			path = ZNKPlayerClasses;
+			sourceTree = "<group>";
+		};
+		2708E4FE1E47F4A400B34944 /* ZNKNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				2708E4FF1E47F4A400B34944 /* ZNKNetworkListener.h */,
+				2708E5001E47F4A400B34944 /* ZNKNetworkListener.m */,
+				2708E5011E47F4A400B34944 /* ZNKNetworkSpeed.h */,
+				2708E5021E47F4A400B34944 /* ZNKNetworkSpeed.m */,
+			);
+			path = ZNKNetwork;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,19 +398,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				2708E49F1E45B2DC00B34944 /* ViewController.m in Sources */,
-				2708E4FA1E45CA3B00B34944 /* ZNKBaseView.m in Sources */,
+				2708E5051E47F4A400B34944 /* ZNKBaseView.m in Sources */,
+				2708E5061E47F4A400B34944 /* ZNKNetworkListener.m in Sources */,
 				2708E4EB1E45B31C00B34944 /* ZNKMASConstraintMaker.m in Sources */,
+				277DA1B61E46C8B700832E88 /* ZNKNetworkListener.m in Sources */,
 				2708E4EE1E45B31C00B34944 /* ZNKMASViewConstraint.m in Sources */,
+				277DA1B21E46C6D900832E88 /* ZNKBaseView.m in Sources */,
+				277DA1B31E46C6D900832E88 /* ZNKPlayer.m in Sources */,
 				2708E4E81E45B31C00B34944 /* ViewController+ZNKMASAdditions.m in Sources */,
 				2708E4ED1E45B31C00B34944 /* ZNKMASViewAttribute.m in Sources */,
 				2708E4E91E45B31C00B34944 /* ZNKMASCompositeConstraint.m in Sources */,
-				2708E4F51E45B37200B34944 /* ZNKPlayer.m in Sources */,
 				2708E4EC1E45B31C00B34944 /* ZNKMASLayoutConstraint.m in Sources */,
+				2708E5081E47F4A400B34944 /* ZNKPlayer.m in Sources */,
 				2708E49C1E45B2DC00B34944 /* AppDelegate.m in Sources */,
 				2708E4E71E45B31C00B34944 /* View+ZNKMASAdditions.m in Sources */,
 				2708E4E51E45B31C00B34944 /* NSArray+ZNKMASAdditions.m in Sources */,
 				2708E4EA1E45B31C00B34944 /* ZNKMASConstraint.m in Sources */,
 				2708E4991E45B2DC00B34944 /* main.m in Sources */,
+				2708E5071E47F4A400B34944 /* ZNKNetworkSpeed.m in Sources */,
 				2708E4E61E45B31C00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -630,6 +662,7 @@
 				2708E4C31E45B2DC00B34944 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2708E4C41E45B2DC00B34944 /* Build configuration list for PBXNativeTarget "ZNKPlayerTests" */ = {
 			isa = XCConfigurationList;
@@ -638,6 +671,7 @@
 				2708E4C61E45B2DC00B34944 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2708E4C71E45B2DC00B34944 /* Build configuration list for PBXNativeTarget "ZNKPlayerUITests" */ = {
 			isa = XCConfigurationList;
@@ -646,6 +680,7 @@
 				2708E4C91E45B2DC00B34944 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
