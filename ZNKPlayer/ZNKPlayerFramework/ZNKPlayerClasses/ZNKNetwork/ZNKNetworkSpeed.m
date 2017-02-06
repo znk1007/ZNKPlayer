@@ -91,15 +91,15 @@ static ZNKNetworkSpeed* instance = nil;
     {
         return [NSString stringWithFormat:@"%dB", bytes];
     }
-    eZNKe if (bytes >= 1024 && bytes < 1024 * 1024) // KB
+    else if (bytes >= 1024 && bytes < 1024 * 1024) // KB
     {
         return [NSString stringWithFormat:@"%.1fKB", (double)bytes / 1024];
     }
-    eZNKe if (bytes >= 1024 * 1024 && bytes < 1024 * 1024 * 1024) // MB
+    else if (bytes >= 1024 * 1024 && bytes < 1024 * 1024 * 1024) // MB
     {
         return [NSString stringWithFormat:@"%.1fMB", (double)bytes / (1024 * 1024)];
     }
-    eZNKe // GB
+    else // GB
     {
         return [NSString stringWithFormat:@"%.1fGB", (double)bytes / (1024 * 1024 * 1024)];
     }

@@ -7,34 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2708E4991E45B2DC00B34944 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4981E45B2DC00B34944 /* main.m */; };
-		2708E49C1E45B2DC00B34944 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E49B1E45B2DC00B34944 /* AppDelegate.m */; };
-		2708E49F1E45B2DC00B34944 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E49E1E45B2DC00B34944 /* ViewController.m */; };
-		2708E4A21E45B2DC00B34944 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2708E4A01E45B2DC00B34944 /* Main.storyboard */; };
-		2708E4A41E45B2DC00B34944 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2708E4A31E45B2DC00B34944 /* Assets.xcassets */; };
-		2708E4A71E45B2DC00B34944 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2708E4A51E45B2DC00B34944 /* LaunchScreen.storyboard */; };
 		2708E4B21E45B2DC00B34944 /* ZNKPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4B11E45B2DC00B34944 /* ZNKPlayerTests.m */; };
 		2708E4BD1E45B2DC00B34944 /* ZNKPlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4BC1E45B2DC00B34944 /* ZNKPlayerUITests.m */; };
-		2708E4E51E45B31C00B34944 /* NSArray+ZNKMASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4CD1E45B31C00B34944 /* NSArray+ZNKMASAdditions.m */; };
-		2708E4E61E45B31C00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4D01E45B31C00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.m */; };
-		2708E4E71E45B31C00B34944 /* View+ZNKMASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4D21E45B31C00B34944 /* View+ZNKMASAdditions.m */; };
-		2708E4E81E45B31C00B34944 /* ViewController+ZNKMASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4D51E45B31C00B34944 /* ViewController+ZNKMASAdditions.m */; };
-		2708E4E91E45B31C00B34944 /* ZNKMASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4D71E45B31C00B34944 /* ZNKMASCompositeConstraint.m */; };
-		2708E4EA1E45B31C00B34944 /* ZNKMASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4DA1E45B31C00B34944 /* ZNKMASConstraint.m */; };
-		2708E4EB1E45B31C00B34944 /* ZNKMASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4DC1E45B31C00B34944 /* ZNKMASConstraintMaker.m */; };
-		2708E4EC1E45B31C00B34944 /* ZNKMASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4DE1E45B31C00B34944 /* ZNKMASLayoutConstraint.m */; };
-		2708E4ED1E45B31C00B34944 /* ZNKMASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4E21E45B31C00B34944 /* ZNKMASViewAttribute.m */; };
-		2708E4EE1E45B31C00B34944 /* ZNKMASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4E41E45B31C00B34944 /* ZNKMASViewConstraint.m */; };
-		2708E4F01E45B33700B34944 /* ZNKPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2708E4EF1E45B33700B34944 /* ZNKPlayer.bundle */; };
-		2708E4F21E45B34100B34944 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2708E4F11E45B34100B34944 /* IJKMediaFramework.framework */; };
-		2708E5051E47F4A400B34944 /* ZNKBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4FD1E47F4A400B34944 /* ZNKBaseView.m */; };
-		2708E5061E47F4A400B34944 /* ZNKNetworkListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5001E47F4A400B34944 /* ZNKNetworkListener.m */; };
-		2708E5071E47F4A400B34944 /* ZNKNetworkSpeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5021E47F4A400B34944 /* ZNKNetworkSpeed.m */; };
 		2708E5081E47F4A400B34944 /* ZNKPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5041E47F4A400B34944 /* ZNKPlayer.m */; };
-		2708E5151E47FED000B34944 /* ZNKBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E50B1E47FED000B34944 /* ZNKBaseView.m */; };
-		2708E5161E47FED000B34944 /* ZNKNetworkListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E50E1E47FED000B34944 /* ZNKNetworkListener.m */; };
-		2708E5171E47FED000B34944 /* ZNKNetworkSpeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5101E47FED000B34944 /* ZNKNetworkSpeed.m */; };
-		2708E5191E47FED000B34944 /* ZNKPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5141E47FED000B34944 /* ZNKPlayer.m */; };
+		2708E55C1E47FFCB00B34944 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E52A1E47FFCB00B34944 /* AppDelegate.m */; };
+		2708E55D1E47FFCB00B34944 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2708E52B1E47FFCB00B34944 /* Assets.xcassets */; };
+		2708E55E1E47FFCB00B34944 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2708E52C1E47FFCB00B34944 /* LaunchScreen.storyboard */; };
+		2708E55F1E47FFCB00B34944 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2708E52E1E47FFCB00B34944 /* Main.storyboard */; };
+		2708E5601E47FFCB00B34944 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2708E5301E47FFCB00B34944 /* Info.plist */; };
+		2708E5611E47FFCB00B34944 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5311E47FFCB00B34944 /* main.m */; };
+		2708E5621E47FFCB00B34944 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5331E47FFCB00B34944 /* ViewController.m */; };
+		2708E5631E47FFCB00B34944 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2708E5351E47FFCB00B34944 /* IJKMediaFramework.framework */; };
+		2708E5641E47FFCB00B34944 /* IJKMediaFramework.framework.zip in Resources */ = {isa = PBXBuildFile; fileRef = 2708E5361E47FFCB00B34944 /* IJKMediaFramework.framework.zip */; };
+		2708E5651E47FFCB00B34944 /* NSArray+ZNKMASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5391E47FFCB00B34944 /* NSArray+ZNKMASAdditions.m */; };
+		2708E5661E47FFCB00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E53C1E47FFCB00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.m */; };
+		2708E5671E47FFCB00B34944 /* View+ZNKMASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E53E1E47FFCB00B34944 /* View+ZNKMASAdditions.m */; };
+		2708E5681E47FFCB00B34944 /* ViewController+ZNKMASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5411E47FFCB00B34944 /* ViewController+ZNKMASAdditions.m */; };
+		2708E5691E47FFCB00B34944 /* ZNKMASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5431E47FFCB00B34944 /* ZNKMASCompositeConstraint.m */; };
+		2708E56A1E47FFCB00B34944 /* ZNKMASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5461E47FFCB00B34944 /* ZNKMASConstraint.m */; };
+		2708E56B1E47FFCB00B34944 /* ZNKMASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5481E47FFCB00B34944 /* ZNKMASConstraintMaker.m */; };
+		2708E56C1E47FFCB00B34944 /* ZNKMASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E54A1E47FFCB00B34944 /* ZNKMASLayoutConstraint.m */; };
+		2708E56D1E47FFCB00B34944 /* ZNKMASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E54E1E47FFCB00B34944 /* ZNKMASViewAttribute.m */; };
+		2708E56E1E47FFCB00B34944 /* ZNKMASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5501E47FFCB00B34944 /* ZNKMASViewConstraint.m */; };
+		2708E56F1E47FFCB00B34944 /* ZNKPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2708E5511E47FFCB00B34944 /* ZNKPlayer.bundle */; };
+		2708E5701E47FFCB00B34944 /* ZNKBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5541E47FFCB00B34944 /* ZNKBaseView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,60 +52,59 @@
 
 /* Begin PBXFileReference section */
 		2708E4941E45B2DC00B34944 /* ZNKPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZNKPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2708E4981E45B2DC00B34944 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2708E49A1E45B2DC00B34944 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		2708E49B1E45B2DC00B34944 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2708E49D1E45B2DC00B34944 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2708E49E1E45B2DC00B34944 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		2708E4A11E45B2DC00B34944 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2708E4A31E45B2DC00B34944 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2708E4A61E45B2DC00B34944 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		2708E4A81E45B2DC00B34944 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2708E4AD1E45B2DC00B34944 /* ZNKPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZNKPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2708E4B11E45B2DC00B34944 /* ZNKPlayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZNKPlayerTests.m; sourceTree = "<group>"; };
 		2708E4B31E45B2DC00B34944 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2708E4B81E45B2DC00B34944 /* ZNKPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZNKPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2708E4BC1E45B2DC00B34944 /* ZNKPlayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZNKPlayerUITests.m; sourceTree = "<group>"; };
 		2708E4BE1E45B2DC00B34944 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2708E4CC1E45B31C00B34944 /* NSArray+ZNKMASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ZNKMASAdditions.h"; sourceTree = "<group>"; };
-		2708E4CD1E45B31C00B34944 /* NSArray+ZNKMASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ZNKMASAdditions.m"; sourceTree = "<group>"; };
-		2708E4CE1E45B31C00B34944 /* NSArray+ZNKMASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ZNKMASShorthandAdditions.h"; sourceTree = "<group>"; };
-		2708E4CF1E45B31C00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+ZNKMASDebugAdditions.h"; sourceTree = "<group>"; };
-		2708E4D01E45B31C00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+ZNKMASDebugAdditions.m"; sourceTree = "<group>"; };
-		2708E4D11E45B31C00B34944 /* View+ZNKMASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+ZNKMASAdditions.h"; sourceTree = "<group>"; };
-		2708E4D21E45B31C00B34944 /* View+ZNKMASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+ZNKMASAdditions.m"; sourceTree = "<group>"; };
-		2708E4D31E45B31C00B34944 /* View+ZNKMASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+ZNKMASShorthandAdditions.h"; sourceTree = "<group>"; };
-		2708E4D41E45B31C00B34944 /* ViewController+ZNKMASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+ZNKMASAdditions.h"; sourceTree = "<group>"; };
-		2708E4D51E45B31C00B34944 /* ViewController+ZNKMASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+ZNKMASAdditions.m"; sourceTree = "<group>"; };
-		2708E4D61E45B31C00B34944 /* ZNKMASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMASCompositeConstraint.h; sourceTree = "<group>"; };
-		2708E4D71E45B31C00B34944 /* ZNKMASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKMASCompositeConstraint.m; sourceTree = "<group>"; };
-		2708E4D81E45B31C00B34944 /* ZNKMASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZNKMASConstraint+Private.h"; sourceTree = "<group>"; };
-		2708E4D91E45B31C00B34944 /* ZNKMASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMASConstraint.h; sourceTree = "<group>"; };
-		2708E4DA1E45B31C00B34944 /* ZNKMASConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKMASConstraint.m; sourceTree = "<group>"; };
-		2708E4DB1E45B31C00B34944 /* ZNKMASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMASConstraintMaker.h; sourceTree = "<group>"; };
-		2708E4DC1E45B31C00B34944 /* ZNKMASConstraintMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKMASConstraintMaker.m; sourceTree = "<group>"; };
-		2708E4DD1E45B31C00B34944 /* ZNKMASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMASLayoutConstraint.h; sourceTree = "<group>"; };
-		2708E4DE1E45B31C00B34944 /* ZNKMASLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKMASLayoutConstraint.m; sourceTree = "<group>"; };
-		2708E4DF1E45B31C00B34944 /* ZNKMasonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMasonry.h; sourceTree = "<group>"; };
-		2708E4E01E45B31C00B34944 /* ZNKMASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMASUtilities.h; sourceTree = "<group>"; };
-		2708E4E11E45B31C00B34944 /* ZNKMASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMASViewAttribute.h; sourceTree = "<group>"; };
-		2708E4E21E45B31C00B34944 /* ZNKMASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKMASViewAttribute.m; sourceTree = "<group>"; };
-		2708E4E31E45B31C00B34944 /* ZNKMASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMASViewConstraint.h; sourceTree = "<group>"; };
-		2708E4E41E45B31C00B34944 /* ZNKMASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKMASViewConstraint.m; sourceTree = "<group>"; };
-		2708E4EF1E45B33700B34944 /* ZNKPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZNKPlayer.bundle; sourceTree = "<group>"; };
-		2708E4F11E45B34100B34944 /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IJKMediaFramework.framework; sourceTree = "<group>"; };
 		2708E4FD1E47F4A400B34944 /* ZNKBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKBaseView.m; sourceTree = "<group>"; };
 		2708E5001E47F4A400B34944 /* ZNKNetworkListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKNetworkListener.m; sourceTree = "<group>"; };
 		2708E5021E47F4A400B34944 /* ZNKNetworkSpeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKNetworkSpeed.m; sourceTree = "<group>"; };
-		2708E5041E47F4A400B34944 /* ZNKPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKPlayer.m; sourceTree = "<group>"; };
-		2708E50A1E47FED000B34944 /* ZNKBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKBaseView.h; sourceTree = "<group>"; };
-		2708E50B1E47FED000B34944 /* ZNKBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKBaseView.m; sourceTree = "<group>"; };
-		2708E50D1E47FED000B34944 /* ZNKNetworkListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKNetworkListener.h; sourceTree = "<group>"; };
-		2708E50E1E47FED000B34944 /* ZNKNetworkListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKNetworkListener.m; sourceTree = "<group>"; };
-		2708E50F1E47FED000B34944 /* ZNKNetworkSpeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKNetworkSpeed.h; sourceTree = "<group>"; };
-		2708E5101E47FED000B34944 /* ZNKNetworkSpeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKNetworkSpeed.m; sourceTree = "<group>"; };
-		2708E5131E47FED000B34944 /* ZNKPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKPlayer.h; sourceTree = "<group>"; };
-		2708E5141E47FED000B34944 /* ZNKPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKPlayer.m; sourceTree = "<group>"; };
+		2708E5291E47FFCB00B34944 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2708E52A1E47FFCB00B34944 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2708E52B1E47FFCB00B34944 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2708E52D1E47FFCB00B34944 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2708E52F1E47FFCB00B34944 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2708E5301E47FFCB00B34944 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2708E5311E47FFCB00B34944 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2708E5321E47FFCB00B34944 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2708E5331E47FFCB00B34944 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2708E5351E47FFCB00B34944 /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IJKMediaFramework.framework; sourceTree = "<group>"; };
+		2708E5361E47FFCB00B34944 /* IJKMediaFramework.framework.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = IJKMediaFramework.framework.zip; sourceTree = "<group>"; };
+		2708E5381E47FFCB00B34944 /* NSArray+ZNKMASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ZNKMASAdditions.h"; sourceTree = "<group>"; };
+		2708E5391E47FFCB00B34944 /* NSArray+ZNKMASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ZNKMASAdditions.m"; sourceTree = "<group>"; };
+		2708E53A1E47FFCB00B34944 /* NSArray+ZNKMASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ZNKMASShorthandAdditions.h"; sourceTree = "<group>"; };
+		2708E53B1E47FFCB00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+ZNKMASDebugAdditions.h"; sourceTree = "<group>"; };
+		2708E53C1E47FFCB00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+ZNKMASDebugAdditions.m"; sourceTree = "<group>"; };
+		2708E53D1E47FFCB00B34944 /* View+ZNKMASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+ZNKMASAdditions.h"; sourceTree = "<group>"; };
+		2708E53E1E47FFCB00B34944 /* View+ZNKMASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+ZNKMASAdditions.m"; sourceTree = "<group>"; };
+		2708E53F1E47FFCB00B34944 /* View+ZNKMASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+ZNKMASShorthandAdditions.h"; sourceTree = "<group>"; };
+		2708E5401E47FFCB00B34944 /* ViewController+ZNKMASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+ZNKMASAdditions.h"; sourceTree = "<group>"; };
+		2708E5411E47FFCB00B34944 /* ViewController+ZNKMASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+ZNKMASAdditions.m"; sourceTree = "<group>"; };
+		2708E5421E47FFCB00B34944 /* ZNKMASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMASCompositeConstraint.h; sourceTree = "<group>"; };
+		2708E5431E47FFCB00B34944 /* ZNKMASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKMASCompositeConstraint.m; sourceTree = "<group>"; };
+		2708E5441E47FFCB00B34944 /* ZNKMASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZNKMASConstraint+Private.h"; sourceTree = "<group>"; };
+		2708E5451E47FFCB00B34944 /* ZNKMASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMASConstraint.h; sourceTree = "<group>"; };
+		2708E5461E47FFCB00B34944 /* ZNKMASConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKMASConstraint.m; sourceTree = "<group>"; };
+		2708E5471E47FFCB00B34944 /* ZNKMASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMASConstraintMaker.h; sourceTree = "<group>"; };
+		2708E5481E47FFCB00B34944 /* ZNKMASConstraintMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKMASConstraintMaker.m; sourceTree = "<group>"; };
+		2708E5491E47FFCB00B34944 /* ZNKMASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMASLayoutConstraint.h; sourceTree = "<group>"; };
+		2708E54A1E47FFCB00B34944 /* ZNKMASLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKMASLayoutConstraint.m; sourceTree = "<group>"; };
+		2708E54B1E47FFCB00B34944 /* ZNKMasonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMasonry.h; sourceTree = "<group>"; };
+		2708E54C1E47FFCB00B34944 /* ZNKMASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMASUtilities.h; sourceTree = "<group>"; };
+		2708E54D1E47FFCB00B34944 /* ZNKMASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMASViewAttribute.h; sourceTree = "<group>"; };
+		2708E54E1E47FFCB00B34944 /* ZNKMASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKMASViewAttribute.m; sourceTree = "<group>"; };
+		2708E54F1E47FFCB00B34944 /* ZNKMASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKMASViewConstraint.h; sourceTree = "<group>"; };
+		2708E5501E47FFCB00B34944 /* ZNKMASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKMASViewConstraint.m; sourceTree = "<group>"; };
+		2708E5511E47FFCB00B34944 /* ZNKPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZNKPlayer.bundle; sourceTree = "<group>"; };
+		2708E5531E47FFCB00B34944 /* ZNKBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKBaseView.h; sourceTree = "<group>"; };
+		2708E5541E47FFCB00B34944 /* ZNKBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKBaseView.m; sourceTree = "<group>"; };
+		2708E5561E47FFCB00B34944 /* ZNKNetworkListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKNetworkListener.h; sourceTree = "<group>"; };
+		2708E5571E47FFCB00B34944 /* ZNKNetworkListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKNetworkListener.m; sourceTree = "<group>"; };
+		2708E5581E47FFCB00B34944 /* ZNKNetworkSpeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKNetworkSpeed.h; sourceTree = "<group>"; };
+		2708E5591E47FFCB00B34944 /* ZNKNetworkSpeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKNetworkSpeed.m; sourceTree = "<group>"; };
+		2708E55A1E47FFCB00B34944 /* ZNKPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKPlayer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2708E4F21E45B34100B34944 /* IJKMediaFramework.framework in Frameworks */,
+				2708E5631E47FFCB00B34944 /* IJKMediaFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,7 +136,7 @@
 		2708E48B1E45B2DC00B34944 = {
 			isa = PBXGroup;
 			children = (
-				2708E4961E45B2DC00B34944 /* ZNKPlayer */,
+				2708E5281E47FFCB00B34944 /* ZNKPlayer */,
 				2708E4B01E45B2DC00B34944 /* ZNKPlayerTests */,
 				2708E4BB1E45B2DC00B34944 /* ZNKPlayerUITests */,
 				2708E4951E45B2DC00B34944 /* Products */,
@@ -156,31 +151,6 @@
 				2708E4B81E45B2DC00B34944 /* ZNKPlayerUITests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		2708E4961E45B2DC00B34944 /* ZNKPlayer */ = {
-			isa = PBXGroup;
-			children = (
-				2708E4CA1E45B30500B34944 /* ZNKPlayerFramework */,
-				2708E49A1E45B2DC00B34944 /* AppDelegate.h */,
-				2708E49B1E45B2DC00B34944 /* AppDelegate.m */,
-				2708E49D1E45B2DC00B34944 /* ViewController.h */,
-				2708E49E1E45B2DC00B34944 /* ViewController.m */,
-				2708E4A01E45B2DC00B34944 /* Main.storyboard */,
-				2708E4A31E45B2DC00B34944 /* Assets.xcassets */,
-				2708E4A51E45B2DC00B34944 /* LaunchScreen.storyboard */,
-				2708E4A81E45B2DC00B34944 /* Info.plist */,
-				2708E4971E45B2DC00B34944 /* Supporting Files */,
-			);
-			path = ZNKPlayer;
-			sourceTree = "<group>";
-		};
-		2708E4971E45B2DC00B34944 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				2708E4981E45B2DC00B34944 /* main.m */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		2708E4B01E45B2DC00B34944 /* ZNKPlayerTests */ = {
@@ -201,68 +171,86 @@
 			path = ZNKPlayerUITests;
 			sourceTree = "<group>";
 		};
-		2708E4CA1E45B30500B34944 /* ZNKPlayerFramework */ = {
+		2708E5281E47FFCB00B34944 /* ZNKPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				2708E5091E47FED000B34944 /* ZNKPlayerClasses */,
-				2708E4F11E45B34100B34944 /* IJKMediaFramework.framework */,
-				2708E4EF1E45B33700B34944 /* ZNKPlayer.bundle */,
-				2708E4CB1E45B31C00B34944 /* ZNKMasonry */,
+				2708E5291E47FFCB00B34944 /* AppDelegate.h */,
+				2708E52A1E47FFCB00B34944 /* AppDelegate.m */,
+				2708E52B1E47FFCB00B34944 /* Assets.xcassets */,
+				2708E52C1E47FFCB00B34944 /* LaunchScreen.storyboard */,
+				2708E52E1E47FFCB00B34944 /* Main.storyboard */,
+				2708E5301E47FFCB00B34944 /* Info.plist */,
+				2708E5311E47FFCB00B34944 /* main.m */,
+				2708E5321E47FFCB00B34944 /* ViewController.h */,
+				2708E5331E47FFCB00B34944 /* ViewController.m */,
+				2708E5341E47FFCB00B34944 /* ZNKPlayerFramework */,
+			);
+			path = ZNKPlayer;
+			sourceTree = "<group>";
+		};
+		2708E5341E47FFCB00B34944 /* ZNKPlayerFramework */ = {
+			isa = PBXGroup;
+			children = (
+				2708E5351E47FFCB00B34944 /* IJKMediaFramework.framework */,
+				2708E5361E47FFCB00B34944 /* IJKMediaFramework.framework.zip */,
+				2708E5371E47FFCB00B34944 /* ZNKMasonry */,
+				2708E5511E47FFCB00B34944 /* ZNKPlayer.bundle */,
+				2708E5521E47FFCB00B34944 /* ZNKPlayerClasses */,
 			);
 			path = ZNKPlayerFramework;
 			sourceTree = "<group>";
 		};
-		2708E4CB1E45B31C00B34944 /* ZNKMasonry */ = {
+		2708E5371E47FFCB00B34944 /* ZNKMasonry */ = {
 			isa = PBXGroup;
 			children = (
-				2708E4CC1E45B31C00B34944 /* NSArray+ZNKMASAdditions.h */,
-				2708E4CD1E45B31C00B34944 /* NSArray+ZNKMASAdditions.m */,
-				2708E4CE1E45B31C00B34944 /* NSArray+ZNKMASShorthandAdditions.h */,
-				2708E4CF1E45B31C00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.h */,
-				2708E4D01E45B31C00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.m */,
-				2708E4D11E45B31C00B34944 /* View+ZNKMASAdditions.h */,
-				2708E4D21E45B31C00B34944 /* View+ZNKMASAdditions.m */,
-				2708E4D31E45B31C00B34944 /* View+ZNKMASShorthandAdditions.h */,
-				2708E4D41E45B31C00B34944 /* ViewController+ZNKMASAdditions.h */,
-				2708E4D51E45B31C00B34944 /* ViewController+ZNKMASAdditions.m */,
-				2708E4D61E45B31C00B34944 /* ZNKMASCompositeConstraint.h */,
-				2708E4D71E45B31C00B34944 /* ZNKMASCompositeConstraint.m */,
-				2708E4D81E45B31C00B34944 /* ZNKMASConstraint+Private.h */,
-				2708E4D91E45B31C00B34944 /* ZNKMASConstraint.h */,
-				2708E4DA1E45B31C00B34944 /* ZNKMASConstraint.m */,
-				2708E4DB1E45B31C00B34944 /* ZNKMASConstraintMaker.h */,
-				2708E4DC1E45B31C00B34944 /* ZNKMASConstraintMaker.m */,
-				2708E4DD1E45B31C00B34944 /* ZNKMASLayoutConstraint.h */,
-				2708E4DE1E45B31C00B34944 /* ZNKMASLayoutConstraint.m */,
-				2708E4DF1E45B31C00B34944 /* ZNKMasonry.h */,
-				2708E4E01E45B31C00B34944 /* ZNKMASUtilities.h */,
-				2708E4E11E45B31C00B34944 /* ZNKMASViewAttribute.h */,
-				2708E4E21E45B31C00B34944 /* ZNKMASViewAttribute.m */,
-				2708E4E31E45B31C00B34944 /* ZNKMASViewConstraint.h */,
-				2708E4E41E45B31C00B34944 /* ZNKMASViewConstraint.m */,
+				2708E5381E47FFCB00B34944 /* NSArray+ZNKMASAdditions.h */,
+				2708E5391E47FFCB00B34944 /* NSArray+ZNKMASAdditions.m */,
+				2708E53A1E47FFCB00B34944 /* NSArray+ZNKMASShorthandAdditions.h */,
+				2708E53B1E47FFCB00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.h */,
+				2708E53C1E47FFCB00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.m */,
+				2708E53D1E47FFCB00B34944 /* View+ZNKMASAdditions.h */,
+				2708E53E1E47FFCB00B34944 /* View+ZNKMASAdditions.m */,
+				2708E53F1E47FFCB00B34944 /* View+ZNKMASShorthandAdditions.h */,
+				2708E5401E47FFCB00B34944 /* ViewController+ZNKMASAdditions.h */,
+				2708E5411E47FFCB00B34944 /* ViewController+ZNKMASAdditions.m */,
+				2708E5421E47FFCB00B34944 /* ZNKMASCompositeConstraint.h */,
+				2708E5431E47FFCB00B34944 /* ZNKMASCompositeConstraint.m */,
+				2708E5441E47FFCB00B34944 /* ZNKMASConstraint+Private.h */,
+				2708E5451E47FFCB00B34944 /* ZNKMASConstraint.h */,
+				2708E5461E47FFCB00B34944 /* ZNKMASConstraint.m */,
+				2708E5471E47FFCB00B34944 /* ZNKMASConstraintMaker.h */,
+				2708E5481E47FFCB00B34944 /* ZNKMASConstraintMaker.m */,
+				2708E5491E47FFCB00B34944 /* ZNKMASLayoutConstraint.h */,
+				2708E54A1E47FFCB00B34944 /* ZNKMASLayoutConstraint.m */,
+				2708E54B1E47FFCB00B34944 /* ZNKMasonry.h */,
+				2708E54C1E47FFCB00B34944 /* ZNKMASUtilities.h */,
+				2708E54D1E47FFCB00B34944 /* ZNKMASViewAttribute.h */,
+				2708E54E1E47FFCB00B34944 /* ZNKMASViewAttribute.m */,
+				2708E54F1E47FFCB00B34944 /* ZNKMASViewConstraint.h */,
+				2708E5501E47FFCB00B34944 /* ZNKMASViewConstraint.m */,
 			);
 			path = ZNKMasonry;
 			sourceTree = "<group>";
 		};
-		2708E5091E47FED000B34944 /* ZNKPlayerClasses */ = {
+		2708E5521E47FFCB00B34944 /* ZNKPlayerClasses */ = {
 			isa = PBXGroup;
 			children = (
-				2708E50A1E47FED000B34944 /* ZNKBaseView.h */,
-				2708E50B1E47FED000B34944 /* ZNKBaseView.m */,
-				2708E50C1E47FED000B34944 /* ZNKNetwork */,
-				2708E5131E47FED000B34944 /* ZNKPlayer.h */,
-				2708E5141E47FED000B34944 /* ZNKPlayer.m */,
+				2708E5551E47FFCB00B34944 /* ZNKNetwork */,
+				2708E5531E47FFCB00B34944 /* ZNKBaseView.h */,
+				2708E5541E47FFCB00B34944 /* ZNKBaseView.m */,
+				2708E55A1E47FFCB00B34944 /* ZNKPlayer.h */,
+				2708E55B1E47FFCB00B34944 /* ZNKPlayer.m */,
 			);
 			path = ZNKPlayerClasses;
 			sourceTree = "<group>";
 		};
-		2708E50C1E47FED000B34944 /* ZNKNetwork */ = {
+		2708E5551E47FFCB00B34944 /* ZNKNetwork */ = {
 			isa = PBXGroup;
 			children = (
-				2708E50D1E47FED000B34944 /* ZNKNetworkListener.h */,
-				2708E50E1E47FED000B34944 /* ZNKNetworkListener.m */,
-				2708E50F1E47FED000B34944 /* ZNKNetworkSpeed.h */,
-				2708E5101E47FED000B34944 /* ZNKNetworkSpeed.m */,
+				2708E5561E47FFCB00B34944 /* ZNKNetworkListener.h */,
+				2708E5571E47FFCB00B34944 /* ZNKNetworkListener.m */,
+				2708E5581E47FFCB00B34944 /* ZNKNetworkSpeed.h */,
+				2708E5591E47FFCB00B34944 /* ZNKNetworkSpeed.m */,
 			);
 			path = ZNKNetwork;
 			sourceTree = "<group>";
@@ -376,10 +364,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2708E4F01E45B33700B34944 /* ZNKPlayer.bundle in Resources */,
-				2708E4A71E45B2DC00B34944 /* LaunchScreen.storyboard in Resources */,
-				2708E4A41E45B2DC00B34944 /* Assets.xcassets in Resources */,
-				2708E4A21E45B2DC00B34944 /* Main.storyboard in Resources */,
+				2708E5601E47FFCB00B34944 /* Info.plist in Resources */,
+				2708E55F1E47FFCB00B34944 /* Main.storyboard in Resources */,
+				2708E56F1E47FFCB00B34944 /* ZNKPlayer.bundle in Resources */,
+				2708E55D1E47FFCB00B34944 /* Assets.xcassets in Resources */,
+				2708E55E1E47FFCB00B34944 /* LaunchScreen.storyboard in Resources */,
+				2708E5641E47FFCB00B34944 /* IJKMediaFramework.framework.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,27 +394,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2708E49F1E45B2DC00B34944 /* ViewController.m in Sources */,
-				2708E5051E47F4A400B34944 /* ZNKBaseView.m in Sources */,
-				2708E5171E47FED000B34944 /* ZNKNetworkSpeed.m in Sources */,
+				2708E5621E47FFCB00B34944 /* ViewController.m in Sources */,
+				2708E5661E47FFCB00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.m in Sources */,
+				2708E5721E47FFCB00B34944 /* ZNKNetworkSpeed.m in Sources */,
+				2708E56D1E47FFCB00B34944 /* ZNKMASViewAttribute.m in Sources */,
+				2708E5711E47FFCB00B34944 /* ZNKNetworkListener.m in Sources */,
+				2708E5651E47FFCB00B34944 /* NSArray+ZNKMASAdditions.m in Sources */,
+				2708E5671E47FFCB00B34944 /* View+ZNKMASAdditions.m in Sources */,
 				2708E5061E47F4A400B34944 /* ZNKNetworkListener.m in Sources */,
-				2708E4EB1E45B31C00B34944 /* ZNKMASConstraintMaker.m in Sources */,
-				2708E5161E47FED000B34944 /* ZNKNetworkListener.m in Sources */,
-				2708E5191E47FED000B34944 /* ZNKPlayer.m in Sources */,
-				2708E4EE1E45B31C00B34944 /* ZNKMASViewConstraint.m in Sources */,
-				2708E4E81E45B31C00B34944 /* ViewController+ZNKMASAdditions.m in Sources */,
-				2708E4ED1E45B31C00B34944 /* ZNKMASViewAttribute.m in Sources */,
-				2708E4E91E45B31C00B34944 /* ZNKMASCompositeConstraint.m in Sources */,
-				2708E4EC1E45B31C00B34944 /* ZNKMASLayoutConstraint.m in Sources */,
+				2708E56C1E47FFCB00B34944 /* ZNKMASLayoutConstraint.m in Sources */,
 				2708E5081E47F4A400B34944 /* ZNKPlayer.m in Sources */,
-				2708E49C1E45B2DC00B34944 /* AppDelegate.m in Sources */,
-				2708E4E71E45B31C00B34944 /* View+ZNKMASAdditions.m in Sources */,
-				2708E4E51E45B31C00B34944 /* NSArray+ZNKMASAdditions.m in Sources */,
-				2708E5151E47FED000B34944 /* ZNKBaseView.m in Sources */,
-				2708E4EA1E45B31C00B34944 /* ZNKMASConstraint.m in Sources */,
-				2708E4991E45B2DC00B34944 /* main.m in Sources */,
 				2708E5071E47F4A400B34944 /* ZNKNetworkSpeed.m in Sources */,
-				2708E4E61E45B31C00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.m in Sources */,
+				2708E5681E47FFCB00B34944 /* ViewController+ZNKMASAdditions.m in Sources */,
+				2708E5731E47FFCB00B34944 /* ZNKPlayer.m in Sources */,
+				2708E56B1E47FFCB00B34944 /* ZNKMASConstraintMaker.m in Sources */,
+				2708E5611E47FFCB00B34944 /* main.m in Sources */,
+				2708E5691E47FFCB00B34944 /* ZNKMASCompositeConstraint.m in Sources */,
+				2708E55C1E47FFCB00B34944 /* AppDelegate.m in Sources */,
+				2708E56E1E47FFCB00B34944 /* ZNKMASViewConstraint.m in Sources */,
+				2708E56A1E47FFCB00B34944 /* ZNKMASConstraint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,20 +448,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2708E4A01E45B2DC00B34944 /* Main.storyboard */ = {
+		2708E52C1E47FFCB00B34944 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2708E4A11E45B2DC00B34944 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		2708E4A51E45B2DC00B34944 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2708E4A61E45B2DC00B34944 /* Base */,
+				2708E52D1E47FFCB00B34944 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		2708E52E1E47FFCB00B34944 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2708E52F1E47FFCB00B34944 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
