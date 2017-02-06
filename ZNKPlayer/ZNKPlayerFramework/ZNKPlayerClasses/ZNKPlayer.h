@@ -8,72 +8,45 @@
 
 #import "ZNKBaseView.h"
 
-// 监听TableView的contentOffset
-#define kZNKPlayerViewContentOffset          @"contentOffset"
-
-#define iPhone4s ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
-// 监听TableView的contentOffset
-#define kZNKPlayerViewContentOffset          @"contentOffset"
-// player的单例
-#define ZNKPlayerShared                      [ZNKBrightnessView sharedBrightnessView]
-// 屏幕的宽
-#define ScreenWidth                         [[UIScreen mainScreen] bounds].size.width
-// 屏幕的高
-#define ScreenHeight                        [[UIScreen mainScreen] bounds].size.height
-// 颜色值RGB
-#define RGBA(r,g,b,a)                       [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
-// 图片路径
-#define ZNKPlayerSrcName(file)               [@"ZNKPlayer.bundle" stringByAppendingPathComponent:file]
-
-#define ZNKPlayerFrameworkSrcName(file)      [@"Frameworks/ZNKPlayer.framework/ZNKPlayer.bundle" stringByAppendingPathComponent:file]
-
-#define ZNKPlayerImage(file)                 [UIImage imageNamed:ZNKPlayerSrcName(file)] ? :[UIImage imageNamed:ZNKPlayerFrameworkSrcName(file)]
-
-//弱引用 强引用
-#define SKWeakSelf(type) __weak typeof(type) weak##type = type;
-#define SKStrongSelf(type) __strong typeof(type) type = weak##type;
-
-static const CGFloat ZNKPlayerAnimationTimeInterval             = 7.0f;
-// 枚举值，包含水平移动方向和垂直移动方向
-
-
-static const CGFloat ZNKPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 typedef NS_ENUM(NSInteger, ZNKMPMovieScalingMode) {
-    ZNKMPMovieScalingModeNone,       // No scaling
-    ZNKMPMovieScalingModeAspectFit,  // Uniform scale until one dimension fits
-    ZNKMPMovieScalingModeAspectFill, // Uniform scale until the movie fills the visible bounds. One dimension may have clipped contents
-    ZNKMPMovieScalingModeFill        // Non-uniform scale. Both render dimensions will exactly match the visible bounds
+    ZNKMPMovieScalingModeNone,       /**不进行缩放*/
+    ZNKMPMovieScalingModeAspectFit,  /**缩放尺寸直到一维拟合*/
+    ZNKMPMovieScalingModeAspectFill, /**缩放尺寸，直到视图填补可见边界。且裁剪内容*/
+    ZNKMPMovieScalingModeFill        /**非均匀缩放。按可是边界渲染*/
 };
 
 typedef NS_ENUM(NSInteger, ZNKMPMoviePlaybackState) {
-    ZNKMPMoviePlaybackStateStopped,
-    ZNKMPMoviePlaybackStatePlaying,
-    ZNKMPMoviePlaybackStatePaused,
-    ZNKMPMoviePlaybackStateInterrupted,
-    ZNKMPMoviePlaybackStateSeekingForward,
-    ZNKMPMoviePlaybackStateSeekingBackward
+    ZNKMPMoviePlaybackStateStopped,             /**停止*/
+    ZNKMPMoviePlaybackStatePlaying,             /**播放*/
+    ZNKMPMoviePlaybackStatePaused,              /**暂停*/
+    ZNKMPMoviePlaybackStateInterrupted,         /**中断*/
+    ZNKMPMoviePlaybackStateSeekingForward,      /**快进*/
+    ZNKMPMoviePlaybackStateSeekingBackward      /**快退*/
 };
 
 typedef NS_OPTIONS(NSUInteger, ZNKMPMovieLoadState) {
-    ZNKMPMovieLoadStateUnknown        = 0,
-    ZNKMPMovieLoadStatePlayable       = 1 << 0,
-    ZNKMPMovieLoadStatePlaythroughOK  = 1 << 1, // Playback will be automatically started in this state when shouldAutoplay is YES
-    ZNKMPMovieLoadStateStalled        = 1 << 2, // Playback will be automatically paused in this state, if started
+    ZNKMPMovieLoadStateUnknown        = 0,          /**未知状态*/
+    ZNKMPMovieLoadStatePlayable       = 1 << 0,     /**可播放*/
+    ZNKMPMovieLoadStatePlaythroughOK  = 1 << 1, /**播放将自动启动，在这种状态时，shouldautoplay=YES*/
+    ZNKMPMovieLoadStateStalled        = 1 << 2, /**如果处于该状态，将自动暂停播放*/
 };
 
 typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
-    ZNKMPMovieFinishReasonPlaybackEnded,
-    ZNKMPMovieFinishReasonPlaybackError,
-    ZNKMPMovieFinishReasonUserExited
+    ZNKMPMovieFinishReasonPlaybackEnded,        /**播放结束*/
+    ZNKMPMovieFinishReasonPlaybackError,        /**播放出错*/
+    ZNKMPMovieFinishReasonUserExited            /**退出播放*/
 };
 
 // -----------------------------------------------------------------------------
 // Thumbnails
 
 typedef NS_ENUM(NSInteger, ZNKMPMovieTimeOption) {
-    ZNKMPMovieTimeOptionNearestKeyFrame,
-    ZNKMPMovieTimeOptionExact
+    ZNKMPMovieTimeOptionNearestKeyFrame,        /**最近帧*/
+    ZNKMPMovieTimeOptionExact                   /**精准*/
 };
+
 @interface ZNKPlayer : ZNKBaseView
+/**播放器缩放模式*/
+@property (nonatomic, assign) ZNKMPMovieScalingMode scalingMode;
 
 @end
