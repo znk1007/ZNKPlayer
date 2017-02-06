@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2708E4B21E45B2DC00B34944 /* ZNKPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4B11E45B2DC00B34944 /* ZNKPlayerTests.m */; };
 		2708E4BD1E45B2DC00B34944 /* ZNKPlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E4BC1E45B2DC00B34944 /* ZNKPlayerUITests.m */; };
-		2708E5081E47F4A400B34944 /* ZNKPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5041E47F4A400B34944 /* ZNKPlayer.m */; };
+		2708E5081E47F4A400B34944 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		2708E55C1E47FFCB00B34944 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E52A1E47FFCB00B34944 /* AppDelegate.m */; };
 		2708E55D1E47FFCB00B34944 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2708E52B1E47FFCB00B34944 /* Assets.xcassets */; };
 		2708E55E1E47FFCB00B34944 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2708E52C1E47FFCB00B34944 /* LaunchScreen.storyboard */; };
@@ -30,7 +30,10 @@
 		2708E56D1E47FFCB00B34944 /* ZNKMASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E54E1E47FFCB00B34944 /* ZNKMASViewAttribute.m */; };
 		2708E56E1E47FFCB00B34944 /* ZNKMASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5501E47FFCB00B34944 /* ZNKMASViewConstraint.m */; };
 		2708E56F1E47FFCB00B34944 /* ZNKPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2708E5511E47FFCB00B34944 /* ZNKPlayer.bundle */; };
-		2708E5701E47FFCB00B34944 /* ZNKBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5541E47FFCB00B34944 /* ZNKBaseView.m */; };
+		2708E5751E48064900B34944 /* ZNKPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5741E48064900B34944 /* ZNKPlayer.m */; };
+		2708E57B1E48066500B34944 /* ZNKNetworkListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5781E48066500B34944 /* ZNKNetworkListener.m */; };
+		2708E57C1E48066500B34944 /* ZNKNetworkSpeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E57A1E48066500B34944 /* ZNKNetworkSpeed.m */; };
+		2708E57E1E48091000B34944 /* ZNKBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E57D1E48091000B34944 /* ZNKBaseView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,9 +61,6 @@
 		2708E4B81E45B2DC00B34944 /* ZNKPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZNKPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2708E4BC1E45B2DC00B34944 /* ZNKPlayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZNKPlayerUITests.m; sourceTree = "<group>"; };
 		2708E4BE1E45B2DC00B34944 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2708E4FD1E47F4A400B34944 /* ZNKBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKBaseView.m; sourceTree = "<group>"; };
-		2708E5001E47F4A400B34944 /* ZNKNetworkListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKNetworkListener.m; sourceTree = "<group>"; };
-		2708E5021E47F4A400B34944 /* ZNKNetworkSpeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKNetworkSpeed.m; sourceTree = "<group>"; };
 		2708E5291E47FFCB00B34944 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2708E52A1E47FFCB00B34944 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2708E52B1E47FFCB00B34944 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -99,12 +99,13 @@
 		2708E5501E47FFCB00B34944 /* ZNKMASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKMASViewConstraint.m; sourceTree = "<group>"; };
 		2708E5511E47FFCB00B34944 /* ZNKPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZNKPlayer.bundle; sourceTree = "<group>"; };
 		2708E5531E47FFCB00B34944 /* ZNKBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKBaseView.h; sourceTree = "<group>"; };
-		2708E5541E47FFCB00B34944 /* ZNKBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKBaseView.m; sourceTree = "<group>"; };
-		2708E5561E47FFCB00B34944 /* ZNKNetworkListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKNetworkListener.h; sourceTree = "<group>"; };
-		2708E5571E47FFCB00B34944 /* ZNKNetworkListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKNetworkListener.m; sourceTree = "<group>"; };
-		2708E5581E47FFCB00B34944 /* ZNKNetworkSpeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKNetworkSpeed.h; sourceTree = "<group>"; };
-		2708E5591E47FFCB00B34944 /* ZNKNetworkSpeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKNetworkSpeed.m; sourceTree = "<group>"; };
 		2708E55A1E47FFCB00B34944 /* ZNKPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKPlayer.h; sourceTree = "<group>"; };
+		2708E5741E48064900B34944 /* ZNKPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKPlayer.m; sourceTree = "<group>"; };
+		2708E5771E48066500B34944 /* ZNKNetworkListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKNetworkListener.h; sourceTree = "<group>"; };
+		2708E5781E48066500B34944 /* ZNKNetworkListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKNetworkListener.m; sourceTree = "<group>"; };
+		2708E5791E48066500B34944 /* ZNKNetworkSpeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKNetworkSpeed.h; sourceTree = "<group>"; };
+		2708E57A1E48066500B34944 /* ZNKNetworkSpeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKNetworkSpeed.m; sourceTree = "<group>"; };
+		2708E57D1E48091000B34944 /* ZNKBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKBaseView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,22 +236,22 @@
 		2708E5521E47FFCB00B34944 /* ZNKPlayerClasses */ = {
 			isa = PBXGroup;
 			children = (
-				2708E5551E47FFCB00B34944 /* ZNKNetwork */,
+				2708E5761E48066500B34944 /* ZNKNetwork */,
 				2708E5531E47FFCB00B34944 /* ZNKBaseView.h */,
-				2708E5541E47FFCB00B34944 /* ZNKBaseView.m */,
+				2708E57D1E48091000B34944 /* ZNKBaseView.m */,
 				2708E55A1E47FFCB00B34944 /* ZNKPlayer.h */,
-				2708E55B1E47FFCB00B34944 /* ZNKPlayer.m */,
+				2708E5741E48064900B34944 /* ZNKPlayer.m */,
 			);
 			path = ZNKPlayerClasses;
 			sourceTree = "<group>";
 		};
-		2708E5551E47FFCB00B34944 /* ZNKNetwork */ = {
+		2708E5761E48066500B34944 /* ZNKNetwork */ = {
 			isa = PBXGroup;
 			children = (
-				2708E5561E47FFCB00B34944 /* ZNKNetworkListener.h */,
-				2708E5571E47FFCB00B34944 /* ZNKNetworkListener.m */,
-				2708E5581E47FFCB00B34944 /* ZNKNetworkSpeed.h */,
-				2708E5591E47FFCB00B34944 /* ZNKNetworkSpeed.m */,
+				2708E5771E48066500B34944 /* ZNKNetworkListener.h */,
+				2708E5781E48066500B34944 /* ZNKNetworkListener.m */,
+				2708E5791E48066500B34944 /* ZNKNetworkSpeed.h */,
+				2708E57A1E48066500B34944 /* ZNKNetworkSpeed.m */,
 			);
 			path = ZNKNetwork;
 			sourceTree = "<group>";
@@ -396,19 +397,18 @@
 			files = (
 				2708E5621E47FFCB00B34944 /* ViewController.m in Sources */,
 				2708E5661E47FFCB00B34944 /* NSLayoutConstraint+ZNKMASDebugAdditions.m in Sources */,
-				2708E5721E47FFCB00B34944 /* ZNKNetworkSpeed.m in Sources */,
+				2708E57B1E48066500B34944 /* ZNKNetworkListener.m in Sources */,
 				2708E56D1E47FFCB00B34944 /* ZNKMASViewAttribute.m in Sources */,
-				2708E5711E47FFCB00B34944 /* ZNKNetworkListener.m in Sources */,
 				2708E5651E47FFCB00B34944 /* NSArray+ZNKMASAdditions.m in Sources */,
+				2708E5751E48064900B34944 /* ZNKPlayer.m in Sources */,
 				2708E5671E47FFCB00B34944 /* View+ZNKMASAdditions.m in Sources */,
-				2708E5061E47F4A400B34944 /* ZNKNetworkListener.m in Sources */,
 				2708E56C1E47FFCB00B34944 /* ZNKMASLayoutConstraint.m in Sources */,
-				2708E5081E47F4A400B34944 /* ZNKPlayer.m in Sources */,
-				2708E5071E47F4A400B34944 /* ZNKNetworkSpeed.m in Sources */,
+				2708E5081E47F4A400B34944 /* (null) in Sources */,
 				2708E5681E47FFCB00B34944 /* ViewController+ZNKMASAdditions.m in Sources */,
-				2708E5731E47FFCB00B34944 /* ZNKPlayer.m in Sources */,
 				2708E56B1E47FFCB00B34944 /* ZNKMASConstraintMaker.m in Sources */,
 				2708E5611E47FFCB00B34944 /* main.m in Sources */,
+				2708E57C1E48066500B34944 /* ZNKNetworkSpeed.m in Sources */,
+				2708E57E1E48091000B34944 /* ZNKBaseView.m in Sources */,
 				2708E5691E47FFCB00B34944 /* ZNKMASCompositeConstraint.m in Sources */,
 				2708E55C1E47FFCB00B34944 /* AppDelegate.m in Sources */,
 				2708E56E1E47FFCB00B34944 /* ZNKMASViewConstraint.m in Sources */,

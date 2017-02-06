@@ -38,7 +38,42 @@ static const CGFloat ZNKPlayerAnimationTimeInterval             = 7.0f;
 
 
 static const CGFloat ZNKPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
+typedef NS_ENUM(NSInteger, ZNKMPMovieScalingMode) {
+    ZNKMPMovieScalingModeNone,       // No scaling
+    ZNKMPMovieScalingModeAspectFit,  // Uniform scale until one dimension fits
+    ZNKMPMovieScalingModeAspectFill, // Uniform scale until the movie fills the visible bounds. One dimension may have clipped contents
+    ZNKMPMovieScalingModeFill        // Non-uniform scale. Both render dimensions will exactly match the visible bounds
+};
 
+typedef NS_ENUM(NSInteger, ZNKMPMoviePlaybackState) {
+    ZNKMPMoviePlaybackStateStopped,
+    ZNKMPMoviePlaybackStatePlaying,
+    ZNKMPMoviePlaybackStatePaused,
+    ZNKMPMoviePlaybackStateInterrupted,
+    ZNKMPMoviePlaybackStateSeekingForward,
+    ZNKMPMoviePlaybackStateSeekingBackward
+};
+
+typedef NS_OPTIONS(NSUInteger, ZNKMPMovieLoadState) {
+    ZNKMPMovieLoadStateUnknown        = 0,
+    ZNKMPMovieLoadStatePlayable       = 1 << 0,
+    ZNKMPMovieLoadStatePlaythroughOK  = 1 << 1, // Playback will be automatically started in this state when shouldAutoplay is YES
+    ZNKMPMovieLoadStateStalled        = 1 << 2, // Playback will be automatically paused in this state, if started
+};
+
+typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
+    ZNKMPMovieFinishReasonPlaybackEnded,
+    ZNKMPMovieFinishReasonPlaybackError,
+    ZNKMPMovieFinishReasonUserExited
+};
+
+// -----------------------------------------------------------------------------
+// Thumbnails
+
+typedef NS_ENUM(NSInteger, ZNKMPMovieTimeOption) {
+    ZNKMPMovieTimeOptionNearestKeyFrame,
+    ZNKMPMovieTimeOptionExact
+};
 @interface ZNKPlayer : ZNKBaseView
 
 @end
