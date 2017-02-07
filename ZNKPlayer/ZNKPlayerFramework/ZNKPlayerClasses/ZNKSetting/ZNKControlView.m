@@ -123,9 +123,13 @@
     }];
     
     [self.titleLabel mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.leading.equalTo(self.backBtn.mas_trailing).offset(10);
+        make.top.equalTo(self).offset(10);
+        make.width.mas_equalTo(180);
+        make.centerX.equalTo(self.mas_centerX);
+        
+        NSLog(@"self frame %@",NSStringFromCGRect(self.frame));
         make.centerY.equalTo(self.backBtn.mas_centerY);
-        make.trailing.equalTo(self.resolutionBtn.mas_leading).offset(-10);
+        make.height.mas_equalTo(20);
     }];
     
     [self.bottomImageView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
@@ -319,6 +323,7 @@
         _titleLabel.textColor = [UIColor whiteColor];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.adjustsFontSizeToFitWidth = YES;
+        _titleLabel.contentScaleFactor = 0.6;
         _titleLabel.font = [UIFont systemFontOfSize:15.0];
     }
     return _titleLabel;

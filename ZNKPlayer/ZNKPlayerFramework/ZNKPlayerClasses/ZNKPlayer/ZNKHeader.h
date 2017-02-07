@@ -8,6 +8,8 @@
 
 #ifndef ZNKHeader_h
 #define ZNKHeader_h
+
+#define HMLOG
 #ifdef HMLOG
 #define NSLog(fmt, ...) NSLog((@"Method_%s [Current_Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
 #else
