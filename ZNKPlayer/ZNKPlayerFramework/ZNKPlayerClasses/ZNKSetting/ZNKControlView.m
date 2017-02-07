@@ -51,6 +51,7 @@
 
 @implementation ZNKControlView
 
+
 - (instancetype)init
 {
     self = [super init];
@@ -316,6 +317,8 @@
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textColor = [UIColor whiteColor];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.adjustsFontSizeToFitWidth = YES;
         _titleLabel.font = [UIFont systemFontOfSize:15.0];
     }
     return _titleLabel;

@@ -8,8 +8,12 @@
 
 #import "ViewController.h"
 #import "ZNKControlView.h"
+#import "ZNKMasonry.h"
+#import "ZNKHeader.h"
 
 @interface ViewController ()
+
+@property (nonatomic, strong) ZNKControlView *controlView;
 
 @end
 
@@ -19,10 +23,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    ZNKControlView *controlView = [[ZNKControlView alloc] initWithFrame:CGRectMake(0, 200, [UIScreen mainScreen].bounds.size.width, 200)];
-    controlView.backgroundColor = [UIColor greenColor];
-    controlView.titleLabel.text = @"测试哈哈哈哈哈哈哈";
-    [self.view addSubview:controlView];
+    self.controlView = [[ZNKControlView alloc] init];
+    [self.view addSubview:self.controlView];
+    ZNKWeakSelf(self);
+    [self.controlView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+        make.left.right.equalTo(weakself.view).width.offset(0);
+        make.top.mas_equalTo(150);
+        make.width.equalTo(weakself.view.mas_width);
+        make.height.mas_equalTo(200);
+    }];
+    self.controlView.backgroundColor = [UIColor greenColor];
+    self.controlView.titleLabel.text = @"测试哈哈哈哈哈哈哈";
+    self.controlView.titleLabel.backgroundColor = [UIColor redColor];
+    
 }
 
 
