@@ -123,13 +123,11 @@
     }];
     
     [self.titleLabel mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.top.equalTo(self).offset(10);
+        make.top.equalTo(self.mas_top).offset(5);
         make.width.mas_equalTo(180);
         make.centerX.equalTo(self.mas_centerX);
-        
-        NSLog(@"self frame %@",NSStringFromCGRect(self.frame));
         make.centerY.equalTo(self.backBtn.mas_centerY);
-        make.height.mas_equalTo(20);
+        make.height.mas_equalTo(15);
     }];
     
     [self.bottomImageView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
@@ -333,7 +331,7 @@
 {
     if (!_backBtn) {
         _backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_backBtn setImage:ZNKPlayerImage(@"ZFPlayer_back_full") forState:UIControlStateNormal];
+        [_backBtn setImage:ZNKPlayerImage(@"ZNKPlayer_back_full") forState:UIControlStateNormal];
     }
     return _backBtn;
 }
@@ -343,7 +341,7 @@
     if (!_topImageView) {
         _topImageView                        = [[UIImageView alloc] init];
         _topImageView.userInteractionEnabled = YES;
-        _topImageView.image                  = ZNKPlayerImage(@"ZFPlayer_top_shadow");
+        _topImageView.image                  = ZNKPlayerImage(@"ZNKPlayer_top_shadow");
     }
     return _topImageView;
 }
@@ -353,7 +351,7 @@
     if (!_bottomImageView) {
         _bottomImageView                        = [[UIImageView alloc] init];
         _bottomImageView.userInteractionEnabled = YES;
-        _bottomImageView.image                  = ZNKPlayerImage(@"ZFPlayer_bottom_shadow");
+        _bottomImageView.image                  = ZNKPlayerImage(@"ZNKPlayer_bottom_shadow");
     }
     return _bottomImageView;
 }
@@ -362,8 +360,8 @@
 {
     if (!_lockBtn) {
         _lockBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_lockBtn setImage:ZNKPlayerImage(@"ZFPlayer_unlock-nor") forState:UIControlStateNormal];
-        [_lockBtn setImage:ZNKPlayerImage(@"ZFPlayer_lock-nor") forState:UIControlStateSelected];
+        [_lockBtn setImage:ZNKPlayerImage(@"ZNKPlayer_unlock-nor") forState:UIControlStateNormal];
+        [_lockBtn setImage:ZNKPlayerImage(@"ZNKPlayer_lock-nor") forState:UIControlStateSelected];
     }
     return _lockBtn;
 }
@@ -372,8 +370,8 @@
 {
     if (!_startBtn) {
         _startBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_startBtn setImage:ZNKPlayerImage(@"ZFPlayer_play") forState:UIControlStateNormal];
-        [_startBtn setImage:ZNKPlayerImage(@"ZFPlayer_pause") forState:UIControlStateSelected];
+        [_startBtn setImage:ZNKPlayerImage(@"ZNKPlayer_play") forState:UIControlStateNormal];
+        [_startBtn setImage:ZNKPlayerImage(@"ZNKPlayer_pause") forState:UIControlStateSelected];
     }
     return _startBtn;
 }
@@ -407,7 +405,7 @@
         _videoSlider.popUpViewColor = RGBA(19, 19, 9, 1);
         _videoSlider.popUpViewArrowLength = 8;
         // 设置slider
-        [_videoSlider setThumbImage:ZNKPlayerImage(@"ZFPlayer_slider") forState:UIControlStateNormal];
+        [_videoSlider setThumbImage:ZNKPlayerImage(@"ZNKPlayer_slider") forState:UIControlStateNormal];
         _videoSlider.maximumValue          = 1;
         _videoSlider.minimumTrackTintColor = [UIColor whiteColor];
         _videoSlider.maximumTrackTintColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];
@@ -430,8 +428,8 @@
 {
     if (!_fullScreenBtn) {
         _fullScreenBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_fullScreenBtn setImage:ZNKPlayerImage(@"ZFPlayer_fullscreen") forState:UIControlStateNormal];
-        [_fullScreenBtn setImage:ZNKPlayerImage(@"ZFPlayer_shrinkscreen") forState:UIControlStateSelected];
+        [_fullScreenBtn setImage:ZNKPlayerImage(@"ZNKPlayer_fullscreen") forState:UIControlStateNormal];
+        [_fullScreenBtn setImage:ZNKPlayerImage(@"ZNKPlayer_shrinkscreen") forState:UIControlStateSelected];
     }
     return _fullScreenBtn;
 }
@@ -443,7 +441,7 @@
         _horizontalLabel.textColor       = [UIColor whiteColor];
         _horizontalLabel.textAlignment   = NSTextAlignmentCenter;
         _horizontalLabel.font            = [UIFont systemFontOfSize:15.0];
-        _horizontalLabel.backgroundColor = [UIColor colorWithPatternImage:ZNKPlayerImage(@"ZFPlayer_management_mask")];
+        _horizontalLabel.backgroundColor = [UIColor colorWithPatternImage:ZNKPlayerImage(@"ZNKPlayer_management_mask")];
     }
     return _horizontalLabel;
 }
@@ -460,7 +458,7 @@
 {
     if (!_repeatBtn) {
         _repeatBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_repeatBtn setImage:ZNKPlayerImage(@"ZFPlayer_repeat_video") forState:UIControlStateNormal];
+        [_repeatBtn setImage:ZNKPlayerImage(@"ZNKPlayer_repeat_video") forState:UIControlStateNormal];
     }
     return _repeatBtn;
 }
@@ -469,8 +467,8 @@
 {
     if (!_downLoadBtn) {
         _downLoadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_downLoadBtn setImage:ZNKPlayerImage(@"ZFPlayer_download") forState:UIControlStateNormal];
-        [_downLoadBtn setImage:ZNKPlayerImage(@"ZFPlayer_not_download") forState:UIControlStateDisabled];
+        [_downLoadBtn setImage:ZNKPlayerImage(@"ZNKPlayer_download") forState:UIControlStateNormal];
+        [_downLoadBtn setImage:ZNKPlayerImage(@"ZNKPlayer_not_download") forState:UIControlStateDisabled];
     }
     return _downLoadBtn;
 }
@@ -489,7 +487,7 @@
 {
     if (!_playeBtn) {
         _playeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_playeBtn setImage:ZNKPlayerImage(@"ZFPlayer_play_btn") forState:UIControlStateNormal];
+        [_playeBtn setImage:ZNKPlayerImage(@"ZNKPlayer_play_btn") forState:UIControlStateNormal];
     }
     return _playeBtn;
 }
