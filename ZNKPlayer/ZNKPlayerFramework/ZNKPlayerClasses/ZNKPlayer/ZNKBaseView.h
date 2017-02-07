@@ -11,7 +11,7 @@
 typedef enum {
     ZNKDragDirectionAny,        /**< 任意方向 */
     ZNKDragDirectionHorizontal, /**< 水平方向 */
-    ZNKDragDerectionVertical,   /**< 垂直方向 */
+    ZNKDragDirectionVertical,   /**< 垂直方向 */
 }ZNKDragDirection;
 
 @interface ZNKBaseView : UIView
@@ -51,25 +51,25 @@ typedef enum {
  内容view，命名为contentViewForDrag，因为很多第三方的库继承UIView，里面同样有contentView这个属性
  防止冲突，这里特别命名为contentViewForDrag
  */
-@property (nonatomic,strong) UIView *contentViewForDrag;
+@property (nonatomic,strong) UIView *znkDragContentView;
 
 /**
  点击的回调block
  */
-@property (nonatomic,copy) void(^ClickDragViewBlock)(ZNKBaseView *dragView);
+@property (nonatomic,copy) void(^ZNKClickDragViewBlock)(ZNKBaseView *dragView);
 
 /**
  开始拖动的回调block
  */
-@property (nonatomic,copy) void(^BeginDragBlock)(ZNKBaseView *dragView);
+@property (nonatomic,copy) void(^ZNKBeginDragBlock)(ZNKBaseView *dragView);
 /**
  拖动中的回调block
  */
-@property (nonatomic,copy) void(^DuringDragBlock)(ZNKBaseView *dragView);
+@property (nonatomic,copy) void(^ZNKDuringDragBlock)(ZNKBaseView *dragView);
 /**
  结束拖动的回调block
  */
-@property (nonatomic,copy) void(^EndDragBlock)(ZNKBaseView *dragView);
+@property (nonatomic,copy) void(^ZNKEndDragBlock)(ZNKBaseView *dragView);
 
 /**
  是不是保持在边界，默认为NO,没有黏贴边界效果

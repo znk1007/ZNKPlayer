@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ZNKControlView.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    ZNKControlView *controlView = [[ZNKControlView alloc] initWithFrame:CGRectMake(0, 200, [UIScreen mainScreen].bounds.size.width, 200)];
+    controlView.backgroundColor = [UIColor greenColor];
+    controlView.titleLabel.text = @"测试哈哈哈哈哈哈哈";
+    [self.view addSubview:controlView];
 }
 
 

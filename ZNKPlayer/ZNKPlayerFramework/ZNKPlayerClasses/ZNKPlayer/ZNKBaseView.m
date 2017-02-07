@@ -27,7 +27,7 @@
         _imageView.userInteractionEnabled = YES;
         _imageView.clipsToBounds = YES;
         _imageView.frame = (CGRect){CGPointZero,self.bounds.size};
-        [self.contentViewForDrag addSubview:_imageView];
+        [self.znkDragContentView addSubview:_imageView];
     }
     return _imageView;
 }
@@ -42,19 +42,19 @@
         _button.clipsToBounds = YES;
         _button.enabled = NO;
         _button.frame = (CGRect){CGPointZero,self.bounds.size};
-        [self.contentViewForDrag addSubview:_button];
+        [self.znkDragContentView addSubview:_button];
     }
     return _button;
 }
 
--(UIView *)contentViewForDrag{
-    if (_contentViewForDrag==nil) {
-        _contentViewForDrag = [[UIView alloc]init];
-        _contentViewForDrag.clipsToBounds = YES;
-        _contentViewForDrag.frame = (CGRect){CGPointZero,self.bounds.size};
-        [self addSubview:self.contentViewForDrag];
+-(UIView *)znkDragContentView{
+    if (_znkDragContentView==nil) {
+        _znkDragContentView = [[UIView alloc]init];
+        _znkDragContentView.clipsToBounds = YES;
+        _znkDragContentView.frame = (CGRect){CGPointZero,self.bounds.size};
+        [self addSubview:self.znkDragContentView];
     }
-    return _contentViewForDrag;
+    return _znkDragContentView;
 }
 
 ///代码初始化
@@ -116,11 +116,11 @@
             ///开始拖动
         case UIGestureRecognizerStateBegan:{
             
-            if (self.BeginDragBlock) {
-                self.BeginDragBlock(self);
+            if (self.ZNKBeginDragBlock) {
+                self.ZNKBeginDragBlock(self);
             }
             //  注意一旦你完成上述的移动，将translation重置为0十分重要。否则translation每次都会叠加
-            [pan setTranslation:CGPointMake(0, 0) inView:self];
+            [pan setTranslation:CGPointZero inView:self];
             //保存触摸起始点位置
             self.startPoint = [pan translationInView:self];
             //该view置于最前
@@ -132,8 +132,8 @@
         {
             
             //计算位移=当前位置-起始位置
-            if (self.DuringDragBlock) {
-                self.DuringDragBlock(self);
+            if (self.ZNKDuringDragBlock) {
+                self.ZNKDuringDragBlock(self);
             }
             CGPoint point = [pan translationInView:self];
             float dx;
@@ -152,7 +152,7 @@
                     dy = 0;
                 }
                     break;
-                case ZNKDragDerectionVertical:
+                case ZNKDragDirectionVertical:
                 {
                     dx = 0;
                     dy = point.y - self.startPoint.y;
@@ -189,7 +189,7 @@
             //移动view
             self.center = newcenter;
             //  注意一旦你完成上述的移动，将translation重置为0十分重要。否则translation每次都会叠加
-            [pan setTranslation:CGPointMake(0, 0) inView:self];
+            [pan setTranslation:CGPointZero inView:self];
             break;
         }
             ///拖动结束
@@ -197,8 +197,8 @@
         {
             [self keepBounds];
             
-            if (self.EndDragBlock) {
-                self.EndDragBlock(self);
+            if (self.ZNKEndDragBlock) {
+                self.ZNKEndDragBlock(self);
             }
             
             break;
@@ -210,8 +210,8 @@
 }
 ///点击事件
 -(void)clickDragView{
-    if (self.ClickDragViewBlock) {
-        self.ClickDragViewBlock(self);
+    if (self.ZNKClickDragViewBlock) {
+        self.ZNKClickDragViewBlock(self);
     }
 }
 - (void)keepBounds

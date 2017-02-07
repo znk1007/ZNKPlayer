@@ -8,51 +8,107 @@
 
 #import "ZNKPlayer.h"
 #import "ZNKMasonry.h"
+#import "ZNKHeader.h"
 #import <IJKMediaFramework/IJKMediaFramework.h>
 
-#ifdef HMLOG
-#define NSLog(fmt, ...) NSLog((@"Method_%s [Current_Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
-#else
-#define NSLog(...)
-#endif
 
-// 监听TableView的contentOffset
-#define kZNKPlayerViewContentOffset          @"contentOffset"
-
-#define iPhone4s ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
-// 监听TableView的contentOffset
-#define kZNKPlayerViewContentOffset          @"contentOffset"
-// player的单例
-#define ZNKPlayerShared                      [ZNKBrightnessView sharedBrightnessView]
-// 屏幕的宽
-#define ScreenWidth                         [[UIScreen mainScreen] bounds].size.width
-// 屏幕的高
-#define ScreenHeight                        [[UIScreen mainScreen] bounds].size.height
-// 颜色值RGB
-#define RGBA(r,g,b,a)                       [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
-// 图片路径
-#define ZNKPlayerSrcName(file)               [@"ZNKPlayer.bundle" stringByAppendingPathComponent:file]
-
-#define ZNKPlayerFrameworkSrcName(file)      [@"Frameworks/ZNKPlayer.framework/ZNKPlayer.bundle" stringByAppendingPathComponent:file]
-
-#define ZNKPlayerImage(file)                 [UIImage imageNamed:ZNKPlayerSrcName(file)] ? :[UIImage imageNamed:ZNKPlayerFrameworkSrcName(file)]
-
-//弱引用 强引用
-#define ZNKWeakSelf(type) __weak typeof(type) weak##type = type;
-#define ZNKStrongSelf(type) __strong typeof(type) type = weak##type;
 
 static const CGFloat ZNKPlayerAnimationTimeInterval             = 7.0f;
 // 枚举值，包含水平移动方向和垂直移动方向
 static const CGFloat ZNKPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 
+typedef NS_ENUM(NSInteger, ZNKMPMoviePlaybackState) {
+    ZNKMPMoviePlaybackStateStopped,             /**停止*/
+    ZNKMPMoviePlaybackStatePlaying,             /**播放*/
+    ZNKMPMoviePlaybackStatePaused,              /**暂停*/
+    ZNKMPMoviePlaybackStateInterrupted,         /**中断*/
+    ZNKMPMoviePlaybackStateSeekingForward,      /**快进*/
+    ZNKMPMoviePlaybackStateSeekingBackward      /**快退*/
+};
+
+typedef NS_OPTIONS(NSUInteger, ZNKMPMovieLoadState) {
+    ZNKMPMovieLoadStateUnknown        = 0,          /**未知状态*/
+    ZNKMPMovieLoadStatePlayable       = 1 << 0,     /**可播放*/
+    ZNKMPMovieLoadStatePlaythroughOK  = 1 << 1, /**播放将自动启动，在这种状态时，shouldautoplay=YES*/
+    ZNKMPMovieLoadStateStalled        = 1 << 2, /**如果处于该状态，将自动暂停播放*/
+};
+
+typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
+    ZNKMPMovieFinishReasonPlaybackEnded,        /**播放结束*/
+    ZNKMPMovieFinishReasonPlaybackError,        /**播放出错*/
+    ZNKMPMovieFinishReasonUserExited            /**退出播放*/
+};
+
 @interface ZNKPlayer ()
 /**播放器*/
 @property (nonatomic, strong) id<IJKMediaPlayback> player;
+/**加载状态*/
+@property (nonatomic, assign) ZNKMPMovieLoadState loadState;
+/**播放状态*/
+@property (nonatomic, assign) ZNKMPMoviePlaybackState playbacState;
+/**播放完成原因*/
+@property (nonatomic, assign) ZNKMPMovieFinishReason finishReason;
+/**如果用户未设置，则使用临时父视图管理视图*/
+@property (nonatomic, strong) UIView *tempContainView;
+/**播放视图*/
+@property (nonatomic, strong) UIView *playerView;
+/**播放地址*/
+@property (nonatomic, strong) NSURL *videoUrl;
+/**是否是本地视频*/
+@property (nonatomic, assign) BOOL isLocaleVideo;
 
 @end
 
 @implementation ZNKPlayer
+/**单例设计模式*/
++ (ZNKPlayer *)sharedManager:(BOOL)kill{
+    static ZNKPlayer *player = nil;
+    @synchronized ([self class]) {
+        if (kill) {
+            NSLog(@"kill player manager");
+            player = nil;
+        }else{
+            if (!player) {
+                player = [[ZNKPlayer alloc] init];
+            }
+        }
+    }
+    return player;
+}
 
+- (void)initializePlayer{
+    if ([self.videoUrl.scheme isEqualToString:@"file"]) {
+        self.isLocaleVideo = YES;
+    }else{
+        self.isLocaleVideo = NO;
+    }
+    
+    IJKFFOptions *options = [IJKFFOptions optionsByDefault];
+    _player = [[IJKFFMoviePlayerController alloc] initWithContentURL:_videoUrl withOptions:options];
+    self.scalingMode = self.scalingMode == ZNKMPMovieScalingModeNone ? ZNKMPMovieScalingModeAspectFit : self.scalingMode;
+    [_player setScalingMode:(IJKMPMovieScalingMode)self.scalingMode];
+    
+    self.playerView = [_player view];
+    [self.playerView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+        make.top.leading.bottom.trailing.mas_equalTo(0);
+    }];
+    
+}
+
+#pragma mark - Setter / Getter
+
+- (UIView *)tempContainView{
+    if (!self.player) {
+        return [[UIView alloc] initWithFrame:CGRectZero];
+    }
+    if (!_tempContainView) {
+        _tempContainView = [[UIView alloc] initWithFrame:[self.player view].bounds];
+    }
+    return _tempContainView;
+}
+
+
+#pragma mark - 通知
 
 /**添加通知*/
 -(void)installMovieNotificationObservers
@@ -75,6 +131,11 @@ static const CGFloat ZNKPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moviePlayBackStateDidChange:)
                                                  name:IJKMPMoviePlayerPlaybackStateDidChangeNotification
+                                               object:_player];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(moviePlayFirstVideoFrameRendered:)
+                                                 name:IJKMPMoviePlayerFirstVideoFrameRenderedNotification
                                                object:_player];
 }
 
@@ -174,6 +235,10 @@ static const CGFloat ZNKPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
             break;
         }
     }
+}
+
+- (void)moviePlayFirstVideoFrameRendered:(NSNotification*)notification{
+    
 }
 
 @end
