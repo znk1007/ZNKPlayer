@@ -79,7 +79,7 @@
         [self addSubview:self.repeatBtn];
         [self addSubview:self.horizontalLabel];
         [self addSubview:self.playBtn];
-        
+        [self addSubview:self.resolutionView];
         
         
         // 添加子控件的约束
@@ -212,6 +212,12 @@
             make.height.mas_equalTo(15);
         }];
     }
+    
+    [self.resolutionView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+        make.leading.equalTo(self.mas_trailing).offset(-80);
+        make.width.mas_equalTo(80);
+        make.height.equalTo(self.mas_height);
+    }];
 }
 
 #pragma mark - Action
@@ -523,6 +529,9 @@
 
 - (UIView *)resolutionView{
     if (!_resolutionView) {
+        _resolutionView = [[UIView alloc] init];
+        _resolutionView.backgroundColor = [UIColor colorWithWhite:0.6 alpha:0.5];
+        
         switch (self.resolustionType) {
             case ZNKResolustionTypeLDAndSD:
             {
