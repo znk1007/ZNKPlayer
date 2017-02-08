@@ -9,12 +9,15 @@
 #import "ZNKControlView.h"
 #import "ZNKMasonry.h"
 #import "ZNKHeader.h"
+#import "ZNKCustomView.h"
 
 @interface ZNKControlView ()
+/** topView */
+@property (nonatomic, strong) UIImageView             *topImageView;
 /** 标题 */
 @property (nonatomic, strong) UILabel                 *titleLabel;
 /** 开始播放按钮 */
-@property (nonatomic, strong) UIButton                *startBtn;
+@property (nonatomic, strong) ZNKPlayButton           *startBtn;
 /** 当前播放时长label */
 @property (nonatomic, strong) UILabel                 *currentTimeLabel;
 /** 视频总时长label */
@@ -37,8 +40,7 @@
 @property (nonatomic, strong) UIButton                *repeatBtn;
 /** bottomView*/
 @property (nonatomic, strong) UIImageView             *bottomImageView;
-/** topView */
-@property (nonatomic, strong) UIImageView             *topImageView;
+
 /** 缓存按钮 */
 @property (nonatomic, strong) UIButton                *downLoadBtn;
 /** 切换分辨率按钮 */
@@ -46,11 +48,10 @@
 /** 分辨率的View */
 @property (nonatomic, strong) UIView                  *resolutionView;
 /** 播放按钮 */
-@property (nonatomic, strong) UIButton                *playeBtn;
+@property (nonatomic, strong) UIButton                *playBtn;
 @end
 
 @implementation ZNKControlView
-
 
 - (instancetype)init
 {
@@ -59,6 +60,10 @@
     if (self) {
         
         [self addSubview:self.topImageView];
+        [self.topImageView addSubview:self.downLoadBtn];
+        [self.topImageView addSubview:self.resolutionBtn];
+        [self.topImageView addSubview:self.titleLabel];
+        
         [self addSubview:self.bottomImageView];
         [self.bottomImageView addSubview:self.startBtn];
         [self.bottomImageView addSubview:self.currentTimeLabel];
@@ -67,27 +72,25 @@
         [self.bottomImageView addSubview:self.fullScreenBtn];
         [self.bottomImageView addSubview:self.totalTimeLabel];
         
-        [self.topImageView addSubview:self.downLoadBtn];
+        
         [self addSubview:self.lockBtn];
         [self addSubview:self.backBtn];
         [self addSubview:self.activity];
         [self addSubview:self.repeatBtn];
         [self addSubview:self.horizontalLabel];
-        [self addSubview:self.playeBtn];
+        [self addSubview:self.playBtn];
         
-        [self.topImageView addSubview:self.resolutionBtn];
-        [self.topImageView addSubview:self.titleLabel];
+        
         
         // 添加子控件的约束
         [self makeSubViewsConstraints];
-        // 分辨率btn点击
-        [self.resolutionBtn addTarget:self action:@selector(resolutionAction:) forControlEvents:UIControlEventTouchUpInside];
+        
         UITapGestureRecognizer *sliderTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSliderAction:)];
         [self.videoSlider addGestureRecognizer:sliderTap];
         
         [self.activity stopAnimating];
-        self.downLoadBtn.hidden     = YES;
-        self.resolutionBtn.hidden   = YES;
+        self.downLoadBtn.hidden     = NO;
+        self.resolutionBtn.hidden   = NO;
         // 初始化时重置controlView
         [self resetControlView];
     }
@@ -96,6 +99,7 @@
 
 - (void)makeSubViewsConstraints
 {
+    
     [self.backBtn mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
         make.leading.equalTo(self.mas_leading).offset(7);
         make.top.equalTo(self.mas_top).offset(5);
@@ -107,21 +111,6 @@
         make.height.mas_equalTo(80);
     }];
     
-    [self.downLoadBtn mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.width.mas_equalTo(40);
-        make.height.mas_equalTo(49);
-        make.trailing.equalTo(self.topImageView.mas_trailing).offset(-10);
-        make.centerY.equalTo(self.backBtn.mas_centerY);
-    }];
-    
-    [self.resolutionBtn mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.width.mas_equalTo(40);
-        make.height.mas_equalTo(30);
-        //-10 到－50 bt需求
-        make.trailing.equalTo(self.downLoadBtn.mas_leading).offset(-130);
-        make.centerY.equalTo(self.backBtn.mas_centerY);
-    }];
-    
     [self.titleLabel mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
         make.top.equalTo(self.mas_top).offset(5);
         make.width.mas_equalTo(180);
@@ -129,6 +118,24 @@
         make.centerY.equalTo(self.backBtn.mas_centerY);
         make.height.mas_equalTo(15);
     }];
+    
+    
+    [self.downLoadBtn mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+        make.width.mas_equalTo(40);
+        make.height.mas_equalTo(49);
+        make.trailing.equalTo(self.topImageView.mas_trailing).offset(-20);
+        make.centerY.equalTo(self.backBtn.mas_centerY);
+    }];
+    
+    [self.resolutionBtn mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+        make.width.mas_equalTo(40);
+        make.height.mas_equalTo(40);
+        //-10 到－50 bt需求
+        make.trailing.equalTo(self.downLoadBtn.mas_leading).offset(-15);
+        make.centerY.equalTo(self.backBtn.mas_centerY);
+    }];
+    
+    
     
     [self.bottomImageView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
         make.leading.trailing.bottom.equalTo(self);
@@ -192,9 +199,19 @@
         make.center.equalTo(self);
     }];
     
-    [self.playeBtn mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+    [self.playBtn mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
         make.center.equalTo(self);
     }];
+    
+    if (self.isLandscape) {
+        [self.titleLabel mas_remakeConstraints:^(ZNKMASConstraintMaker *make) {
+            make.top.equalTo(self.mas_top).offset(0);
+            make.width.mas_equalTo(180);
+            make.leading.equalTo(self.backBtn.mas_trailing).offset(5);
+            make.centerY.equalTo(self.backBtn.mas_centerY);
+            make.height.mas_equalTo(15);
+        }];
+    }
 }
 
 #pragma mark - Action
@@ -247,21 +264,21 @@
     self.progressView.progress  = 0;
     self.currentTimeLabel.text  = @"00:00";
     self.totalTimeLabel.text    = @"00:00";
-    self.horizontalLabel.hidden = YES;
-    self.repeatBtn.hidden       = YES;
-    self.playeBtn.hidden        = YES;
-    self.resolutionView.hidden  = YES;
+    self.horizontalLabel.hidden = NO;
+    self.repeatBtn.hidden       = NO;
+    self.playBtn.hidden        = NO;
+    self.resolutionView.hidden  = NO;
     self.backgroundColor        = [UIColor clearColor];
-    self.downLoadBtn.enabled    = YES;
+    self.downLoadBtn.enabled    = NO;
 }
 
 - (void)resetControlViewForResolution
 {
-    self.horizontalLabel.hidden = YES;
-    self.repeatBtn.hidden       = YES;
-    self.resolutionView.hidden  = YES;
-    self.playeBtn.hidden        = YES;
-    self.downLoadBtn.enabled    = YES;
+    self.horizontalLabel.hidden = NO;
+    self.repeatBtn.hidden       = NO;
+    self.resolutionView.hidden  = NO;
+    self.playBtn.hidden        = NO;
+    self.downLoadBtn.enabled    = NO;
     self.backgroundColor        = [UIColor clearColor];
 }
 
@@ -312,6 +329,14 @@
     }
     
 }
+
+- (void)setIsLandscape:(BOOL)a_isLandscape{
+    if (_isLandscape != a_isLandscape) {
+        _isLandscape = a_isLandscape;
+        [self makeSubViewsConstraints];
+    }
+}
+
 #pragma mark - getter
 
 - (UILabel *)titleLabel
@@ -369,7 +394,7 @@
 - (UIButton *)startBtn
 {
     if (!_startBtn) {
-        _startBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _startBtn = [ZNKPlayButton buttonWithType:UIButtonTypeCustom];
         [_startBtn setImage:ZNKPlayerImage(@"ZNKPlayer_play") forState:UIControlStateNormal];
         [_startBtn setImage:ZNKPlayerImage(@"ZNKPlayer_pause") forState:UIControlStateSelected];
     }
@@ -467,6 +492,9 @@
 {
     if (!_downLoadBtn) {
         _downLoadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        _downLoadBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+//        _downLoadBtn.layer.borderWidth = 0.5;
+//        _downLoadBtn.layer.cornerRadius = 1;
         [_downLoadBtn setImage:ZNKPlayerImage(@"ZNKPlayer_download") forState:UIControlStateNormal];
         [_downLoadBtn setImage:ZNKPlayerImage(@"ZNKPlayer_not_download") forState:UIControlStateDisabled];
     }
@@ -477,19 +505,66 @@
 {
     if (!_resolutionBtn) {
         _resolutionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _resolutionBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        _resolutionBtn.backgroundColor = RGBA(0, 0, 0, 0.7);
+        _resolutionBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+        [_resolutionBtn addTarget:self action:@selector(resolutionAction:) forControlEvents:UIControlEventTouchUpInside];
+//        _resolutionBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+//        _resolutionBtn.layer.borderWidth = 0.5;
+//        _resolutionBtn.layer.cornerRadius = 1;
+        [_resolutionBtn setTitle:@"流畅" forState:UIControlStateNormal];
     }
     return _resolutionBtn;
 }
 
-- (UIButton *)playeBtn
-{
-    if (!_playeBtn) {
-        _playeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_playeBtn setImage:ZNKPlayerImage(@"ZNKPlayer_play_btn") forState:UIControlStateNormal];
+- (void)setResolustionType:(ZNKResolustionType)aResolustionType{
+    if (_resolustionType != aResolustionType) {
+        _resolustionType = aResolustionType;
     }
-    return _playeBtn;
 }
+
+- (UIView *)resolutionView{
+    if (!_resolutionView) {
+        switch (self.resolustionType) {
+            case ZNKResolustionTypeLDAndSD:
+            {
+                
+            }
+                break;
+            case ZNKResolustionTypeLDSDAndHD:
+            {
+                
+            }
+                break;
+            case ZNKResolustionTypeSDHDAndBD:
+            {
+                
+            }
+                break;
+            case ZNKResolustionTypeHDAndBD:
+            {
+                
+            }
+                break;
+            case ZNKResolustionTypeAll:
+            {
+                
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
+    return _resolutionView;
+}
+
+- (UIButton *)playBtn
+{
+    if (!_playBtn) {
+        _playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_playBtn setImage:ZNKPlayerImage(@"ZNKPlayer_play_btn") forState:UIControlStateNormal];
+    }
+    return _playBtn;
+}
+
 
 @end

@@ -25,17 +25,26 @@
     
     self.controlView = [[ZNKControlView alloc] init];
     [self.view addSubview:self.controlView];
+    BOOL landscape = NO;
+    if ([UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeLeft || [UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeRight) {
+        landscape = YES;
+    }else{
+        landscape = NO;
+    }
     ZNKWeakSelf(self);
     [self.controlView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
         make.left.right.equalTo(weakself.view).width.offset(0);
-        make.top.mas_equalTo(150);
+        make.top.equalTo(self.view.mas_top).offset(0);
         make.width.equalTo(weakself.view.mas_width);
-        make.height.mas_equalTo(200);
+        if (landscape) {
+            make.height.equalTo(self.view);
+        }else{
+            make.height.equalTo(self.view);
+        }
     }];
     self.controlView.backgroundColor = [UIColor greenColor];
     self.controlView.titleLabel.text = @"测试哈哈哈哈哈哈哈";
-    self.controlView.titleLabel.backgroundColor = [UIColor redColor];
-    
+    self.controlView.isLandscape = YES;
 }
 
 
