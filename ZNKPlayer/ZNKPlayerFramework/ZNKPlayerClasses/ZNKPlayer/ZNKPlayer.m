@@ -12,11 +12,6 @@
 #import <IJKMediaFramework/IJKMediaFramework.h>
 
 
-
-static const CGFloat ZNKPlayerAnimationTimeInterval             = 7.0f;
-// 枚举值，包含水平移动方向和垂直移动方向
-static const CGFloat ZNKPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
-
 typedef NS_ENUM(NSInteger, ZNKMPMoviePlaybackState) {
     ZNKMPMoviePlaybackStateStopped,             /**停止*/
     ZNKMPMoviePlaybackStatePlaying,             /**播放*/

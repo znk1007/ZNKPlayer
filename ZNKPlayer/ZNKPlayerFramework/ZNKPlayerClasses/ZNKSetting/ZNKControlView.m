@@ -47,6 +47,14 @@
 @property (nonatomic, strong) UIButton                *resolutionBtn;
 /** 分辨率的View */
 @property (nonatomic, strong) UIView                  *resolutionView;
+/**流畅按钮*/
+@property (nonatomic, strong) UIButton                *ldButton;
+/**标清按钮*/
+@property (nonatomic, strong) UIButton                *sdButton;
+/**高清按钮*/
+@property (nonatomic, strong) UIButton                *hdButton;
+/**蓝光按钮*/
+@property (nonatomic, strong) UIButton                *bdButton;
 /** 播放按钮 */
 @property (nonatomic, strong) UIButton                *playBtn;
 @end
@@ -79,8 +87,12 @@
         [self addSubview:self.repeatBtn];
         [self addSubview:self.horizontalLabel];
         [self addSubview:self.playBtn];
-        [self addSubview:self.resolutionView];
         
+        [self addSubview:self.resolutionView];
+        [self.resolutionView addSubview:self.ldButton];
+        [self.resolutionView addSubview:self.sdButton];
+        [self.resolutionView addSubview:self.hdButton];
+        [self.resolutionView addSubview:self.bdButton];
         
         // 添加子控件的约束
         [self makeSubViewsConstraints];
@@ -218,6 +230,21 @@
         make.width.mas_equalTo(80);
         make.height.equalTo(self.mas_height);
     }];
+    
+    [self.hdButton mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+        make.leading.equalTo(self.resolutionView.mas_leading).offset(20);
+        make.trailing.equalTo(self.resolutionView.mas_trailing).offset(-20);
+        make.centerX.equalTo(self.resolutionView.mas_centerX).offset(30);
+        make.height.mas_equalTo(20);
+    }];
+    
+    [self.ldButton mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+        make.leading.equalTo(self.resolutionView.mas_leading).offset(20);
+        make.trailing.equalTo(self.resolutionView.mas_trailing).offset(-20);
+        make.centerX.equalTo(self.resolutionView.mas_centerX);
+        make.height.mas_equalTo(20);
+        make.top.equalTo(self.resolutionView.mas_top).offset(30);
+    }];
 }
 
 #pragma mark - Action
@@ -229,7 +256,19 @@
 {
     sender.selected = !sender.selected;
     // 显示隐藏分辨率View
-    self.resolutionView.hidden = !sender.isSelected;
+//    self.resolutionView.hidden = !sender.isSelected;
+    [UIView animateWithDuration:ZNKPlayerControlBarAutoFadeOutTimeInterval animations:^{
+        if (sender.selected) {
+            [self.resolutionView mas_updateConstraints:^(ZNKMASConstraintMaker *make) {
+                make.leading.equalTo(self.mas_trailing).offset(-80);
+            }];
+        }else{
+            [self.resolutionView mas_updateConstraints:^(ZNKMASConstraintMaker *make) {
+                make.leading.equalTo(self.mas_trailing).offset(0);
+            }];
+        }
+    }];
+    
 }
 
 /**
@@ -530,40 +569,65 @@
 - (UIView *)resolutionView{
     if (!_resolutionView) {
         _resolutionView = [[UIView alloc] init];
-        _resolutionView.backgroundColor = [UIColor colorWithWhite:0.6 alpha:0.5];
-        
-        switch (self.resolustionType) {
-            case ZNKResolustionTypeLDAndSD:
-            {
-                
-            }
-                break;
-            case ZNKResolustionTypeLDSDAndHD:
-            {
-                
-            }
-                break;
-            case ZNKResolustionTypeSDHDAndBD:
-            {
-                
-            }
-                break;
-            case ZNKResolustionTypeHDAndBD:
-            {
-                
-            }
-                break;
-            case ZNKResolustionTypeAll:
-            {
-                
-            }
-                break;
-                
-            default:
-                break;
-        }
+        _resolutionView.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.3];
     }
     return _resolutionView;
+}
+
+- (UIButton *)ldButton{
+    if (!_ldButton) {
+        _ldButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _ldButton.tag = 100;
+        [_ldButton addTarget:self action:@selector(resolutionAction:) forControlEvents:UIControlEventTouchUpInside];
+        _ldButton.titleLabel.font = [UIFont systemFontOfSize:13];
+        _ldButton.layer.borderColor = [UIColor whiteColor].CGColor;
+        _ldButton.layer.borderWidth = 0.5;
+        _ldButton.layer.cornerRadius = 1;
+        [_ldButton setTitle:@"流畅" forState:UIControlStateNormal];
+    }
+    return _ldButton;
+}
+
+- (UIButton *)sdButton{
+    if (!_sdButton) {
+        _sdButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _sdButton.tag = 101;
+        [_sdButton addTarget:self action:@selector(resolutionAction:) forControlEvents:UIControlEventTouchUpInside];
+        _sdButton.titleLabel.font = [UIFont systemFontOfSize:13];
+        _sdButton.layer.borderColor = [UIColor whiteColor].CGColor;
+        _sdButton.layer.borderWidth = 0.5;
+        _sdButton.layer.cornerRadius = 1;
+        [_sdButton setTitle:@"标清" forState:UIControlStateNormal];
+    }
+    return _sdButton;
+}
+
+- (UIButton *)hdButton{
+    if (!_hdButton) {
+        _hdButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _hdButton.tag = 102;
+        [_hdButton addTarget:self action:@selector(resolutionAction:) forControlEvents:UIControlEventTouchUpInside];
+        _hdButton.titleLabel.font = [UIFont systemFontOfSize:13];
+        _hdButton.layer.borderColor = [UIColor whiteColor].CGColor;
+        _hdButton.layer.borderWidth = 0.5;
+        _hdButton.layer.cornerRadius = 1;
+        [_hdButton setTitle:@"高清" forState:UIControlStateNormal];
+    }
+    return _hdButton;
+}
+
+- (UIButton *)bdButton{
+    if (!_bdButton) {
+        _bdButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _bdButton.tag = 103;
+        [_bdButton addTarget:self action:@selector(resolutionAction:) forControlEvents:UIControlEventTouchUpInside];
+        _bdButton.titleLabel.font = [UIFont systemFontOfSize:13];
+        _bdButton.layer.borderColor = [UIColor whiteColor].CGColor;
+        _bdButton.layer.borderWidth = 0.5;
+        _bdButton.layer.cornerRadius = 1;
+        [_bdButton setTitle:@"蓝光" forState:UIControlStateNormal];
+    }
+    return _bdButton;
 }
 
 - (UIButton *)playBtn

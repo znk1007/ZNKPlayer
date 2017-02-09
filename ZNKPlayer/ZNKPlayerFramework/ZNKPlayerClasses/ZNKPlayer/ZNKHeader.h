@@ -22,6 +22,10 @@
 #define iPhone4s ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
 // 监听TableView的contentOffset
 #define kZNKPlayerViewContentOffset          @"contentOffset"
+//
+#define ZNKPlayerAnimationTimeInterval       7.0
+// 枚举值，包含水平移动方向和垂直移动方向
+#define ZNKPlayerControlBarAutoFadeOutTimeInterval 1.0
 // player的单例
 #define ZNKPlayerShared                      [ZNKBrightnessView sharedBrightnessView]
 // 屏幕的宽
