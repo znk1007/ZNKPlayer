@@ -64,6 +64,8 @@ typedef enum {
 @property (nonatomic, assign)   BOOL hasBarrage;
 /**视频分辨率*/
 @property (nonatomic, assign) ZNKResolustionType resolustionType;
+/**分辨率按钮点击block 此时，ZNKResolustionType = ZNKResolustionTypeLD | ZNKResolustionTypeSD | ZNKResolustionTypeHD | ZNKResolustionTypeBD ONLY!!!*/
+@property (nonatomic, copy) void(^ZNKResolusionButtonClick)(ZNKResolustionType type);
 /**切换分辨率的block */
 //@property (nonatomic,copy) ChangeResolutionBlockresolutionBlock;
 ///**slidertap事件Block */

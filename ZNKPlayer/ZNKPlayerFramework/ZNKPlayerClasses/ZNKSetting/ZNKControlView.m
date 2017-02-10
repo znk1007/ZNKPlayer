@@ -45,6 +45,8 @@
 @property (nonatomic, strong) UIButton                *downLoadBtn;
 /** 切换分辨率按钮 */
 @property (nonatomic, strong) UIButton                *resolutionBtn;
+/**过滤resolutionBtn状态改变*/
+@property (nonatomic, assign) BOOL                    resolutionBtnFilter;
 /** 分辨率的View */
 @property (nonatomic, strong) UIView                  *resolutionView;
 /**流畅按钮*/
@@ -94,11 +96,15 @@
         [self.resolutionView addSubview:self.hdButton];
         [self.resolutionView addSubview:self.bdButton];
         
+        
         // 添加子控件的约束
         [self makeSubViewsConstraints];
         
         UITapGestureRecognizer *sliderTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSliderAction:)];
         [self.videoSlider addGestureRecognizer:sliderTap];
+        
+        UITapGestureRecognizer *viewSingleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gestureAction:)];
+        [self addGestureRecognizer:viewSingleTap];
         
         [self.activity stopAnimating];
         self.downLoadBtn.hidden     = NO;
@@ -111,23 +117,23 @@
 
 - (void)makeSubViewsConstraints
 {
-    
+    ZNKWeakSelf(self);
     [self.backBtn mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.leading.equalTo(self.mas_leading).offset(7);
-        make.top.equalTo(self.mas_top).offset(5);
+        make.leading.equalTo(weakself.mas_leading).offset(7);
+        make.top.equalTo(weakself.mas_top).offset(5);
         make.width.height.mas_equalTo(40);
     }];
     
     [self.topImageView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.leading.trailing.top.equalTo(self);
+        make.leading.trailing.top.equalTo(weakself);
         make.height.mas_equalTo(80);
     }];
     
     [self.titleLabel mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.top.equalTo(self.mas_top).offset(5);
+        make.top.equalTo(weakself.mas_top).offset(5);
         make.width.mas_equalTo(180);
-        make.centerX.equalTo(self.mas_centerX);
-        make.centerY.equalTo(self.backBtn.mas_centerY);
+        make.centerX.equalTo(weakself.mas_centerX);
+        make.centerY.equalTo(weakself.backBtn.mas_centerY);
         make.height.mas_equalTo(15);
     }];
     
@@ -135,115 +141,122 @@
     [self.downLoadBtn mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
         make.width.mas_equalTo(40);
         make.height.mas_equalTo(49);
-        make.trailing.equalTo(self.topImageView.mas_trailing).offset(-20);
-        make.centerY.equalTo(self.backBtn.mas_centerY);
+        make.trailing.equalTo(weakself.topImageView.mas_trailing).offset(-20);
+        make.centerY.equalTo(weakself.backBtn.mas_centerY);
     }];
     
     [self.resolutionBtn mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.width.mas_equalTo(40);
-        make.height.mas_equalTo(40);
+        make.width.mas_equalTo(30);
+        make.height.mas_equalTo(20);
         //-10 到－50 bt需求
-        make.trailing.equalTo(self.downLoadBtn.mas_leading).offset(-15);
-        make.centerY.equalTo(self.backBtn.mas_centerY);
+        make.trailing.equalTo(weakself.downLoadBtn.mas_leading).offset(-18);
+        make.centerY.equalTo(weakself.backBtn.mas_centerY);
     }];
     
     
     
     [self.bottomImageView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.leading.trailing.bottom.equalTo(self);
+        make.leading.trailing.bottom.equalTo(weakself);
         make.height.mas_equalTo(50);
     }];
     
     [self.startBtn mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.leading.equalTo(self.bottomImageView.mas_leading).offset(5);
-        make.bottom.equalTo(self.bottomImageView.mas_bottom).offset(-5);
+        make.leading.equalTo(weakself.bottomImageView.mas_leading).offset(5);
+        make.bottom.equalTo(weakself.bottomImageView.mas_bottom).offset(-5);
         make.width.height.mas_equalTo(30);
     }];
     
     [self.currentTimeLabel mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.leading.equalTo(self.startBtn.mas_trailing).offset(-3);
-        make.centerY.equalTo(self.startBtn.mas_centerY);
+        make.leading.equalTo(weakself.startBtn.mas_trailing).offset(-3);
+        make.centerY.equalTo(weakself.startBtn.mas_centerY);
         make.width.mas_equalTo(43);
     }];
     
     [self.fullScreenBtn mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
         make.width.height.mas_equalTo(30);
-        make.trailing.equalTo(self.bottomImageView.mas_trailing).offset(-5);
-        make.centerY.equalTo(self.startBtn.mas_centerY);
+        make.trailing.equalTo(weakself.bottomImageView.mas_trailing).offset(-5);
+        make.centerY.equalTo(weakself.startBtn.mas_centerY);
     }];
     
     [self.totalTimeLabel mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.trailing.equalTo(self.fullScreenBtn.mas_leading).offset(3);
-        make.centerY.equalTo(self.startBtn.mas_centerY);
+        make.trailing.equalTo(weakself.fullScreenBtn.mas_leading).offset(3);
+        make.centerY.equalTo(weakself.startBtn.mas_centerY);
         make.width.mas_equalTo(43);
     }];
     
     [self.progressView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.leading.equalTo(self.currentTimeLabel.mas_trailing).offset(4);
-        make.trailing.equalTo(self.totalTimeLabel.mas_leading).offset(-4);
-        make.centerY.equalTo(self.startBtn.mas_centerY);
+        make.leading.equalTo(weakself.currentTimeLabel.mas_trailing).offset(4);
+        make.trailing.equalTo(weakself.totalTimeLabel.mas_leading).offset(-4);
+        make.centerY.equalTo(weakself.startBtn.mas_centerY);
     }];
     
     [self.videoSlider mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.leading.equalTo(self.currentTimeLabel.mas_trailing).offset(4);
-        make.trailing.equalTo(self.totalTimeLabel.mas_leading).offset(-4);
-        make.centerY.equalTo(self.currentTimeLabel.mas_centerY).offset(-1);
+        make.leading.equalTo(weakself.currentTimeLabel.mas_trailing).offset(4);
+        make.trailing.equalTo(weakself.totalTimeLabel.mas_leading).offset(-4);
+        make.centerY.equalTo(weakself.currentTimeLabel.mas_centerY).offset(-1);
         make.height.mas_equalTo(30);
     }];
     
     [self.lockBtn mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.leading.equalTo(self.mas_leading).offset(15);
-        make.centerY.equalTo(self.mas_centerY);
+        make.leading.equalTo(weakself.mas_leading).offset(15);
+        make.centerY.equalTo(weakself.mas_centerY);
         make.width.height.mas_equalTo(40);
     }];
     
     [self.horizontalLabel mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
         make.width.mas_equalTo(150);
         make.height.mas_equalTo(33);
-        make.center.equalTo(self);
+        make.center.equalTo(weakself);
     }];
     
     [self.activity mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.center.equalTo(self);
+        make.center.equalTo(weakself);
     }];
     
     [self.repeatBtn mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.center.equalTo(self);
+        make.center.equalTo(weakself);
     }];
     
     [self.playBtn mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.center.equalTo(self);
+        make.center.equalTo(weakself);
     }];
     
-    if (self.isLandscape) {
-        [self.titleLabel mas_remakeConstraints:^(ZNKMASConstraintMaker *make) {
-            make.top.equalTo(self.mas_top).offset(0);
-            make.width.mas_equalTo(180);
-            make.leading.equalTo(self.backBtn.mas_trailing).offset(5);
-            make.centerY.equalTo(self.backBtn.mas_centerY);
-            make.height.mas_equalTo(15);
-        }];
-    }
+    
     
     [self.resolutionView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.leading.equalTo(self.mas_trailing).offset(-80);
+        make.leading.equalTo(weakself.mas_trailing).offset(0);
         make.width.mas_equalTo(80);
-        make.height.equalTo(self.mas_height);
+        make.height.equalTo(weakself.mas_height);
     }];
     
     [self.hdButton mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.leading.equalTo(self.resolutionView.mas_leading).offset(20);
-        make.trailing.equalTo(self.resolutionView.mas_trailing).offset(-20);
-        make.centerX.equalTo(self.resolutionView.mas_centerX).offset(30);
+        make.leading.equalTo(weakself.resolutionView.mas_leading).offset(20);
+        make.trailing.equalTo(weakself.resolutionView.mas_trailing).offset(-20);
+        make.centerY.equalTo(weakself.resolutionView.mas_centerY).offset(25);
         make.height.mas_equalTo(20);
     }];
     
+    [self.sdButton mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+        make.leading.equalTo(weakself.hdButton.mas_leading);
+        make.trailing.equalTo(weakself.hdButton);
+        make.top.equalTo(weakself.hdButton.mas_top).offset(-40);
+        make.width.equalTo(weakself.hdButton);
+        make.height.equalTo(weakself.hdButton);
+    }];
+    
     [self.ldButton mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.leading.equalTo(self.resolutionView.mas_leading).offset(20);
-        make.trailing.equalTo(self.resolutionView.mas_trailing).offset(-20);
-        make.centerX.equalTo(self.resolutionView.mas_centerX);
-        make.height.mas_equalTo(20);
-        make.top.equalTo(self.resolutionView.mas_top).offset(30);
+        make.leading.equalTo(weakself.sdButton);
+        make.top.equalTo(weakself.sdButton).offset(-40);
+        make.width.equalTo(weakself.hdButton);
+        make.height.equalTo(weakself.hdButton);
+    }];
+    
+    [self.bdButton mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+        make.leading.equalTo(weakself.hdButton);
+        make.trailing.equalTo(weakself.hdButton);
+        make.top.equalTo(weakself.hdButton).offset(40);
+        make.width.equalTo(weakself.hdButton);
+        make.height.equalTo(weakself.hdButton);
     }];
 }
 
@@ -254,20 +267,60 @@
  */
 - (void)resolutionAction:(UIButton *)sender
 {
-    sender.selected = !sender.selected;
-    // 显示隐藏分辨率View
-//    self.resolutionView.hidden = !sender.isSelected;
-    [UIView animateWithDuration:ZNKPlayerControlBarAutoFadeOutTimeInterval animations:^{
-        if (sender.selected) {
-            [self.resolutionView mas_updateConstraints:^(ZNKMASConstraintMaker *make) {
-                make.leading.equalTo(self.mas_trailing).offset(-80);
-            }];
-        }else{
-            [self.resolutionView mas_updateConstraints:^(ZNKMASConstraintMaker *make) {
-                make.leading.equalTo(self.mas_trailing).offset(0);
+    switch (sender.tag) {
+        case 99:
+        {
+            sender.selected = !sender.selected;
+            // 显示隐藏分辨率View
+            //    self.resolutionView.hidden = !sender.isSelected;
+            [UIView animateWithDuration:ZNKPlayerControlBarAutoFadeOutTimeInterval animations:^{
+                if (sender.selected) {
+                    [self.resolutionView mas_updateConstraints:^(ZNKMASConstraintMaker *make) {
+                        make.leading.equalTo(self.mas_trailing).offset(-80);
+                    }];
+                }else{
+                    [self.resolutionView mas_updateConstraints:^(ZNKMASConstraintMaker *make) {
+                        make.leading.equalTo(self.mas_trailing).offset(0);
+                    }];
+                }
             }];
         }
-    }];
+            break;
+        case 100:
+        {
+            [self.resolutionBtn setTitle:@"流畅" forState:UIControlStateNormal];
+            if (_ZNKResolusionButtonClick) {
+                _ZNKResolusionButtonClick(ZNKResolustionTypeLD);
+            }
+        }
+            break;
+        case 101:
+        {
+            [self.resolutionBtn setTitle:@"标清" forState:UIControlStateNormal];
+            if (_ZNKResolusionButtonClick) {
+                _ZNKResolusionButtonClick(ZNKResolustionTypeSD);
+            }
+        }
+            break;
+        case 102:
+        {
+            [self.resolutionBtn setTitle:@"高清" forState:UIControlStateNormal];
+            if (_ZNKResolusionButtonClick) {
+                _ZNKResolusionButtonClick(ZNKResolustionTypeHD);
+            }
+        }
+            break;
+        case 103:
+        {
+            [self.resolutionBtn setTitle:@"蓝光" forState:UIControlStateNormal];
+            if (_ZNKResolusionButtonClick) {
+                _ZNKResolusionButtonClick(ZNKResolustionTypeBD);
+            }
+        }
+            break;
+        default:
+            break;
+    }
     
 }
 
@@ -298,6 +351,28 @@
         CGFloat tapValue = point.x / length;
 //        self.tapBlock(tapValue);
     }
+}
+
+- (void)gestureAction:(UIGestureRecognizer *)gesture{
+    if ([gesture isKindOfClass:[UITapGestureRecognizer class]]) {
+        ZNKWeakSelf(self);
+        [self.resolutionView mas_updateConstraints:^(ZNKMASConstraintMaker *make) {
+            make.leading.equalTo(weakself.mas_trailing).offset(0);
+        }];
+        self.resolutionBtn.selected = NO;
+    }
+}
+
+#pragma mark - Private Method
+
+- (void)disableButton:(UIButton *)btn{
+    btn.layer.borderColor = [UIColor colorWithWhite:0.5 alpha:1.0].CGColor;
+    [btn setTitleColor:[UIColor colorWithWhite:0.5 alpha:1.0] forState:normal];
+}
+
+- (void)enableButton:(UIButton *)btn{
+    btn.layer.borderColor = [UIColor whiteColor].CGColor;
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
 #pragma mark - Public Method
@@ -378,7 +453,11 @@
 - (void)setIsLandscape:(BOOL)a_isLandscape{
     if (_isLandscape != a_isLandscape) {
         _isLandscape = a_isLandscape;
-        [self makeSubViewsConstraints];
+        if (_isLandscape) {
+            self.resolutionBtn.hidden = NO;
+        }else{
+            self.resolutionBtn.hidden = YES;
+        }
     }
 }
 
@@ -550,11 +629,13 @@
 {
     if (!_resolutionBtn) {
         _resolutionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _resolutionBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+        _resolutionBtn.titleLabel.font = [UIFont systemFontOfSize:13];
         [_resolutionBtn addTarget:self action:@selector(resolutionAction:) forControlEvents:UIControlEventTouchUpInside];
-//        _resolutionBtn.layer.borderColor = [UIColor whiteColor].CGColor;
-//        _resolutionBtn.layer.borderWidth = 0.5;
-//        _resolutionBtn.layer.cornerRadius = 1;
+        _resolutionBtn.tag = 99;
+        _resolutionBtn.hidden = YES;
+        _resolutionBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+        _resolutionBtn.layer.borderWidth = 0.5;
+        _resolutionBtn.layer.cornerRadius = 1;
         [_resolutionBtn setTitle:@"流畅" forState:UIControlStateNormal];
     }
     return _resolutionBtn;
@@ -563,6 +644,106 @@
 - (void)setResolustionType:(ZNKResolustionType)aResolustionType{
     if (_resolustionType != aResolustionType) {
         _resolustionType = aResolustionType;
+        switch (_resolustionType) {
+            case ZNKResolustionTypeAll:
+            {
+                self.resolutionBtn.enabled = YES;
+                self.ldButton.enabled = YES;
+                self.sdButton.enabled = YES;
+                self.hdButton.enabled = YES;
+                self.bdButton.enabled = YES;
+                
+                [self enableButton:self.resolutionBtn];
+                [self enableButton:self.ldButton];
+                [self enableButton:self.sdButton];
+                [self enableButton:self.hdButton];
+                [self enableButton:self.bdButton];
+            }
+                break;
+            case ZNKResolustionTypeHDAndBD:
+            {
+                self.resolutionBtn.enabled = YES;
+                self.ldButton.enabled = NO;
+                self.sdButton.enabled = NO;
+                self.hdButton.enabled = YES;
+                self.bdButton.enabled = YES;
+                
+                [self enableButton:self.resolutionBtn];
+                [self disableButton:self.ldButton];
+                [self disableButton:self.sdButton];
+                [self enableButton:self.hdButton];
+                [self enableButton:self.bdButton];
+             
+            }
+                break;
+            case ZNKResolustionTypeLDAndSD:
+            {
+                self.resolutionBtn.enabled = YES;
+                self.ldButton.enabled = YES;
+                self.sdButton.enabled = YES;
+                self.hdButton.enabled = NO;
+                self.bdButton.enabled = NO;
+                
+                [self enableButton:self.resolutionBtn];
+                [self enableButton:self.ldButton];
+                [self enableButton:self.sdButton];
+                [self disableButton:self.hdButton];
+                [self disableButton:self.bdButton];
+            }
+                break;
+            case ZNKResolustionTypeLDSDAndHD:
+            {
+                self.resolutionBtn.enabled = YES;
+                self.ldButton.enabled = YES;
+                self.sdButton.enabled = YES;
+                self.hdButton.enabled = YES;
+                self.bdButton.enabled = NO;
+                
+                [self enableButton:self.resolutionBtn];
+                [self enableButton:self.ldButton];
+                [self enableButton:self.sdButton];
+                [self enableButton:self.hdButton];
+                [self disableButton:self.bdButton];
+            }
+                break;
+            case ZNKResolustionTypeSDHDAndBD:
+            {
+                self.resolutionBtn.enabled = YES;
+                self.ldButton.enabled = NO;
+                self.sdButton.enabled = YES;
+                self.hdButton.enabled = YES;
+                self.bdButton.enabled = YES;
+                
+                [self enableButton:self.resolutionBtn];
+                [self disableButton:self.ldButton];
+                [self enableButton:self.sdButton];
+                [self enableButton:self.hdButton];
+                [self enableButton:self.bdButton];
+            }
+                break;
+            case ZNKResolustionTypeLD:{
+                self.resolutionBtn.enabled = NO;
+                [self disableButton:self.resolutionBtn];
+            }
+                break;
+            case ZNKResolustionTypeSD:{
+                [self disableButton:self.resolutionBtn];
+                self.resolutionBtn.enabled = NO;
+            }
+                break;
+            case ZNKResolustionTypeHD:{
+                [self disableButton:self.resolutionBtn];
+                self.resolutionBtn.enabled = NO;
+            }
+                break;
+            case ZNKResolustionTypeBD:{
+                [self disableButton:self.resolutionBtn];
+                self.resolutionBtn.enabled = NO;
+            }
+                break;
+            default:
+                break;
+        }
     }
 }
 
@@ -638,6 +819,8 @@
     }
     return _playBtn;
 }
+
+
 
 
 @end
