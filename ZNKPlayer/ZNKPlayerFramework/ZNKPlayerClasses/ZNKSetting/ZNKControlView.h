@@ -56,8 +56,6 @@ typedef enum {
 @property (nonatomic, readonly) UIButton *resolutionBtn;
 /**播放按钮 */
 @property (nonatomic, readonly) UIButton *playBtn;
-/**分辨率的名称 */
-@property (nonatomic, strong)   NSArray *resolutionArray;
 /**是否横屏 */
 @property (nonatomic, assign)   BOOL isLandscape;
 /**是否有弹幕*/

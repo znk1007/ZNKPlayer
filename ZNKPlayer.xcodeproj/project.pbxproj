@@ -32,6 +32,7 @@
 		2708E56F1E47FFCB00B34944 /* ZNKPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2708E5511E47FFCB00B34944 /* ZNKPlayer.bundle */; };
 		2708E57B1E48066500B34944 /* ZNKNetworkListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E5781E48066500B34944 /* ZNKNetworkListener.m */; };
 		2708E57C1E48066500B34944 /* ZNKNetworkSpeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E57A1E48066500B34944 /* ZNKNetworkSpeed.m */; };
+		272EE08D1E514C9A00D0AB0B /* ZNKKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 272EE08C1E514C9A00D0AB0B /* ZNKKeyboardManager.m */; };
 		27ACC3E91E4AA6640069B8E1 /* ZNKCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ACC3E81E4AA6640069B8E1 /* ZNKCustomView.m */; };
 		27D1F6B21E49734A00CE8636 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D1F6B11E49734A00CE8636 /* libz.tbd */; };
 		27D1F6B91E49739E00CE8636 /* ZNKBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D1F6B51E49739E00CE8636 /* ZNKBaseView.m */; };
@@ -108,6 +109,8 @@
 		2708E5781E48066500B34944 /* ZNKNetworkListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKNetworkListener.m; sourceTree = "<group>"; };
 		2708E5791E48066500B34944 /* ZNKNetworkSpeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKNetworkSpeed.h; sourceTree = "<group>"; };
 		2708E57A1E48066500B34944 /* ZNKNetworkSpeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKNetworkSpeed.m; sourceTree = "<group>"; };
+		272EE08B1E514C9A00D0AB0B /* ZNKKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKKeyboardManager.h; sourceTree = "<group>"; };
+		272EE08C1E514C9A00D0AB0B /* ZNKKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKKeyboardManager.m; sourceTree = "<group>"; };
 		27ACC3E71E4AA6640069B8E1 /* ZNKCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKCustomView.h; sourceTree = "<group>"; };
 		27ACC3E81E4AA6640069B8E1 /* ZNKCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKCustomView.m; sourceTree = "<group>"; };
 		27D1F6B11E49734A00CE8636 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -299,6 +302,8 @@
 			children = (
 				27D1F6C51E49769400CE8636 /* ZNKControlView.h */,
 				27D1F6C61E49769400CE8636 /* ZNKControlView.m */,
+				272EE08B1E514C9A00D0AB0B /* ZNKKeyboardManager.h */,
+				272EE08C1E514C9A00D0AB0B /* ZNKKeyboardManager.m */,
 				27D1F6BB1E4973D600CE8636 /* ZNKBrightnessView.h */,
 				27D1F6BC1E4973D600CE8636 /* ZNKBrightnessView.m */,
 				27D1F6BE1E49740700CE8636 /* ZNKValuePopUpView.h */,
@@ -466,6 +471,7 @@
 				27D1F6BD1E4973D600CE8636 /* ZNKBrightnessView.m in Sources */,
 				27D1F6B91E49739E00CE8636 /* ZNKBaseView.m in Sources */,
 				2708E57C1E48066500B34944 /* ZNKNetworkSpeed.m in Sources */,
+				272EE08D1E514C9A00D0AB0B /* ZNKKeyboardManager.m in Sources */,
 				2708E5691E47FFCB00B34944 /* ZNKMASCompositeConstraint.m in Sources */,
 				27D1F6C31E49741E00CE8636 /* ZNKSlider.m in Sources */,
 				2708E55C1E47FFCB00B34944 /* AppDelegate.m in Sources */,

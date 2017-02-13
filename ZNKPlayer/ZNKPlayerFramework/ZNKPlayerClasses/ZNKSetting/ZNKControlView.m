@@ -10,8 +10,9 @@
 #import "ZNKMasonry.h"
 #import "ZNKHeader.h"
 #import "ZNKCustomView.h"
+#import "ZNKKeyboardManager.h"
 
-@interface ZNKControlView ()
+@interface ZNKControlView ()<UITextFieldDelegate>
 /** topView */
 @property (nonatomic, strong) UIImageView             *topImageView;
 /** 标题 */
@@ -59,6 +60,11 @@
 @property (nonatomic, strong) UIButton                *bdButton;
 /** 播放按钮 */
 @property (nonatomic, strong) UIButton                *playBtn;
+/**弹幕输入框*/
+@property (nonatomic, strong) ZNKBarrageTextField     *barrageTF;
+/**弹幕开关按钮*/
+@property (nonatomic, strong) ZNKBarrageButton        *barrageOCButton;
+
 @end
 
 @implementation ZNKControlView
@@ -95,8 +101,7 @@
         [self.resolutionView addSubview:self.sdButton];
         [self.resolutionView addSubview:self.hdButton];
         [self.resolutionView addSubview:self.bdButton];
-        
-        
+                
         // 添加子控件的约束
         [self makeSubViewsConstraints];
         
@@ -149,7 +154,7 @@
         make.width.mas_equalTo(30);
         make.height.mas_equalTo(20);
         //-10 到－50 bt需求
-        make.trailing.equalTo(weakself.downLoadBtn.mas_leading).offset(-18);
+        make.trailing.equalTo(weakself.downLoadBtn.mas_leading).offset(-20);
         make.centerY.equalTo(weakself.backBtn.mas_centerY);
     }];
     
@@ -262,6 +267,10 @@
 
 #pragma mark - Action
 
+- (void)openLockBarrageAction:(UIButton *)btn{
+    
+}
+
 /**
  *  点击topImageView上的按钮
  */
@@ -360,6 +369,7 @@
             make.leading.equalTo(weakself.mas_trailing).offset(0);
         }];
         self.resolutionBtn.selected = NO;
+        [self endEditing:YES];
     }
 }
 
@@ -421,34 +431,6 @@
 
 #pragma mark - setter
 
-- (void)setResolutionArray:(NSArray *)resolutionArray
-{
-    _resolutionArray = resolutionArray;
-    [_resolutionBtn setTitle:resolutionArray.firstObject forState:UIControlStateNormal];
-    // 添加分辨率按钮和分辨率下拉列表
-    self.resolutionView = [[UIView alloc] init];
-    self.resolutionView.hidden = YES;
-    self.resolutionView.backgroundColor = RGBA(0, 0, 0, 0.7);
-    [self addSubview:self.resolutionView];
-    
-    [self.resolutionView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.width.mas_equalTo(40);
-        make.height.mas_equalTo(30*resolutionArray.count);
-        make.leading.equalTo(self.resolutionBtn.mas_leading).offset(0);
-        make.top.equalTo(self.resolutionBtn.mas_bottom).offset(0);
-    }];
-    // 分辨率View上边的Btn
-    for (int i = 0 ; i < resolutionArray.count; i++) {
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.tag = 200+i;
-        [self.resolutionView addSubview:btn];
-        btn.titleLabel.font = [UIFont systemFontOfSize:14];
-        btn.frame = CGRectMake(0, 30*i, 40, 30);
-        [btn setTitle:resolutionArray[i] forState:UIControlStateNormal];
-        [btn addTarget:self action:@selector(changeResolution:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    
-}
 
 - (void)setIsLandscape:(BOOL)a_isLandscape{
     if (_isLandscape != a_isLandscape) {
@@ -457,6 +439,65 @@
             self.resolutionBtn.hidden = NO;
         }else{
             self.resolutionBtn.hidden = YES;
+        }
+    }
+}
+
+- (void)setHasBarrage:(BOOL)a_hasBarrage{
+    if (_hasBarrage != a_hasBarrage) {
+        _hasBarrage = a_hasBarrage;
+        if (_hasBarrage) {
+            ZNKWeakSelf(self);
+            [self.bottomImageView mas_updateConstraints:^(ZNKMASConstraintMaker *make) {
+                make.height.mas_equalTo(80);
+            }];
+            
+            [self.currentTimeLabel mas_remakeConstraints:^(ZNKMASConstraintMaker *make) {
+                make.leading.equalTo(weakself.bottomImageView.mas_leading).offset(5);
+                make.top.equalTo(weakself.startBtn.mas_top).offset(-20);
+                make.width.mas_equalTo(43);
+            }];
+            
+            [self.fullScreenBtn mas_updateConstraints:^(ZNKMASConstraintMaker *make) {
+                make.width.height.mas_equalTo(30);
+                make.trailing.equalTo(weakself.bottomImageView.mas_trailing).offset(-5);
+                make.centerY.equalTo(weakself.startBtn.mas_centerY);
+            }];
+            
+            [self.totalTimeLabel mas_remakeConstraints:^(ZNKMASConstraintMaker *make) {
+                make.trailing.equalTo(weakself.bottomImageView.mas_trailing).offset(-5);
+                make.centerY.equalTo(weakself.currentTimeLabel);
+                make.width.mas_equalTo(43);
+            }];
+            
+            [self.progressView mas_remakeConstraints:^(ZNKMASConstraintMaker *make) {
+                make.leading.equalTo(weakself.currentTimeLabel.mas_trailing).offset(5);
+                make.trailing.equalTo(weakself.totalTimeLabel.mas_leading).offset(-5);
+                make.centerY.equalTo(weakself.currentTimeLabel);
+            }];
+            
+            [self.videoSlider mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+                make.leading.equalTo(weakself.currentTimeLabel.mas_trailing).offset(4);
+                make.trailing.equalTo(weakself.totalTimeLabel.mas_leading).offset(-4);
+                make.centerY.equalTo(weakself.currentTimeLabel.mas_centerY).offset(-1);
+                make.height.mas_equalTo(30);
+            }];
+            
+            [self.bottomImageView addSubview:self.barrageOCButton];
+            [self.barrageOCButton mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+                make.trailing.equalTo(weakself.fullScreenBtn.mas_leading).offset(-10);
+                make.centerY.equalTo(weakself.fullScreenBtn);
+                make.width.equalTo(weakself.fullScreenBtn);
+                make.height.equalTo(weakself.fullScreenBtn);
+            }];
+            
+            [self.bottomImageView addSubview:self.barrageTF];
+            [self.barrageTF mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+                make.leading.equalTo(weakself.progressView);
+                make.centerY.equalTo(weakself.startBtn);
+                make.trailing.equalTo(weakself.barrageOCButton).offset(-40);
+                make.height.mas_equalTo(30);
+            }];
         }
     }
 }
@@ -820,6 +861,26 @@
     return _playBtn;
 }
 
+- (UITextField *)barrageTF{
+    if (!_barrageTF) {
+        _barrageTF = [[ZNKBarrageTextField alloc] init];
+        _barrageTF.delegate = self;
+        _barrageTF.placeholder = @"发个弹幕吧~!";
+        _barrageTF.borderStyle = UITextBorderStyleRoundedRect;
+        _barrageTF.backgroundColor = [UIColor colorWithWhite:0.5 alpha:1.0];
+    }
+    return _barrageTF;
+}
+
+- (ZNKBarrageButton *)barrageOCButton{
+    if (!_barrageOCButton) {
+        _barrageOCButton = [ZNKBarrageButton buttonWithType:UIButtonTypeCustom];
+        [_barrageOCButton setImage:ZNKPlayerImage(@"ZNKPlayer_barrage_normal") forState:UIControlStateNormal];
+        [_barrageOCButton setImage:ZNKPlayerImage(@"ZNKPlayer_barrage_lock") forState:UIControlStateSelected];
+        [_barrageOCButton addTarget:self action:@selector(openLockBarrageAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _barrageOCButton;
+}
 
 
 

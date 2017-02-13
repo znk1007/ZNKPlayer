@@ -36,16 +36,13 @@
         make.left.right.equalTo(weakself.view).width.offset(0);
         make.top.equalTo(self.view.mas_top).offset(0);
         make.width.equalTo(weakself.view.mas_width);
-        if (landscape) {
-            make.height.equalTo(self.view);
-        }else{
-            make.height.equalTo(self.view);
-        }
+        make.height.equalTo(self.view);
     }];
     self.controlView.backgroundColor = [UIColor greenColor];
     self.controlView.titleLabel.text = @"测试哈哈哈哈哈哈哈";
     self.controlView.isLandscape = YES;
     self.controlView.resolustionType = ZNKResolustionTypeLDSDAndHD;
+    self.controlView.hasBarrage = YES;
 }
 
 

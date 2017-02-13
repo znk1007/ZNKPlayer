@@ -12,3 +12,12 @@
 @interface ZNKPlayButton : UIButton
 
 @end
+
+@interface ZNKBarrageButton : UIButton
+
+@end
+
+@interface ZNKBarrageTextField : UITextField
+
+@end
+
