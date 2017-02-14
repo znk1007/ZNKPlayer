@@ -64,11 +64,24 @@ typedef enum {
 @property (nonatomic, assign) ZNKResolustionType resolustionType;
 /**分辨率按钮点击block 此时，ZNKResolustionType = ZNKResolustionTypeLD | ZNKResolustionTypeSD | ZNKResolustionTypeHD | ZNKResolustionTypeBD ONLY!!!*/
 @property (nonatomic, copy) void(^ZNKResolusionButtonClick)(ZNKResolustionType type);
-/**切换分辨率的block */
-//@property (nonatomic,copy) ChangeResolutionBlockresolutionBlock;
-///**slidertap事件Block */
-//@property (nonatomic,copy) SliderTapBlocktapBlock;
-
+/**返回按钮点击block*/
+@property (nonatomic, copy) void(^ZNKBackButtonClick)(UIButton *btn);
+/**下载按钮点击block*/
+@property (nonatomic, copy) void(^ZNKDownloadButtonClick)(UIButton *btn, NSURL *url);
+/**播放按钮点击block*/
+@property (nonatomic, copy) void(^ZNKPlayButtonClick)(UIButton *btn);
+/**重播按钮点击block*/
+@property (nonatomic, copy) void(^ZNKRepeatButtonClick)(UIButton *btn);
+/**滑动块点击block*/
+@property (nonatomic, copy) void(^ZNKSliderTap)(ZNKSlider *slider);
+/**播放停止按钮点击block*/
+@property (nonatomic, copy) void(^ZNKStartPauseButtonClick)(UIButton *btn);
+/**弹幕信息block*/
+@property (nonatomic, copy) void(^ZNKSendBarrage)(NSString *barrage);
+/**弹幕开关按钮点击block*/
+@property (nonatomic, copy) void(^ZNKBarrageOpenClose)(UIButton *btn);
+/**全屏按钮点击block*/
+@property (nonatomic, copy) void(^ZNKFullScreenButtonClick)(UIButton *btn);
 /**重置ControlView */
 - (void)resetControlView;
 /**切换分辨率时候调用此方法 */
