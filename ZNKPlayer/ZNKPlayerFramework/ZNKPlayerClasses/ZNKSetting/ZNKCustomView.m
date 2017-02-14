@@ -31,20 +31,32 @@
 
 @implementation ZNKBarrageTextField
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+//        self.font = [UIFont systemFontOfSize:13];
+//        self.textAlignment = NSTextAlignmentCenter;
+    }
+    return self;
+}
+
 - (void)drawPlaceholderInRect:(CGRect)rect{
     UIColor *placeholderColor = [UIColor whiteColor];//设置颜色
     [placeholderColor setFill];
     
-    CGRect placeholderRect = CGRectMake(rect.origin.x+20, (rect.size.height- self.font.pointSize)/2, rect.size.width, self.font.pointSize);//设置距离
+    CGRect placeholderRect = CGRectMake((rect.size.width - (rect.size.width / 2)) / 2, (rect.size.height - self.font.pointSize) / 2, (rect.size.width / 2), self.font.pointSize);//设置距离
     
-    
+    self.font = [UIFont systemFontOfSize:13];
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-    style.lineBreakMode = NSLineBreakByTruncatingTail;
-    style.alignment = self.textAlignment;
+    style.lineBreakMode = NSLineBreakByWordWrapping;
+    style.alignment = NSTextAlignmentCenter;
     NSDictionary *attr = [NSDictionary dictionaryWithObjectsAndKeys:style,NSParagraphStyleAttributeName, self.font, NSFontAttributeName, placeholderColor, NSForegroundColorAttributeName, nil];
     
     [self.placeholder drawInRect:placeholderRect withAttributes:attr];
 
 }
+
+
 
 @end
