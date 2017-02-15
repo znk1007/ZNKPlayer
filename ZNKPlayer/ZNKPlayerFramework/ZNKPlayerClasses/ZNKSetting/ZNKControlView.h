@@ -60,6 +60,8 @@ typedef enum {
 @property (nonatomic, assign)   BOOL isLandscape;
 /**是否有弹幕*/
 @property (nonatomic, assign)   BOOL hasBarrage;
+/**是否可以下载*/
+@property (nonatomic, assign)   BOOL canDownload;
 /**视频分辨率*/
 @property (nonatomic, assign) ZNKResolustionType resolustionType;
 /**分辨率按钮点击block 此时，ZNKResolustionType = ZNKResolustionTypeLD | ZNKResolustionTypeSD | ZNKResolustionTypeHD | ZNKResolustionTypeBD ONLY!!!*/
@@ -67,13 +69,13 @@ typedef enum {
 /**返回按钮点击block*/
 @property (nonatomic, copy) void(^ZNKBackButtonClick)(UIButton *btn);
 /**下载按钮点击block*/
-@property (nonatomic, copy) void(^ZNKDownloadButtonClick)(UIButton *btn, NSURL *url);
+@property (nonatomic, copy) void(^ZNKDownloadButtonClick)(UIButton *btn);
 /**播放按钮点击block*/
 @property (nonatomic, copy) void(^ZNKPlayButtonClick)(UIButton *btn);
 /**重播按钮点击block*/
 @property (nonatomic, copy) void(^ZNKRepeatButtonClick)(UIButton *btn);
 /**滑动块点击block*/
-@property (nonatomic, copy) void(^ZNKSliderTap)(ZNKSlider *slider);
+@property (nonatomic, copy) void(^ZNKSliderTap)(ZNKSlider *slider, CGFloat value);
 /**播放停止按钮点击block*/
 @property (nonatomic, copy) void(^ZNKStartPauseButtonClick)(UIButton *btn);
 /**弹幕信息block*/

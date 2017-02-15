@@ -101,6 +101,8 @@
         [self.resolutionView addSubview:self.sdButton];
         [self.resolutionView addSubview:self.hdButton];
         [self.resolutionView addSubview:self.bdButton];
+        
+        self.hasBarrage = NO;
                 
         // 添加子控件的约束
         [self makeSubViewsConstraints];
@@ -268,7 +270,15 @@
 #pragma mark - Action
 
 - (void)openLockBarrageAction:(UIButton *)btn{
-    
+    if (_ZNKBarrageOpenClose) {
+        _ZNKBarrageOpenClose(btn);
+    }
+}
+
+- (void)downloadButtonAction:(UIButton *)btn{
+    if (_ZNKDownloadButtonClick) {
+        _ZNKDownloadButtonClick(btn);
+    }
 }
 
 /**
@@ -345,6 +355,7 @@
     // topImageView上的按钮的文字
     [self.resolutionBtn setTitle:sender.titleLabel.text forState:UIControlStateNormal];
 //    if (self.resolutionBlock) { self.resolutionBlock(sender); }
+    
 }
 
 /**
@@ -353,12 +364,15 @@
 - (void)tapSliderAction:(UITapGestureRecognizer *)tap
 {
     if ([tap.view isKindOfClass:[UISlider class]] /*&& self.tapBlock*/) {
-        UISlider *slider = (UISlider *)tap.view;
+        ZNKSlider *slider = (ZNKSlider *)tap.view;
         CGPoint point = [tap locationInView:slider];
         CGFloat length = slider.frame.size.width;
         // 视频跳转的value
         CGFloat tapValue = point.x / length;
 //        self.tapBlock(tapValue);
+        if (_ZNKSliderTap) {
+            _ZNKSliderTap(slider, tapValue);
+        }
     }
 }
 
@@ -396,7 +410,7 @@
     self.totalTimeLabel.text    = @"00:00";
     self.horizontalLabel.hidden = NO;
     self.repeatBtn.hidden       = NO;
-    self.playBtn.hidden        = NO;
+    self.playBtn.hidden         = NO;
     self.resolutionView.hidden  = NO;
     self.backgroundColor        = [UIColor clearColor];
     self.downLoadBtn.enabled    = NO;
@@ -407,7 +421,7 @@
     self.horizontalLabel.hidden = NO;
     self.repeatBtn.hidden       = NO;
     self.resolutionView.hidden  = NO;
-    self.playBtn.hidden        = NO;
+    self.playBtn.hidden         = NO;
     self.downLoadBtn.enabled    = NO;
     self.backgroundColor        = [UIColor clearColor];
 }
@@ -439,6 +453,18 @@
             self.resolutionBtn.hidden = NO;
         }else{
             self.resolutionBtn.hidden = YES;
+        }
+    }
+}
+
+- (void)setCanDownload:(BOOL)a_canDownload{
+    if (_canDownload != a_canDownload) {
+        if (self.downLoadBtn) {
+            if (_canDownload) {
+                self.downLoadBtn.hidden = YES;
+            }else{
+                self.downLoadBtn.hidden = NO;
+            }
         }
     }
 }
@@ -662,6 +688,7 @@
 //        _downLoadBtn.layer.cornerRadius = 1;
         [_downLoadBtn setImage:ZNKPlayerImage(@"ZNKPlayer_download") forState:UIControlStateNormal];
         [_downLoadBtn setImage:ZNKPlayerImage(@"ZNKPlayer_not_download") forState:UIControlStateDisabled];
+        [_downLoadBtn addTarget:self action:@selector(downloadButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _downLoadBtn;
 }
