@@ -40,6 +40,10 @@
         make.height.equalTo(self.view);
     }];
     self.controlView.backgroundColor = [UIColor greenColor];
+    self.controlView.ZNKSliderTap = ^(ZNKSlider *slider, CGFloat value){
+        NSLog(@"value is %f",value);
+        return value;
+    };
     
     [[ZNKNetworkListener sharedManager] getReachablityStatusWithChangeBlock:^(NetWorkSatusType status) {
         /*

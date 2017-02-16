@@ -369,7 +369,11 @@
         CGFloat tapValue = point.x / length;
 //        self.tapBlock(tapValue);
         if (_ZNKSliderTap) {
-            _ZNKSliderTap(slider, tapValue);
+            CGFloat resultValue = _ZNKSliderTap(slider, tapValue);
+            if (resultValue == 0) {
+                resultValue = slider.value;
+            }
+            slider.value = resultValue;
         }
     }
 }

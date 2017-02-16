@@ -75,7 +75,7 @@ typedef enum {
 /**重播按钮点击block*/
 @property (nonatomic, copy) void(^ZNKRepeatButtonClick)(UIButton *btn);
 /**滑动块点击block*/
-@property (nonatomic, copy) void(^ZNKSliderTap)(ZNKSlider *slider, CGFloat value);
+@property (nonatomic, copy) CGFloat(^ZNKSliderTap)(ZNKSlider *slider, CGFloat value);
 /**播放停止按钮点击block*/
 @property (nonatomic, copy) void(^ZNKStartPauseButtonClick)(UIButton *btn);
 /**弹幕信息block*/
