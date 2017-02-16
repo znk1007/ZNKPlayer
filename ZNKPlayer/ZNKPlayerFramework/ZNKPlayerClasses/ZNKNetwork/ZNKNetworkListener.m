@@ -95,12 +95,15 @@ typedef void (^NotConnectReachable)(ZNKNetworkStatus * reachable);
  *  @return <#return value description#>
  */
 + (instancetype)reachability;
+
+#if 0
 /**
  *  从本地WiFi链接
  *
  *  @return <#return value description#>
  */
 + (instancetype)reachabilityForLocalWifi;
+#endif
 /**
  * 主机地址 hostName  e.g "https://www.apple.com"
  *
@@ -322,15 +325,14 @@ static void ZNKReachablityCallback(SCNetworkReachabilityRef target,SCNetworkReac
         SCNetworkReachabilityContext context = {0,(__bridge void *)self,NULL,NULL,NULL};
         if (SCNetworkReachabilitySetCallback(self.ref, ZNKReachablityCallback, &context)) {
             NSLog(@"设置回调成功");
-            //            CFRunLoopRef runloop  = CFRunLoopGetMain();
-            //
-            //            if(SCNetworkReachabilityScheduleWithRunLoop(self.ref, runloop, kCFRunLoopCommonModes)) {
-            ////                SCNetworkReachabilitySetCallback(self.ref, NULL, NULL);
-            //                NSLog(@"设置成功");
-            //            }else{
-            //                NSLog(@"设置runloop 失败");
-            //                SCNetworkReachabilitySetCallback(self.ref, NULL, NULL);
-            //            }
+            CFRunLoopRef runloop  = CFRunLoopGetMain();
+            if(SCNetworkReachabilityScheduleWithRunLoop(self.ref, runloop, kCFRunLoopCommonModes)) {
+//                SCNetworkReachabilitySetCallback(self.ref, NULL, NULL);
+                NSLog(@"设置成功");
+            }else{
+                NSLog(@"设置runloop 失败");
+                SCNetworkReachabilitySetCallback(self.ref, NULL, NULL);
+            }
         }
         else{
             NSLog(@"回调设置失败");
@@ -342,6 +344,10 @@ static void ZNKReachablityCallback(SCNetworkReachabilityRef target,SCNetworkReac
         SCNetworkReachabilitySetDispatchQueue(self.ref, NULL);
     }
 }
+/*
+ <SCNetworkReachability 0x1571b4d0 [0x37da2170]> {name = https://www.baidu.com (in progress, no addresses), flags = 0x00000002, if_index = 2}
+ <SCNetworkReachability 0x1571b4d0 [0x37da2170]> {name = https://www.baidu.com (complete, no addresses), flags = 0x00000000, if_index = 2}
+ */
 - (BOOL)isReachableViaWiFi{
     SCNetworkConnectionFlags flags;
     if (SCNetworkReachabilityGetFlags(self.ref, &flags)) {
@@ -377,7 +383,7 @@ static void ZNKReachablityCallback(SCNetworkReachabilityRef target,SCNetworkReac
 }
 - (ZNKReachabilityStatus)status{
     
-    ZNKReachabilityStatus status =ZNKReachabilityStatusFlags(self.flags, self.reachableOnWWAN);
+    ZNKReachabilityStatus status = ZNKReachabilityStatusFlags(self.flags, self.reachableOnWWAN);
     
     
     return status;
@@ -386,10 +392,10 @@ static void ZNKReachablityCallback(SCNetworkReachabilityRef target,SCNetworkReac
     return self.status !=ZNKReachabilityStatus_None;
 }
 + (instancetype)reachability{
-    return [self shareInstance];
+    return [self sharedInstance];
     
 }
-+ (instancetype)shareInstance{
++ (instancetype)sharedInstance{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         __netWorkManager = [[self alloc]init];
@@ -409,13 +415,18 @@ static void ZNKReachablityCallback(SCNetworkReachabilityRef target,SCNetworkReac
 + (instancetype)reachabilityWithHostName:(NSString *)hostname{
     SCNetworkReachabilityRef ref = SCNetworkReachabilityCreateWithName(NULL, [hostname UTF8String]);
     if (ref) {
-        id reachability = [[self shareInstance]initWithReachabilityCNNetRef:ref];
+        id reachability = [[self sharedInstance] initWithReachabilityCNNetRef:ref];
         return reachability;
     }
     return nil;
     
 }
+
+#if 0
 + (instancetype)reachabilityForLocalWifi{
+    
+#if 0
+    
 #if (defined(__IPHONE_OS_VERSION_MIN_REQUIRED) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 90000) || (defined(__MAC_OS_X_VERSION_MIN_REQUIRED) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
     struct sockaddr_in6 localWifiAddress;
     bzero(&localWifiAddress, sizeof(localWifiAddress));
@@ -435,10 +446,14 @@ static void ZNKReachablityCallback(SCNetworkReachabilityRef target,SCNetworkReac
     ZNKNetworkStatus *net = [self reachabilityWithIPAddress:&localWifiAddress];
     net.reachableOnWWAN = NO;
     return net;
+#endif
+    return nil;
 }
+#endif
+
 + (instancetype)reachabilityWithIPAddress:(const struct sockaddr_in *)hostAddress{
     SCNetworkReachabilityRef ref = SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, (const struct sockaddr *)hostAddress);
-    return [[self shareInstance] initWithReachabilityCNNetRef:ref];
+    return [[self sharedInstance] initWithReachabilityCNNetRef:ref];
 }
 - (void)setReachableBlock:(ConnectReachable)reachableBlock{
     if (_reachableBlock!=reachableBlock) {
@@ -495,6 +510,7 @@ static void ZNKReachablityCallback(SCNetworkReachabilityRef target,SCNetworkReac
         
         __weak typeof(self) weakSelf = self;
         
+#if 0
         self.netManager = [ZNKNetworkStatus reachabilityForLocalWifi];
         self.netManager.reachableBlock= ^(ZNKNetworkStatus * man){
             NSLog(@"======dfdfdfd");
@@ -505,7 +521,8 @@ static void ZNKReachablityCallback(SCNetworkReachabilityRef target,SCNetworkReac
             }
             
         };
-        self.netstatusManager  = [ZNKNetworkStatus reachabilityWithHostName:@"https://www.baidu.com"];
+#endif
+        self.netstatusManager  = [ZNKNetworkStatus reachabilityWithHostName:@"www.baidu.com"];
         self.netstatusManager.reachableBlock = ^(ZNKNetworkStatus * manager){
             if (manager.status==ZNKReachabilityStatus_WiFi) {
                 NSLog(@"current sttus is wifi");
@@ -584,11 +601,15 @@ static void ZNKReachablityCallback(SCNetworkReachabilityRef target,SCNetworkReac
     self.netchangeNotifationBlock =[complete copy];
     
 }
+
+#if 0
+
 - (void)listenLocalWifiBlock:(NetworkCallBackBlock)block{
     self.block = nil;
     self.block = [block copy];
-    
 }
+#endif
+
 - (NetWorkSatusType)currentNetStatusType{
     
     ZNKReachabilityStatus  status = self.currentNumberType.unsignedIntegerValue;

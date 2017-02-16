@@ -27,7 +27,7 @@ typedef NS_ENUM(NSInteger , NetWorkSatusType) {
 };
 
 typedef  void (^NetworkChangeStatusBlock)(NetWorkSatusType status);
-typedef void (^NetworkCallBackBlock)(NetWorkSatusType status,NSString * ssid);
+//typedef void (^NetworkCallBackBlock)(NetWorkSatusType status,NSString * ssid);
 
  @interface ZNKNetworkListener : NSObject
 /**
@@ -39,7 +39,7 @@ typedef void (^NetworkCallBackBlock)(NetWorkSatusType status,NSString * ssid);
 /**网络变化回调*/
 @property (nonatomic, copy) NetworkChangeStatusBlock netchangeNotifationBlock;
 /**网络回调*/
-@property (nonatomic,copy) NetworkCallBackBlock block;
+//@property (nonatomic,copy) NetworkCallBackBlock block;
 /**
  *  获取当前网络类型
  */
@@ -70,6 +70,8 @@ typedef void (^NetworkCallBackBlock)(NetWorkSatusType status,NSString * ssid);
  *  @param complete 网络状态发生改变启用的回调处理
  */
 - (void )getReachablityStatusWithChangeBlock:(void (^)(NetWorkSatusType status))complete;
+#if 0
 /**监听本地WiFi状态*/
 - (void)listenLocalWifiBlock:(NetworkCallBackBlock)block;
+#endif
 @end

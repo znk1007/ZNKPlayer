@@ -12,9 +12,6 @@
 #include <net/if.h>
 #include <net/if_dl.h>
 
-NSString* const ZNKDownloadNetworkSpeedNotificationKey = @"ZNKDownloadNetworkSpeedNotificationKey";
-NSString* const ZNKUploadNetworkSpeedNotificationKey = @"ZNKUploadNetworkSpeedNotificationKey";
-
 @interface ZNKNetworkSpeed ()
 {
     //总网速
@@ -33,7 +30,14 @@ NSString* const ZNKUploadNetworkSpeedNotificationKey = @"ZNKUploadNetworkSpeedNo
     uint32_t _wwanFlow;
 }
 @property (nonatomic, strong) NSTimer* timer;
-
+/**下载速度block*/
+@property (nonatomic, copy) void(^ZNKDownloadSpeedBlock)(NSString *speed);
+/**上传速度block*/
+@property (nonatomic, copy) void(^ZNKUploadSpeedBlock)(NSString *speed);
+/**下载速度*/
+@property (nonatomic, copy) NSString * downloadNetworkSpeed;
+/**上传速度*/
+@property (nonatomic, copy) NSString * uploadNetworkSpeed;
 @end
 
 @implementation ZNKNetworkSpeed
@@ -66,6 +70,14 @@ static ZNKNetworkSpeed* instance = nil;
     return self;
 }
 
+- (void)downloadNetworkSpeed:(void (^)(NSString *))downloadNetworkSpeedBlock{
+    _ZNKDownloadSpeedBlock = downloadNetworkSpeedBlock;
+}
+
+- (void)uploadNetworkSpeed:(void (^)(NSString *))uploadNetworkSpeedBlock{
+    _ZNKUploadSpeedBlock = uploadNetworkSpeedBlock;
+}
+
 #pragma mark - 开始监听网速
 - (void)start
 {
@@ -83,6 +95,8 @@ static ZNKNetworkSpeed* instance = nil;
         [_timer invalidate];
         _timer = nil;
     }
+    _ZNKUploadSpeedBlock = nil;
+    _ZNKDownloadSpeedBlock = nil;
 }
 
 - (NSString*)stringWithbytes:(int)bytes
@@ -163,13 +177,17 @@ static ZNKNetworkSpeed* instance = nil;
     
     if (_iBytes != 0) {
         _downloadNetworkSpeed = [[self stringWithbytes:iBytes - _iBytes] stringByAppendingString:@"/s"];
-        [[NSNotificationCenter defaultCenter] postNotificationName:ZNKDownloadNetworkSpeedNotificationKey object:nil];
+        if (_ZNKDownloadSpeedBlock) {
+            _ZNKDownloadSpeedBlock(_downloadNetworkSpeed);
+        }
     }
     _iBytes = iBytes;
     
     if (_oBytes != 0) {
         _uploadNetworkSpeed = [[self stringWithbytes:oBytes - _oBytes] stringByAppendingString:@"/s"];
-        [[NSNotificationCenter defaultCenter] postNotificationName:ZNKUploadNetworkSpeedNotificationKey object:nil];
+        if (_ZNKUploadSpeedBlock) {
+            _ZNKUploadSpeedBlock(_uploadNetworkSpeed);
+        }
     }
     _oBytes = oBytes;
 }

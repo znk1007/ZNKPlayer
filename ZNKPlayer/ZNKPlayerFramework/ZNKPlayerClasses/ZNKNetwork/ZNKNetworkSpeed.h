@@ -8,16 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-// 88kB/s
-extern NSString *const ZNKDownloadNetworkSpeedNotificationKey;
-// 2MB/s
-extern NSString *const ZNKUploadNetworkSpeedNotificationKey;
 
 @interface ZNKNetworkSpeed : NSObject
-@property (nonatomic, copy, readonly) NSString * downloadNetworkSpeed;
-@property (nonatomic, copy, readonly) NSString * uploadNetworkSpeed;
-
-+ (instancetype)sharedNetworkSpeed;
+/**单例模式*/
++ (ZNKNetworkSpeed *)sharedNetworkSpeed;
+/**开始监听*/
 - (void)start;
+/**停止监听*/
 - (void)stop;
+/**下载速度block*/
+- (void)downloadNetworkSpeed:(void(^)(NSString *speed))downloadNetworkSpeedBlock;
+/**上传速度block*/
+- (void)uploadNetworkSpeed:(void(^)(NSString *speed))uploadNetworkSpeedBlock;
 @end
