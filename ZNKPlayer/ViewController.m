@@ -40,10 +40,6 @@
         make.height.equalTo(self.view);
     }];
     self.controlView.backgroundColor = [UIColor greenColor];
-    self.controlView.titleLabel.text = @"测试哈哈哈哈哈哈哈";
-    self.controlView.isLandscape = YES;
-    self.controlView.resolustionType = ZNKResolustionTypeLDSDAndHD;
-    self.controlView.hasBarrage = YES;
     
     [[ZNKNetworkListener sharedManager] getReachablityStatusWithChangeBlock:^(NetWorkSatusType status) {
         /*

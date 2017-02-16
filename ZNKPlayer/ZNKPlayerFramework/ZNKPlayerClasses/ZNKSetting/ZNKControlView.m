@@ -113,9 +113,7 @@
         UITapGestureRecognizer *viewSingleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gestureAction:)];
         [self addGestureRecognizer:viewSingleTap];
         
-        [self.activity stopAnimating];
-        self.downLoadBtn.hidden     = NO;
-        self.resolutionBtn.hidden   = NO;
+        [self originControlView];
         // 初始化时重置controlView
         [self resetControlView];
     }
@@ -400,6 +398,15 @@
 }
 
 #pragma mark - Public Method
+/**控制视图最初状态*/
+- (void)originControlView{
+    [self.activity stopAnimating];
+    self.downLoadBtn.hidden = YES;
+    self.horizontalLabel.hidden = YES;
+    self.repeatBtn.hidden = YES;
+    self.hasBarrage = NO;
+    self.resolutionBtn.enabled   = NO;
+}
 
 /** 重置ControlView */
 - (void)resetControlView
@@ -408,20 +415,18 @@
     self.progressView.progress  = 0;
     self.currentTimeLabel.text  = @"00:00";
     self.totalTimeLabel.text    = @"00:00";
-    self.horizontalLabel.hidden = NO;
-    self.repeatBtn.hidden       = NO;
-    self.playBtn.hidden         = NO;
-    self.resolutionView.hidden  = NO;
+    self.horizontalLabel.hidden = YES;
+    self.repeatBtn.hidden       = YES;
+    self.playBtn.hidden         = YES;
     self.backgroundColor        = [UIColor clearColor];
     self.downLoadBtn.enabled    = NO;
 }
 
 - (void)resetControlViewForResolution
 {
-    self.horizontalLabel.hidden = NO;
-    self.repeatBtn.hidden       = NO;
-    self.resolutionView.hidden  = NO;
-    self.playBtn.hidden         = NO;
+    self.horizontalLabel.hidden = YES;
+    self.repeatBtn.hidden       = YES;
+    self.playBtn.hidden         = YES;
     self.downLoadBtn.enabled    = NO;
     self.backgroundColor        = [UIColor clearColor];
 }
