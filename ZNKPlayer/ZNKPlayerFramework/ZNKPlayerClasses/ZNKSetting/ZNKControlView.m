@@ -243,6 +243,7 @@
         make.trailing.equalTo(weakself.resolutionView.mas_trailing).offset(-20);
         make.centerY.equalTo(weakself.resolutionView.mas_centerY).offset(25);
         make.height.mas_equalTo(20);
+        make.centerY.equalTo(self.resolutionView.mas_centerY);
     }];
     
     [self.sdButton mas_makeConstraints:^(ZNKMASConstraintMaker *make) {

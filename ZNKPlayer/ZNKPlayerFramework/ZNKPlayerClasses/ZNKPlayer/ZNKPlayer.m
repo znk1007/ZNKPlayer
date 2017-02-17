@@ -94,6 +94,14 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
     [self initializePlayer];
 }
 
+- (void)play{
+    if (_player) {
+        if (![_player isPlaying]) {
+            [_player play];
+        }
+    }
+}
+
 - (void)initializePlayer{
     if ([self.videoUrl.scheme isEqualToString:@"file"]) {
         self.isLocaleVideo = YES;
@@ -102,20 +110,18 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
     }
     
     IJKFFOptions *options = [IJKFFOptions optionsByDefault];
-    _player = [[IJKFFMoviePlayerController alloc] initWithContentURL:_videoUrl withOptions:options];
+    _player = [[IJKFFMoviePlayerController alloc] initWithContentURL:self.videoUrl withOptions:options];
     self.scalingMode = self.scalingMode == ZNKMPMovieScalingModeNone ? ZNKMPMovieScalingModeAspectFit : self.scalingMode;
     [_player setScalingMode:(IJKMPMovieScalingMode)self.scalingMode];
     
     self.playerView = [_player view];
-    NSLog(@"player view frame %@",NSStringFromCGRect(self.playerView.frame));
     [self addSubview:self.playerView];
     [self.playerView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
         make.top.leading.bottom.trailing.equalTo(self);
     }];
-//    [self.playerView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-//        make.top.leading.bottom.trailing.mas_equalTo(0);
-//    }];
-    
+    if (![_player isPlaying]) {
+        [_player prepareToPlay];
+    }
 }
 
 #pragma mark - Setter / Getter

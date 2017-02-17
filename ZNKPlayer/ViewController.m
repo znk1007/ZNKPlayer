@@ -75,13 +75,14 @@
     ZNKWeakSelf(self);
     
     self.player = [ZNKPlayer sharedManager:NO];
+    self.player.backgroundColor = [UIColor greenColor];
     [self.view addSubview:self.player];
     [self.player mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-//        CGFloat width = [UIScreen mainScreen].bounds.size.width;
-//        make.top.equalTo(weakself.view.mas_top);
-//        make.width.mas_equalTo(width);
-//        make.trailing.equalTo(weakself.view.mas_trailing);
-//        make.height.equalTo(weakself.view.mas_width).multipliedBy(9.0f / 16.0f);
+        CGFloat width = [UIScreen mainScreen].bounds.size.width;
+        make.top.equalTo(weakself.view.mas_top);
+        make.width.mas_equalTo(width);
+        make.trailing.equalTo(weakself.view.mas_trailing);
+        make.height.equalTo(weakself.view.mas_width).multipliedBy(9.0f / 16.0f);
     }];
     [self.player setVideoUrl:M3U8URL scalingMode:ZNKMPMovieScalingModeAspectFit];
 }
@@ -104,6 +105,7 @@
 //        NSLog(@"value is %f",value);
 //        return value;
 //    };
+    [self.player play];
 }
 
 
