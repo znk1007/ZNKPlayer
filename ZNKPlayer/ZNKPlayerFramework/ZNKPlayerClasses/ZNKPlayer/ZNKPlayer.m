@@ -107,9 +107,14 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
     [_player setScalingMode:(IJKMPMovieScalingMode)self.scalingMode];
     
     self.playerView = [_player view];
+    NSLog(@"player view frame %@",NSStringFromCGRect(self.playerView.frame));
+    [self addSubview:self.playerView];
     [self.playerView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.top.leading.bottom.trailing.mas_equalTo(0);
+        make.top.leading.bottom.trailing.equalTo(self);
     }];
+//    [self.playerView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+//        make.top.leading.bottom.trailing.mas_equalTo(0);
+//    }];
     
 }
 

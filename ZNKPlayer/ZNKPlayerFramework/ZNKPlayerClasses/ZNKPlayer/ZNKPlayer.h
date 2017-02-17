@@ -16,7 +16,6 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieScalingMode) {
 };
 
 @interface ZNKPlayer : ZNKBaseView
-
 /**单例设计模式*/
 + (ZNKPlayer *)sharedManager:(BOOL)kill;
 /**设置播放地址，缩放模式*/
