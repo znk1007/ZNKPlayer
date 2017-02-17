@@ -102,6 +102,10 @@
         [self.resolutionView addSubview:self.hdButton];
         [self.resolutionView addSubview:self.bdButton];
         
+        for (UIView *subview in self.subviews) {
+            subview.translatesAutoresizingMaskIntoConstraints = NO;
+        }
+        
         self.hasBarrage = NO;
                 
         // 添加子控件的约束
@@ -126,12 +130,12 @@
     [self.backBtn mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
         make.leading.equalTo(weakself.mas_leading).offset(7);
         make.top.equalTo(weakself.mas_top).offset(5);
-        make.width.height.mas_equalTo(40);
+        make.width.height.mas_equalTo(@(40));
     }];
     
     [self.topImageView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
         make.leading.trailing.top.equalTo(weakself);
-        make.height.mas_equalTo(80);
+        make.height.mas_equalTo(@(80));
     }];
     
     [self.titleLabel mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
@@ -139,7 +143,7 @@
         make.width.mas_equalTo(180);
         make.centerX.equalTo(weakself.mas_centerX);
         make.centerY.equalTo(weakself.backBtn.mas_centerY);
-        make.height.mas_equalTo(15);
+        make.height.mas_equalTo(@(15));
     }];
     
     

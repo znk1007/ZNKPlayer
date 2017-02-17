@@ -9,6 +9,7 @@
 #import "ZNKPlayer.h"
 #import "ZNKMasonry.h"
 #import "ZNKHeader.h"
+#import "ZNKControlView.h"
 #import <IJKMediaFramework/IJKMediaFramework.h>
 
 
@@ -45,13 +46,16 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
 @property (nonatomic, assign) ZNKMPMovieFinishReason finishReason;
 /**如果用户未设置，则使用临时父视图管理视图*/
 @property (nonatomic, strong) UIView *tempContainView;
+/**控制视图*/
+@property (nonatomic, strong) ZNKControlView *controlView;
 /**播放视图*/
 @property (nonatomic, strong) UIView *playerView;
 /**播放地址*/
 @property (nonatomic, strong) NSURL *videoUrl;
 /**是否是本地视频*/
 @property (nonatomic, assign) BOOL isLocaleVideo;
-
+/**播放器缩放模式*/
+@property (nonatomic, assign) ZNKMPMovieScalingMode scalingMode;
 @end
 
 @implementation ZNKPlayer
@@ -69,6 +73,25 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
         }
     }
     return player;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self addSubview:self.controlView];
+        ZNKWeakSelf(self);
+        [self.controlView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+            make.top.leading.trailing.bottom.equalTo(weakself);
+        }];
+    }
+    return self;
+}
+
+- (void)setVideoUrl:(NSString *)url scalingMode:(ZNKMPMovieScalingMode)mode{
+    self.scalingMode = mode;
+    self.videoUrl = [NSURL URLWithString:url];
+    [self initializePlayer];
 }
 
 - (void)initializePlayer{
@@ -100,6 +123,13 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
         _tempContainView = [[UIView alloc] initWithFrame:[self.player view].bounds];
     }
     return _tempContainView;
+}
+
+- (ZNKControlView *)controlView{
+    if (!_controlView) {
+        _controlView = [ZNKControlView new];
+    }
+    return _controlView;
 }
 
 

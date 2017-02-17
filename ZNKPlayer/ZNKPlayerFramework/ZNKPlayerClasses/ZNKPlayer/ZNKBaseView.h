@@ -48,7 +48,7 @@ typedef enum {
 @property (nonatomic,strong) UIButton *button;
 
 /**
- 内容view，命名为contentViewForDrag，因为很多第三方的库继承UIView，里面同样有contentView这个属性
+ 内容view，命名为znkDragContentView，因为很多第三方的库继承UIView，里面同样有contentView这个属性
  防止冲突，这里特别命名为contentViewForDrag
  */
 @property (nonatomic,strong) UIView *znkDragContentView;
