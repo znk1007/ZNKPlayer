@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HTTPEngine.h"
 
 @interface ViewController : UIViewController
 
