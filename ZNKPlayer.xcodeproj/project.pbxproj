@@ -54,6 +54,8 @@
 		2720E7F61E5ABB7F008D62B5 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2720E7F51E5ABB7F008D62B5 /* libbz2.tbd */; };
 		2720E7F81E5ABBCF008D62B5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2720E7F71E5ABBCF008D62B5 /* libc++.tbd */; };
 		272EE08D1E514C9A00D0AB0B /* ZNKKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 272EE08C1E514C9A00D0AB0B /* ZNKKeyboardManager.m */; };
+		278A4F151E653CB400F885C0 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 278A4F121E653CB400F885C0 /* UIScrollView+SVInfiniteScrolling.m */; };
+		278A4F161E653CB400F885C0 /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 278A4F141E653CB400F885C0 /* UIScrollView+SVPullToRefresh.m */; };
 		27ACC3E91E4AA6640069B8E1 /* ZNKCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ACC3E81E4AA6640069B8E1 /* ZNKCustomView.m */; };
 		27D1F6B21E49734A00CE8636 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D1F6B11E49734A00CE8636 /* libz.tbd */; };
 		27D1F6B91E49739E00CE8636 /* ZNKBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D1F6B51E49739E00CE8636 /* ZNKBaseView.m */; };
@@ -175,6 +177,11 @@
 		2720E7F71E5ABBCF008D62B5 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		272EE08B1E514C9A00D0AB0B /* ZNKKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKKeyboardManager.h; sourceTree = "<group>"; };
 		272EE08C1E514C9A00D0AB0B /* ZNKKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKKeyboardManager.m; sourceTree = "<group>"; };
+		278A4F101E653CB400F885C0 /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
+		278A4F111E653CB400F885C0 /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
+		278A4F121E653CB400F885C0 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
+		278A4F131E653CB400F885C0 /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
+		278A4F141E653CB400F885C0 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
 		27ACC3E71E4AA6640069B8E1 /* ZNKCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKCustomView.h; sourceTree = "<group>"; };
 		27ACC3E81E4AA6640069B8E1 /* ZNKCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKCustomView.m; sourceTree = "<group>"; };
 		27D1F6B11E49734A00CE8636 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -264,6 +271,7 @@
 		2708E5281E47FFCB00B34944 /* ZNKPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				278A4F0F1E653CB400F885C0 /* SVPullToRefresh */,
 				270D658A1E65037800736DE5 /* AFNetworking */,
 				270D65861E65030600736DE5 /* ResolveXML */,
 				270D65821E6502CC00736DE5 /* HTTP */,
@@ -414,6 +422,18 @@
 				270D65B21E65038300736DE5 /* UIWebView+AFNetworking.m */,
 			);
 			path = "UIKit+AFNetworking";
+			sourceTree = "<group>";
+		};
+		278A4F0F1E653CB400F885C0 /* SVPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				278A4F101E653CB400F885C0 /* SVPullToRefresh.h */,
+				278A4F111E653CB400F885C0 /* UIScrollView+SVInfiniteScrolling.h */,
+				278A4F121E653CB400F885C0 /* UIScrollView+SVInfiniteScrolling.m */,
+				278A4F131E653CB400F885C0 /* UIScrollView+SVPullToRefresh.h */,
+				278A4F141E653CB400F885C0 /* UIScrollView+SVPullToRefresh.m */,
+			);
+			path = SVPullToRefresh;
 			sourceTree = "<group>";
 		};
 		27D1F6B01E49734A00CE8636 /* Frameworks */ = {
@@ -610,6 +630,7 @@
 				270D65981E65037800736DE5 /* AFHTTPSessionManager.m in Sources */,
 				2708E5671E47FFCB00B34944 /* View+ZNKMASAdditions.m in Sources */,
 				270D65B81E65038300736DE5 /* UIImageView+AFNetworking.m in Sources */,
+				278A4F161E653CB400F885C0 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				270D65B71E65038300736DE5 /* UIButton+AFNetworking.m in Sources */,
 				2708E56C1E47FFCB00B34944 /* ZNKMASLayoutConstraint.m in Sources */,
 				270D65B41E65038300736DE5 /* AFImageDownloader.m in Sources */,
@@ -632,6 +653,7 @@
 				270D659B1E65037800736DE5 /* AFURLRequestSerialization.m in Sources */,
 				270D65991E65037800736DE5 /* AFNetworkReachabilityManager.m in Sources */,
 				2708E55C1E47FFCB00B34944 /* AppDelegate.m in Sources */,
+				278A4F151E653CB400F885C0 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				270D657E1E6500FA00736DE5 /* VideoListViewController.m in Sources */,
 				27D1F6C01E49740700CE8636 /* ZNKValuePopUpView.m in Sources */,
 				2708E56E1E47FFCB00B34944 /* ZNKMASViewConstraint.m in Sources */,
