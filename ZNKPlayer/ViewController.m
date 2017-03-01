@@ -13,75 +13,50 @@
 #import "ZNKNetworkListener.h"
 #import "ZNKPlayer.h"
 #import "Video.h"
+#import "VideoListCell.h"
+#import "SVPullToRefresh.h"
 
 #define M3U8URL @"http://edge.ctg.swiftserve.com.cn/live/XZXWHCBChina/xzxwhcb-live-rtmp-ingest/playlist.m3u8"
 
-@interface ViewController ()
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) ZNKControlView *controlView;
 
 @property (nonatomic, strong) ZNKPlayer *player;
 
+@property (nonatomic, strong) UITableView *videoTable;
+
+@property (nonatomic, strong) NSArray *videoData;
+
 @end
 
 @implementation ViewController
 
+- (UITableView *)videoTable{
+    if (!_videoTable) {
+        _videoTable = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _videoTable.delegate = self;
+        _videoTable.dataSource = self;
+    }
+    return _videoTable;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
-    [[HTTPEngine sharedEngine] getRequestWithURL:@"http://c.m.163.com/nc/video/home/0-10.html" parameters:nil success:^(NSURLSessionDataTask *dataTask, NSDictionary *responseObject) {
-        NSLog(@"success %@",responseObject);
-        if (responseObject) {
-            Video *v = [[Video alloc] init];
-            if (responseObject[@"videoHomeSid"]) {
-                v.videoHomeSid = [ZNKFormat stringFormat:responseObject[@"videoHomeSid"]];
-            }
-            if (responseObject[@"videoList"] && [responseObject[@"videoList"] isKindOfClass:[NSArray class]]) {
-                NSMutableArray *videoList = [NSMutableArray array];
-                NSArray *videoListArr = responseObject[@"videoList"];
-                for (NSDictionary *videoListDict in videoListArr) {
-                    VideoListModel *listModel = [[VideoListModel alloc] init];
-                    listModel.cover = [ZNKFormat stringFormat:videoListDict[@"cover"]];
-                    listModel.videoDescription = [ZNKFormat stringFormat:videoListDict[@"description"]];
-                    listModel.length = [ZNKFormat stringFormat:videoListDict[@"length"]];
-                    listModel.m3u8_url = [ZNKFormat stringFormat:videoListDict[@"m3u8_url"]];
-                    listModel.m3u8Hd_url = [ZNKFormat stringFormat:videoListDict[@"m3u8Hd_url"]];
-                    listModel.mp4_url = [ZNKFormat stringFormat:videoListDict[@"mp4_url"]];
-                    listModel.mp4_Hd_url = [ZNKFormat stringFormat:videoListDict[@"mp4Hd_url"]];
-                    listModel.playCount = [ZNKFormat stringFormat:videoListDict[@"playCount"]];
-                    listModel.playersize = [ZNKFormat stringFormat:videoListDict[@"playersize"]];
-                    listModel.ptime = [ZNKFormat stringFormat:videoListDict[@"ptime"]];
-                    listModel.replyBoard = [ZNKFormat stringFormat:videoListDict[@"replyBoard"]];
-                    listModel.replyid = [ZNKFormat stringFormat:videoListDict[@"replyid"]];
-                    listModel.sectiontitle = [ZNKFormat stringFormat:videoListDict[@"sectiontitle"]];
-                    listModel.title = [ZNKFormat stringFormat:videoListDict[@"title"]];
-                    listModel.topicDesc = [ZNKFormat stringFormat:videoListDict[@"topicDesc"]];
-                    listModel.topicImg = [ZNKFormat stringFormat:videoListDict[@"topicImg"]];
-                    listModel.topicName = [ZNKFormat stringFormat:videoListDict[@"topicName"]];
-                    listModel.topicSid = [ZNKFormat stringFormat:videoListDict[@"topicSid"]];
-                    listModel.vid = [ZNKFormat stringFormat:videoListDict[@"vid"]];
-                    listModel.videosource = [ZNKFormat stringFormat:videoListDict[@"videosource"]];
-                    [videoList addObject:listModel];
-                }
-                v.videoList = videoList;
-            }
-            if (responseObject[@"videoSidList"] && [responseObject[@"videoSidList"] isKindOfClass:[NSArray class]]) {
-                NSMutableArray *videoSidList = [NSMutableArray array];
-                NSArray *videoSidListArr = responseObject[@"videoSidList"];
-                for (NSDictionary *videoSidDict in videoSidListArr) {
-                    VideoSidListModel *sidListModel = [[VideoSidListModel alloc] init];
-                    sidListModel.imgsrc = [ZNKFormat stringFormat:videoSidDict[@"imgsrc"]];
-                    sidListModel.sid = [ZNKFormat stringFormat:videoSidDict[@"sid"]];
-                    sidListModel.title = [ZNKFormat stringFormat:videoSidDict[@"title"]];
-                    [videoSidList addObject:sidListModel];
-                }
-                v.videoSidList = videoSidList;
-            }
-        }
-    } failure:^(NSURLSessionDataTask *dataTask, NSError *error) {
-        NSLog(@"error %@",error.localizedDescription);
+    self.videoData = [NSArray array];
+    [self.view addSubview:self.videoTable];
+    ZNKWeakSelf(self);
+    [self.videoTable addPullToRefreshWithActionHandler:^{
+        [Video videoData:^(Video *data) {
+            weakself.videoData = data.videoList;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakself.videoTable reloadData];
+                [weakself.videoTable.pullToRefreshView stopAnimating];
+            });
+        }];
     }];
+    
     
     
 //    [[ZNKNetworkListener sharedManager] getReachablityStatusWithChangeBlock:^(NetWorkSatusType status) {
@@ -125,19 +100,19 @@
 //        }
 //    }];
     
-    ZNKWeakSelf(self);
-    
-    self.player = [ZNKPlayer sharedManager:NO];
-    self.player.backgroundColor = [UIColor greenColor];
-    [self.view addSubview:self.player];
-    [self.player mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        CGFloat width = [UIScreen mainScreen].bounds.size.width;
-        make.top.equalTo(weakself.view.mas_top);
-        make.width.mas_equalTo(width);
-        make.trailing.equalTo(weakself.view.mas_trailing);
-        make.height.equalTo(weakself.view.mas_width).multipliedBy(9.0f / 16.0f);
-    }];
-    [self.player setVideoUrl:M3U8URL scalingMode:ZNKMPMovieScalingModeAspectFit];
+//    ZNKWeakSelf(self);
+//    
+//    self.player = [ZNKPlayer sharedManager:NO];
+//    self.player.backgroundColor = [UIColor greenColor];
+//    [self.view addSubview:self.player];
+//    [self.player mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+//        CGFloat width = [UIScreen mainScreen].bounds.size.width;
+//        make.top.equalTo(weakself.view.mas_top);
+//        make.width.mas_equalTo(width);
+//        make.trailing.equalTo(weakself.view.mas_trailing);
+//        make.height.equalTo(weakself.view.mas_width).multipliedBy(9.0f / 16.0f);
+//    }];
+//    [self.player setVideoUrl:M3U8URL scalingMode:ZNKMPMovieScalingModeAspectFit];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -158,7 +133,8 @@
 //        NSLog(@"value is %f",value);
 //        return value;
 //    };
-    [self.player play];
+//    [self.player play];
+    [self.videoTable triggerPullToRefresh];
 }
 
 
@@ -167,5 +143,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.videoData.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellId = @"VideoListCellId";
+    VideoListCell *cell = (VideoListCell *)[tableView dequeueReusableCellWithIdentifier:cellId];
+    if (!cell) {
+        cell = [[VideoListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+    }
+    VideoListModel *model = self.videoData[indexPath.row];
+    [cell refreshCell:model atIndexPath:indexPath];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    VideoListModel *model = self.videoData[indexPath.row];
+    CGFloat titleHeight = [model.title sizeForFontSize:18].height;
+    CGFloat descHeight = [model.videoDescription sizeForFontSize:15].height;
+    return titleHeight + descHeight + 120;
+}
 
 @end

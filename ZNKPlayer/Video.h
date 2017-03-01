@@ -20,6 +20,11 @@
 @property (nonatomic, copy) NSString *videoHomeSid;
 @property (nonatomic, strong) NSArray <VideoListModel *> *videoList;
 @property (nonatomic, strong) NSArray <VideoSidListModel *> *videoSidList;
+/**视频数据*/
++ (void)videoData:(void(^)(Video *data))completionHandler;
+
+
+
 @end
 
 @interface VideoSidListModel : NSObject
