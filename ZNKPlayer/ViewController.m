@@ -154,7 +154,11 @@
         cell = [[VideoListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
     VideoListModel *model = self.videoData[indexPath.row];
-    [cell refreshCell:model atIndexPath:indexPath];
+    ZNKWeakSelf(self);
+    [cell refreshCell:model atIndexPath:indexPath playAction:^(VideoPlayButton *btn) {
+        NSLog(@"btn tag %d",btn.indexPath.row);
+        
+    }];
     return cell;
 }
 

@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Video.h"
+#import "VideoPlayButton.h"
 
 @interface VideoListCell : UITableViewCell
 
-- (void)refreshCell:(VideoListModel *)model atIndexPath:(NSIndexPath *)indexPath;
+- (void)refreshCell:(VideoListModel *)model atIndexPath:(NSIndexPath *)indexPath playAction:(void(^)(VideoPlayButton *btn))completionHandler;
 
 @end
