@@ -50,6 +50,7 @@
 		270D65B91E65038300736DE5 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 270D65AE1E65038300736DE5 /* UIProgressView+AFNetworking.m */; };
 		270D65BA1E65038300736DE5 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 270D65B01E65038300736DE5 /* UIRefreshControl+AFNetworking.m */; };
 		270D65BB1E65038300736DE5 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 270D65B21E65038300736DE5 /* UIWebView+AFNetworking.m */; };
+		270FB76E1E68FE21009AFA67 /* VideoExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 270FB76D1E68FE21009AFA67 /* VideoExtension.m */; };
 		2720E7F61E5ABB7F008D62B5 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2720E7F51E5ABB7F008D62B5 /* libbz2.tbd */; };
 		2720E7F81E5ABBCF008D62B5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2720E7F71E5ABBCF008D62B5 /* libc++.tbd */; };
 		272EE08D1E514C9A00D0AB0B /* ZNKKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 272EE08C1E514C9A00D0AB0B /* ZNKKeyboardManager.m */; };
@@ -73,7 +74,6 @@
 		278A4F481E66876C00F885C0 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 278A4F3A1E66876C00F885C0 /* UIView+WebCacheOperation.m */; };
 		278A4F4A1E668FF700F885C0 /* default_video.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 278A4F491E668FF700F885C0 /* default_video.jpg */; };
 		278A4F4C1E66922C00F885C0 /* play_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 278A4F4B1E66922C00F885C0 /* play_btn@2x.png */; };
-		278A4F4F1E669C0100F885C0 /* VideoPlayButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 278A4F4E1E669C0100F885C0 /* VideoPlayButton.m */; };
 		27ACC3E91E4AA6640069B8E1 /* ZNKCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ACC3E81E4AA6640069B8E1 /* ZNKCustomView.m */; };
 		27D1F6B21E49734A00CE8636 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D1F6B11E49734A00CE8636 /* libz.tbd */; };
 		27D1F6B91E49739E00CE8636 /* ZNKBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D1F6B51E49739E00CE8636 /* ZNKBaseView.m */; };
@@ -189,6 +189,8 @@
 		270D65B01E65038300736DE5 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		270D65B11E65038300736DE5 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		270D65B21E65038300736DE5 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		270FB76C1E68FE21009AFA67 /* VideoExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoExtension.h; sourceTree = "<group>"; };
+		270FB76D1E68FE21009AFA67 /* VideoExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoExtension.m; sourceTree = "<group>"; };
 		2720E7F51E5ABB7F008D62B5 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		2720E7F71E5ABBCF008D62B5 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		272EE08B1E514C9A00D0AB0B /* ZNKKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKKeyboardManager.h; sourceTree = "<group>"; };
@@ -233,8 +235,6 @@
 		278A4F3A1E66876C00F885C0 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		278A4F491E668FF700F885C0 /* default_video.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default_video.jpg; sourceTree = "<group>"; };
 		278A4F4B1E66922C00F885C0 /* play_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play_btn@2x.png"; sourceTree = "<group>"; };
-		278A4F4D1E669C0100F885C0 /* VideoPlayButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayButton.h; sourceTree = "<group>"; };
-		278A4F4E1E669C0100F885C0 /* VideoPlayButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayButton.m; sourceTree = "<group>"; };
 		27ACC3E71E4AA6640069B8E1 /* ZNKCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNKCustomView.h; sourceTree = "<group>"; };
 		27ACC3E81E4AA6640069B8E1 /* ZNKCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNKCustomView.m; sourceTree = "<group>"; };
 		27D1F6B11E49734A00CE8636 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -340,8 +340,8 @@
 				2708E5311E47FFCB00B34944 /* main.m */,
 				2708E5321E47FFCB00B34944 /* ViewController.h */,
 				2708E5331E47FFCB00B34944 /* ViewController.m */,
-				278A4F4D1E669C0100F885C0 /* VideoPlayButton.h */,
-				278A4F4E1E669C0100F885C0 /* VideoPlayButton.m */,
+				270FB76C1E68FE21009AFA67 /* VideoExtension.h */,
+				270FB76D1E68FE21009AFA67 /* VideoExtension.m */,
 				270D657F1E65011A00736DE5 /* Video.h */,
 				270D65801E65011A00736DE5 /* Video.m */,
 				278A4F171E665B1000F885C0 /* VideoListCell.h */,
@@ -767,7 +767,6 @@
 				278A4F151E653CB400F885C0 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				278A4F431E66876C00F885C0 /* UIButton+WebCache.m in Sources */,
 				278A4F481E66876C00F885C0 /* UIView+WebCacheOperation.m in Sources */,
-				278A4F4F1E669C0100F885C0 /* VideoPlayButton.m in Sources */,
 				27D1F6C01E49740700CE8636 /* ZNKValuePopUpView.m in Sources */,
 				2708E56E1E47FFCB00B34944 /* ZNKMASViewConstraint.m in Sources */,
 				278A4F3F1E66876C00F885C0 /* SDWebImageDownloader.m in Sources */,
@@ -775,6 +774,7 @@
 				27D1F6C71E49769400CE8636 /* ZNKControlView.m in Sources */,
 				2708E56A1E47FFCB00B34944 /* ZNKMASConstraint.m in Sources */,
 				270D65811E65011A00736DE5 /* Video.m in Sources */,
+				270FB76E1E68FE21009AFA67 /* VideoExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

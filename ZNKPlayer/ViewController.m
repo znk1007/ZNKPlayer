@@ -158,7 +158,7 @@
     [cell refreshCell:model atIndexPath:indexPath playAction:^(VideoPlayButton *btn) {
         NSLog(@"btn tag %d",btn.indexPath.row);
         VideoListCell *currentCell = (VideoListCell *)[tableView cellForRowAtIndexPath:btn.indexPath];
-        [weakself currentCell:currentCell currentModel:btn.listModel];
+        [weakself currentCell:currentCell currentModel:btn];
     }];
     return cell;
 }
@@ -170,8 +170,13 @@
     return titleHeight + descHeight + 120;
 }
 
-- (void)currentCell:(VideoListCell *)cell currentModel:(VideoListModel *)model{
-    
+- (void)currentCell:(VideoListCell *)cell currentModel:(VideoPlayButton *)btn{
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor greenColor];
+    [cell.videoImageView addSubview:view];
+    [view mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+        make.top.leading.bottom.trailing.equalTo(cell.videoImageView);
+    }];
 }
 
 @end

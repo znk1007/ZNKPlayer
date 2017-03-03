@@ -61,11 +61,11 @@
         }];
     }
     if (![model.cover isEqualToString:@""]) {
-        UIImageView *videoImageView = [[UIImageView alloc] init];
+        self.videoImageView = [[UIImageView alloc] init];
 //        videoImageView.userInteractionEnabled = YES;
-        [videoImageView sd_setImageWithURL:[NSURL URLWithString:model.cover] placeholderImage:[UIImage imageNamed:@"default_video"]];
-        [self.contentView addSubview:videoImageView];
-        [videoImageView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+        [self.videoImageView sd_setImageWithURL:[NSURL URLWithString:model.cover] placeholderImage:[UIImage imageNamed:@"default_video"]];
+        [self.contentView addSubview:self.videoImageView];
+        [self.videoImageView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
             make.top.equalTo(titleLabel.mas_bottom).offset(2);
             make.leading.equalTo(titleLabel);
             make.trailing.equalTo(titleLabel);
@@ -84,8 +84,9 @@
         playBtn.listModel = model;
         playBtn.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:playBtn];
+        
         [playBtn mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-            make.center.equalTo(videoImageView);
+            make.center.equalTo(weakSelf.videoImageView);
             make.width.height.mas_equalTo(60);
         }];
     }
