@@ -157,7 +157,8 @@
     ZNKWeakSelf(self);
     [cell refreshCell:model atIndexPath:indexPath playAction:^(VideoPlayButton *btn) {
         NSLog(@"btn tag %d",btn.indexPath.row);
-        
+        VideoListCell *currentCell = (VideoListCell *)[tableView cellForRowAtIndexPath:btn.indexPath];
+        [weakself currentCell:currentCell currentModel:btn.listModel];
     }];
     return cell;
 }
@@ -167,6 +168,10 @@
     CGFloat titleHeight = [model.title sizeForFontSize:18].height;
     CGFloat descHeight = [model.videoDescription sizeForFontSize:15].height;
     return titleHeight + descHeight + 120;
+}
+
+- (void)currentCell:(VideoListCell *)cell currentModel:(VideoListModel *)model{
+    
 }
 
 @end

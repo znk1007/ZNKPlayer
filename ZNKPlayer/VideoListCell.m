@@ -41,6 +41,7 @@
     titleLabel.font = [UIFont boldSystemFontOfSize:14];
     CGFloat height = [model.title sizeForFontSize:15].height;
     titleLabel.text = model.title;
+    titleLabel.numberOfLines = 0;
     [self.contentView addSubview:titleLabel];
     [titleLabel mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
         make.leading.equalTo(weakSelf.contentView).offset(5);
@@ -49,6 +50,7 @@
     }];
     if (![model.videoDescription isEqualToString:@""]) {
         UILabel *descLabel = [[UILabel alloc] init];
+        descLabel.numberOfLines = 0;
         descLabel.font = [UIFont systemFontOfSize:12];
         height = [model.videoDescription sizeForFontSize:14].height;
         [self.contentView addSubview:descLabel];
@@ -79,6 +81,7 @@
         [playBtn addTarget:self action:@selector(playAction:) forControlEvents:UIControlEventTouchUpInside];
         [playBtn setImage:[UIImage imageNamed:@"play_btn"] forState:UIControlStateNormal];
         playBtn.indexPath = indexPath;
+        playBtn.listModel = model;
         playBtn.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:playBtn];
         [playBtn mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
