@@ -44,8 +44,6 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
 @property (nonatomic, assign) ZNKMPMoviePlaybackState playbacState;
 /**播放完成原因*/
 @property (nonatomic, assign) ZNKMPMovieFinishReason finishReason;
-/**如果用户未设置，则使用临时父视图管理视图*/
-@property (nonatomic, strong) UIView *tempContainView;
 /**控制视图*/
 @property (nonatomic, strong) ZNKControlView *controlView;
 /**播放视图*/
@@ -79,13 +77,18 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
 {
     self = [super init];
     if (self) {
-        [self addSubview:self.controlView];
-        ZNKWeakSelf(self);
-        [self.controlView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-            make.top.leading.trailing.bottom.equalTo(weakself);
-        }];
+        
     }
     return self;
+}
+
+- (void)dealloc{
+    if (_player) {
+        [_player shutdown];
+    }
+    if (_playerView) {
+        [_playerView removeFromSuperview];
+    }
 }
 
 - (void)setVideoUrl:(NSString *)url scalingMode:(ZNKMPMovieScalingMode)mode{
@@ -122,19 +125,15 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
     if (![_player isPlaying]) {
         [_player prepareToPlay];
     }
+    [self addSubview:self.controlView];
+    ZNKWeakSelf(self);
+    [self.controlView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+        make.top.leading.trailing.bottom.equalTo(weakself);
+    }];
 }
 
 #pragma mark - Setter / Getter
 
-- (UIView *)tempContainView{
-    if (!self.player) {
-        return [[UIView alloc] initWithFrame:CGRectZero];
-    }
-    if (!_tempContainView) {
-        _tempContainView = [[UIView alloc] initWithFrame:[self.player view].bounds];
-    }
-    return _tempContainView;
-}
 
 - (ZNKControlView *)controlView{
     if (!_controlView) {
