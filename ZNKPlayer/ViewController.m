@@ -28,6 +28,8 @@
 
 @property (nonatomic, strong) NSArray *videoData;
 
+@property (nonatomic, strong) VideoListCell *currentCell;
+
 @end
 
 @implementation ViewController
@@ -153,12 +155,14 @@
     if (!cell) {
         cell = [[VideoListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     VideoListModel *model = self.videoData[indexPath.row];
     ZNKWeakSelf(self);
     [cell refreshCell:model atIndexPath:indexPath playAction:^(VideoPlayButton *btn) {
         NSLog(@"btn tag %d",btn.indexPath.row);
         VideoListCell *currentCell = (VideoListCell *)[tableView cellForRowAtIndexPath:btn.indexPath];
-        [weakself currentCell:currentCell currentModel:btn];
+        self.currentCell = currentCell;
+        [weakself tableView:tableView currentCell:currentCell currentModel:btn];
     }];
     return cell;
 }
@@ -170,13 +174,26 @@
     return titleHeight + descHeight + 120;
 }
 
-- (void)currentCell:(VideoListCell *)cell currentModel:(VideoPlayButton *)btn{
-    UIView *view = [[UIView alloc] init];
-    view.backgroundColor = [UIColor greenColor];
-    [cell.videoImageView addSubview:view];
-    [view mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
-        make.top.leading.bottom.trailing.equalTo(cell.videoImageView);
-    }];
+- (void)tableView:(UITableView *)tableView currentCell:(VideoListCell *)cell currentModel:(VideoPlayButton *)btn{
+    VideoListModel *model = btn.listModel;
+    NSArray *visableCells = [tableView visibleCells];
+    for (VideoListCell *visableCell in visableCells) {
+        if (visableCell == cell) {
+            UIView *view = [[UIView alloc] init];
+            view.backgroundColor = [UIColor greenColor];
+            [cell.videoImageView addSubview:view];
+            [view mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+                make.top.leading.bottom.trailing.equalTo(cell.videoImageView);
+            }];
+            [visableCell.contentView sendSubviewToBack:btn];
+        }else{
+            for (UIView *subview in visableCell.videoImageView.subviews) {
+                [subview removeFromSuperview];
+            }
+            [visableCell.contentView bringSubviewToFront:visableCell.playBtn];
+        }
+    }
+    
 }
 
 @end

@@ -22,7 +22,5 @@
 
 @interface VideoImageView : UIImageView
 
-@property (nonatomic, strong) NSIndexPath *indexPath;
-
 @end
 

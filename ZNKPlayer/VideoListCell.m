@@ -77,15 +77,15 @@
         }
         _ZNKVideoPlayHandler = completionHandler;
         
-        VideoPlayButton *playBtn = [VideoPlayButton buttonWithType:UIButtonTypeCustom];
-        [playBtn addTarget:self action:@selector(playAction:) forControlEvents:UIControlEventTouchUpInside];
-        [playBtn setImage:[UIImage imageNamed:@"play_btn"] forState:UIControlStateNormal];
-        playBtn.indexPath = indexPath;
-        playBtn.listModel = model;
-        playBtn.backgroundColor = [UIColor clearColor];
-        [self.contentView addSubview:playBtn];
+        self.playBtn = [VideoPlayButton buttonWithType:UIButtonTypeCustom];
+        [self.playBtn addTarget:self action:@selector(playAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self.playBtn setImage:[UIImage imageNamed:@"play_btn"] forState:UIControlStateNormal];
+        self.playBtn.indexPath = indexPath;
+        self.playBtn.listModel = model;
+        self.playBtn.backgroundColor = [UIColor clearColor];
+        [self.contentView addSubview:self.playBtn];
         
-        [playBtn mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+        [self.playBtn mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
             make.center.equalTo(weakSelf.videoImageView);
             make.width.height.mas_equalTo(60);
         }];

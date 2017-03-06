@@ -13,9 +13,11 @@
 #define ImageViewStartIndex 1000
 
 @interface VideoListCell : UITableViewCell
-
+/**封面*/
 @property (nonatomic, strong) UIImageView *videoImageView;
-
+/**播放按钮*/
+@property (nonatomic, strong) VideoPlayButton *playBtn;
+/**更新数据*/
 - (void)refreshCell:(VideoListModel *)model atIndexPath:(NSIndexPath *)indexPath playAction:(void(^)(VideoPlayButton *btn))completionHandler;
 
 @end
