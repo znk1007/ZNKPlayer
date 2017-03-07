@@ -82,6 +82,16 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
     return self;
 }
 
+- (instancetype)initWithVideoUrl:(NSString *)url scalingMode:(ZNKMPMovieScalingMode)mode{
+    self = [super init];
+    if (self) {
+        self.scalingMode = mode;
+        self.videoUrl = [NSURL URLWithString:url];
+        [self initializePlayer];
+    }
+    return self;
+}
+
 - (void)dealloc{
     if (_player) {
         [_player shutdown];
@@ -89,12 +99,6 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
     if (_playerView) {
         [_playerView removeFromSuperview];
     }
-}
-
-- (void)setVideoUrl:(NSString *)url scalingMode:(ZNKMPMovieScalingMode)mode{
-    self.scalingMode = mode;
-    self.videoUrl = [NSURL URLWithString:url];
-    [self initializePlayer];
 }
 
 - (void)play{
@@ -130,10 +134,13 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
     [self.controlView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
         make.top.leading.trailing.bottom.equalTo(weakself);
     }];
+    
+    if (self.shouldAutoPlay) {
+        [self play];
+    }
 }
 
 #pragma mark - Setter / Getter
-
 
 - (ZNKControlView *)controlView{
     if (!_controlView) {

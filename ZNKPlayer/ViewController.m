@@ -22,7 +22,7 @@
 
 @property (nonatomic, strong) ZNKControlView *controlView;
 
-@property (nonatomic, strong) ZNKPlayer *player;
+@property (nonatomic, strong) ZNKPlayer *currentPlayer;
 
 @property (nonatomic, strong) UITableView *videoTable;
 
@@ -179,15 +179,18 @@
     NSArray *visableCells = [tableView visibleCells];
     for (VideoListCell *visableCell in visableCells) {
         if (visableCell == cell) {
-            UIView *view = [[UIView alloc] init];
-            view.backgroundColor = [UIColor greenColor];
-            [cell.videoImageView addSubview:view];
-            [view mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+            ZNKPlayer *player = [[ZNKPlayer alloc] initWithVideoUrl:model.mp4_url scalingMode:ZNKMPMovieScalingModeAspectFit];
+            player.shouldAutoPlay = YES;
+            [cell.videoImageView addSubview:player];
+            [player mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
                 make.top.leading.bottom.trailing.equalTo(cell.videoImageView);
             }];
             [visableCell.contentView sendSubviewToBack:btn];
         }else{
             for (UIView *subview in visableCell.videoImageView.subviews) {
+                if ([subview isKindOfClass:[ZNKPlayer class]]) {
+                    ZNKPlayer *player = (ZNKPlayer *)subview;
+                }
                 [subview removeFromSuperview];
             }
             [visableCell.contentView bringSubviewToFront:visableCell.playBtn];

@@ -17,10 +17,14 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieScalingMode) {
 };
 
 @interface ZNKPlayer : ZNKBaseView
-/**单例设计模式*/
-+ (ZNKPlayer *)sharedManager:(BOOL)kill;
-/**设置播放地址，缩放模式*/
-- (void)setVideoUrl:(NSString *)url scalingMode:(ZNKMPMovieScalingMode)mode;
+/**是否自动播放*/
+@property (nonatomic, assign) BOOL shouldAutoPlay;
+/**初始化播放器*/
+- (instancetype)initWithVideoUrl:(NSString *)url scalingMode:(ZNKMPMovieScalingMode)mode;
+///**单例设计模式*/
+//+ (ZNKPlayer *)sharedManager:(BOOL)kill;
+///**设置播放地址，缩放模式*/
+//- (void)setVideoUrl:(NSString *)url scalingMode:(ZNKMPMovieScalingMode)mode;
 /**开始播放*/
 - (void)play;
 @end
