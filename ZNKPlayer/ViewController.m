@@ -22,7 +22,7 @@
 
 @property (nonatomic, strong) ZNKControlView *controlView;
 
-@property (nonatomic, strong) ZNKPlayer *currentPlayer;
+@property (nonatomic, strong) ZNKPlayer *player;
 
 @property (nonatomic, strong) UITableView *videoTable;
 
@@ -46,6 +46,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.player = [ZNKPlayer sharedManager:NO];
     self.videoData = [NSArray array];
     [self.view addSubview:self.videoTable];
     ZNKWeakSelf(self);
@@ -179,10 +180,10 @@
     NSArray *visableCells = [tableView visibleCells];
     for (VideoListCell *visableCell in visableCells) {
         if (visableCell == cell) {
-            ZNKPlayer *player = [[ZNKPlayer alloc] initWithVideoUrl:model.mp4_url scalingMode:ZNKMPMovieScalingModeAspectFit];
-            player.shouldAutoPlay = YES;
-            [cell.videoImageView addSubview:player];
-            [player mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
+            [self.player startWithVideoUrl:model.mp4_url];
+            self.player.shouldAutoPlay = YES;
+            [cell.videoImageView addSubview:self.player];
+            [self.player mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
                 make.top.leading.bottom.trailing.equalTo(cell.videoImageView);
             }];
             [visableCell.contentView sendSubviewToBack:btn];

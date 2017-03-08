@@ -87,17 +87,47 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
     if (self) {
         self.scalingMode = mode;
         self.videoUrl = [NSURL URLWithString:url];
-        [self initializePlayer];
+        
     }
     return self;
 }
 
 - (void)dealloc{
+//    if (_player) {
+//        [_player stop];
+//        [_player shutdown];
+//        _player = nil;
+//    }
+//    if (_playerView) {
+//        [_playerView removeFromSuperview];
+//    }
+}
+
+- (void)startWithVideoUrl:(NSString *)url{
+    self.videoUrl = [NSURL URLWithString:url];
+    self.scalingMode = ZNKMPMovieScalingModeAspectFit;
+    [self resetPlayer];
+    [self initializePlayer];
+}
+
+- (void)startWithVideoUrl:(NSString *)url scalingMode:(ZNKMPMovieScalingMode)mode{
+    self.videoUrl = [NSURL URLWithString:url];
+    self.scalingMode = mode;
+    [self resetPlayer];
+    [self initializePlayer];
+}
+
+- (void)resetPlayer{
     if (_player) {
-        [_player shutdown];
+        if ([_player isPlaying]) {
+            [_player stop];
+            [_player shutdown];
+        }
+        _player = nil;
     }
     if (_playerView) {
         [_playerView removeFromSuperview];
+        _playerView = nil;
     }
 }
 
@@ -108,6 +138,8 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
         }
     }
 }
+
+
 
 - (void)initializePlayer{
     if ([self.videoUrl.scheme isEqualToString:@"file"]) {
