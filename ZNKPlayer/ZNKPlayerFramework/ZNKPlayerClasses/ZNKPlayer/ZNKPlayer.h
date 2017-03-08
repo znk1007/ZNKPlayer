@@ -8,7 +8,7 @@
 
 #import "ZNKBaseView.h"
 #import "ZNKTool.h"
-
+@class ZNKControlView;
 typedef NS_ENUM(NSInteger, ZNKMPMovieScalingMode) {
     ZNKMPMovieScalingModeNone,       /**不进行缩放*/
     ZNKMPMovieScalingModeAspectFit,  /**缩放尺寸直到一维拟合*/
@@ -19,8 +19,8 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieScalingMode) {
 @interface ZNKPlayer : ZNKBaseView
 /**是否自动播放*/
 @property (nonatomic, assign) BOOL shouldAutoPlay;
-/**初始化播放器*/
-//- (instancetype)initWithVideoUrl:(NSString *)url scalingMode:(ZNKMPMovieScalingMode)mode;
+/**控制视图*/
+@property (nonatomic, readonly) ZNKControlView *controlView;
 ///**单例设计模式*/
 + (ZNKPlayer *)sharedManager:(BOOL)kill;
 /**设置播放地址，缩放模式默认ZNKMPMovieScalingModeAspectFit*/

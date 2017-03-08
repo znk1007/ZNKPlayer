@@ -69,7 +69,7 @@
             make.top.equalTo(titleLabel.mas_bottom).offset(2);
             make.leading.equalTo(titleLabel);
             make.trailing.equalTo(titleLabel);
-            make.height.mas_equalTo(120);
+            make.height.mas_equalTo(150);
         }];
         
         if (_ZNKVideoPlayHandler) {

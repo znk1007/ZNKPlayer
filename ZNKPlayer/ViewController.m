@@ -172,7 +172,7 @@
     VideoListModel *model = self.videoData[indexPath.row];
     CGFloat titleHeight = [model.title sizeForFontSize:18].height;
     CGFloat descHeight = [model.videoDescription sizeForFontSize:15].height;
-    return titleHeight + descHeight + 120;
+    return titleHeight + descHeight + 150;
 }
 
 - (void)tableView:(UITableView *)tableView currentCell:(VideoListCell *)cell currentModel:(VideoPlayButton *)btn{

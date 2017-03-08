@@ -30,7 +30,8 @@
     return tool;
 }
 
-+ (void)startNotifyDeviceOrientation{
+- (void)startNotifyDeviceOrientation:(void(^)(UIInterfaceOrientation orientation))completionHandler{
+     _ZNKOrientationHandler = completionHandler;
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     //旋转屏幕通知
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -40,14 +41,12 @@
      ];
 }
 
-+ (void)endNotifyDeviceOrientation{
+- (void)endNotifyDeviceOrientation{
     [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
-- (void)getDeviceOrientation:(void (^)(UIInterfaceOrientation))completionHandler{
-    _ZNKOrientationHandler = completionHandler;
-}
+
 
 - (void)cleanCache{
     if (_ZNKOrientationHandler) {

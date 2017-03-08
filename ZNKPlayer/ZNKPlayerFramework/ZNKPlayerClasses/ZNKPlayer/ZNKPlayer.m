@@ -82,16 +82,6 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
     return self;
 }
 
-- (instancetype)initWithVideoUrl:(NSString *)url scalingMode:(ZNKMPMovieScalingMode)mode{
-    self = [super init];
-    if (self) {
-        self.scalingMode = mode;
-        self.videoUrl = [NSURL URLWithString:url];
-        
-    }
-    return self;
-}
-
 - (void)dealloc{
 //    if (_player) {
 //        [_player stop];
@@ -149,6 +139,7 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
     }
     
     IJKFFOptions *options = [IJKFFOptions optionsByDefault];
+    [options setPlayerOptionIntValue:5 forKey:@"framedrop"];//解决音视频不同步问题
     _player = [[IJKFFMoviePlayerController alloc] initWithContentURL:self.videoUrl withOptions:options];
     self.scalingMode = self.scalingMode == ZNKMPMovieScalingModeNone ? ZNKMPMovieScalingModeAspectFit : self.scalingMode;
     [_player setScalingMode:(IJKMPMovieScalingMode)self.scalingMode];
