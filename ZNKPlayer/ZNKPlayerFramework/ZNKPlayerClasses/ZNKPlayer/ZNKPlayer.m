@@ -54,6 +54,8 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
 @property (nonatomic, assign) BOOL isLocaleVideo;
 /**播放器缩放模式*/
 @property (nonatomic, assign) ZNKMPMovieScalingMode scalingMode;
+/**计时器*/
+@property (nonatomic, strong) dispatch_source_t timeSource;
 @end
 
 @implementation ZNKPlayer
@@ -108,6 +110,7 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
 }
 
 - (void)resetPlayer{
+    [self removeMovieNotificationObservers];
     if (_player) {
         if ([_player isPlaying]) {
             [_player stop];
@@ -132,6 +135,7 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
 
 
 - (void)initializePlayer{
+    [self installMovieNotificationObservers];
     if ([self.videoUrl.scheme isEqualToString:@"file"]) {
         self.isLocaleVideo = YES;
     }else{
@@ -161,6 +165,13 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
     if (self.shouldAutoPlay) {
         [self play];
     }
+    
+//    [self setTimeCounterUseOrigin:NO completionHandler:^(NSString * _Nullable time) {
+//        NSLog(@"player currentPlaybackTime%f",weakself.player.currentPlaybackTime);
+//        NSLog(@"player duration%f",weakself.player.duration);
+//        NSLog(@"player playableDuration%f",weakself.player.playableDuration);
+//        NSLog(@"player bufferingProgress%d",weakself.player.bufferingProgress);
+//    }];
 }
 
 #pragma mark - Setter / Getter
@@ -224,6 +235,14 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
     
     if ((loadState & IJKMPMovieLoadStatePlaythroughOK) != 0) {
         NSLog(@"loadStateDidChange: IJKMPMovieLoadStatePlaythroughOK: %d\n", (int)loadState);
+//        ZNKWeakSelf(self);
+//        [self setTimeCounterUseOrigin:NO completionHandler:^(NSString * _Nullable time) {
+//            NSLog(@"player currentPlaybackTime++++%f",weakself.player.currentPlaybackTime);
+//            NSLog(@"player duration%f------",weakself.player.duration);
+//            NSLog(@"player playableDuration%f>>>>>>",weakself.player.playableDuration);
+//            NSLog(@"player bufferingProgress%d<<<<<",weakself.player.bufferingProgress);
+//            return weakself.player.duration;
+//        }];
     } else if ((loadState & IJKMPMovieLoadStateStalled) != 0) {
         NSLog(@"loadStateDidChange: IJKMPMovieLoadStateStalled: %d\n", (int)loadState);
     } else {
@@ -274,8 +293,12 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
     
     switch (_player.playbackState)
     {
-        case IJKMPMoviePlaybackStateStopped: {
+        case IJKMPMoviePlaybackStateStopped:
+        {
             NSLog(@"IJKMPMoviePlayBackStateDidChange %d: stoped", (int)_player.playbackState);
+            if (self.timeSource) {
+                dispatch_source_cancel(self.timeSource);
+            }
             break;
         }
         case IJKMPMoviePlaybackStatePlaying: {
@@ -303,7 +326,15 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
 }
 
 - (void)moviePlayFirstVideoFrameRendered:(NSNotification*)notification{
-    
+    ZNKWeakSelf(self);
+    self.timeSource = [self setTimeCounterUseOrigin:NO totalTime:self.player.duration  completionHandler:^(NSString * _Nullable time) {
+        weakself.controlView.currentTimeLabel.text = [weakself ascendingFormatHHMMSSFromSS:weakself.player.currentPlaybackTime];
+        NSLog(@"progress------>>>>>%d",weakself.player.bufferingProgress);
+        NSLog(@"numberOfBytesTransferred------>>>>>%lld",weakself.player.numberOfBytesTransferred);
+        NSLog(@"time progress======>>>>>>%f",weakself.player.currentPlaybackTime / weakself.player.duration);
+        weakself.controlView.videoSlider.value = weakself.player.currentPlaybackTime / weakself.player.duration;
+    }];
+    self.controlView.totalTimeLabel.text = [self ascendingFormatHHMMSSFromSS:self.player.duration];
 }
 
 @end
