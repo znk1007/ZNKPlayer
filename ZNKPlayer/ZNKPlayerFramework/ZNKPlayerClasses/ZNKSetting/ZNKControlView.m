@@ -602,6 +602,7 @@
         _startBtn = [ZNKPlayButton buttonWithType:UIButtonTypeCustom];
         [_startBtn setImage:ZNKPlayerImage(@"ZNKPlayer_play") forState:UIControlStateNormal];
         [_startBtn setImage:ZNKPlayerImage(@"ZNKPlayer_pause") forState:UIControlStateSelected];
+        [_startBtn addTarget:self action:@selector(startButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _startBtn;
 }
@@ -923,6 +924,13 @@
     return _barrageOCButton;
 }
 
+#pragma mark - 按钮事件
 
+- (void)startButtonClick:(UIButton *)sender{
+    sender.selected = !sender.selected;
+    if (_ZNKStartPauseButtonClick) {
+        _ZNKStartPauseButtonClick(sender);
+    }
+}
 
 @end

@@ -125,23 +125,26 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
 }
 
 - (void)play{
-    if (_player) {
-        if (![_player isPlaying]) {
-            [_player play];
-        }
+    if (_player && ![_player isPlaying]) {
+        [_player play];
+    }
+}
+
+- (void)pause{
+    if (_player && [_player isPlaying]) {
+        [_player pause];
     }
 }
 
 
 
 - (void)initializePlayer{
-    [self installMovieNotificationObservers];
     if ([self.videoUrl.scheme isEqualToString:@"file"]) {
         self.isLocaleVideo = YES;
     }else{
         self.isLocaleVideo = NO;
     }
-    
+    [self installMovieNotificationObservers];
     IJKFFOptions *options = [IJKFFOptions optionsByDefault];
     [options setPlayerOptionIntValue:5 forKey:@"framedrop"];//解决音视频不同步问题
     _player = [[IJKFFMoviePlayerController alloc] initWithContentURL:self.videoUrl withOptions:options];
@@ -165,13 +168,14 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
     if (self.shouldAutoPlay) {
         [self play];
     }
-    
-//    [self setTimeCounterUseOrigin:NO completionHandler:^(NSString * _Nullable time) {
-//        NSLog(@"player currentPlaybackTime%f",weakself.player.currentPlaybackTime);
-//        NSLog(@"player duration%f",weakself.player.duration);
-//        NSLog(@"player playableDuration%f",weakself.player.playableDuration);
-//        NSLog(@"player bufferingProgress%d",weakself.player.bufferingProgress);
-//    }];
+    self.controlView.ZNKStartPauseButtonClick = ^(UIButton *startBtn){
+        if (startBtn.selected) {
+            [weakself pause];
+        }else{
+            [weakself play];
+        }
+    };
+
 }
 
 #pragma mark - Setter / Getter
@@ -329,9 +333,6 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
     ZNKWeakSelf(self);
     self.timeSource = [self setTimeCounterUseOrigin:NO totalTime:self.player.duration  completionHandler:^(NSString * _Nullable time) {
         weakself.controlView.currentTimeLabel.text = [weakself ascendingFormatHHMMSSFromSS:weakself.player.currentPlaybackTime];
-        NSLog(@"progress------>>>>>%d",weakself.player.bufferingProgress);
-        NSLog(@"numberOfBytesTransferred------>>>>>%lld",weakself.player.numberOfBytesTransferred);
-        NSLog(@"time progress======>>>>>>%f",weakself.player.currentPlaybackTime / weakself.player.duration);
         weakself.controlView.videoSlider.value = weakself.player.currentPlaybackTime / weakself.player.duration;
     }];
     self.controlView.totalTimeLabel.text = [self ascendingFormatHHMMSSFromSS:self.player.duration];

@@ -65,6 +65,7 @@
 //        videoImageView.userInteractionEnabled = YES;
         [self.videoImageView sd_setImageWithURL:[NSURL URLWithString:model.cover] placeholderImage:[UIImage imageNamed:@"default_video"]];
         [self.contentView addSubview:self.videoImageView];
+        self.videoImageView.userInteractionEnabled = YES;
         [self.videoImageView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
             make.top.equalTo(titleLabel.mas_bottom).offset(2);
             make.leading.equalTo(titleLabel);
