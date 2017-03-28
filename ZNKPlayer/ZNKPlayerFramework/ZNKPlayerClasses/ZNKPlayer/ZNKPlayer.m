@@ -300,17 +300,19 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
         case IJKMPMoviePlaybackStateStopped:
         {
             NSLog(@"IJKMPMoviePlayBackStateDidChange %d: stoped", (int)_player.playbackState);
-            if (self.timeSource) {
-                dispatch_source_cancel(self.timeSource);
-            }
+            [self bottomControlView:NO];
             break;
         }
-        case IJKMPMoviePlaybackStatePlaying: {
+        case IJKMPMoviePlaybackStatePlaying:
+        {
             NSLog(@"IJKMPMoviePlayBackStateDidChange %d: playing", (int)_player.playbackState);
+            [self bottomControlView:YES];
             break;
         }
-        case IJKMPMoviePlaybackStatePaused: {
+        case IJKMPMoviePlaybackStatePaused:
+        {
             NSLog(@"IJKMPMoviePlayBackStateDidChange %d: paused", (int)_player.playbackState);
+            [self bottomControlView:NO];
             break;
         }
         case IJKMPMoviePlaybackStateInterrupted: {
@@ -330,12 +332,27 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
 }
 
 - (void)moviePlayFirstVideoFrameRendered:(NSNotification*)notification{
+    
+}
+
+- (void)bottomControlView:(BOOL)start{
     ZNKWeakSelf(self);
-    self.timeSource = [self setTimeCounterUseOrigin:NO totalTime:self.player.duration  completionHandler:^(NSString * _Nullable time) {
-        weakself.controlView.currentTimeLabel.text = [weakself ascendingFormatHHMMSSFromSS:weakself.player.currentPlaybackTime];
-        weakself.controlView.videoSlider.value = weakself.player.currentPlaybackTime / weakself.player.duration;
-    }];
-    self.controlView.totalTimeLabel.text = [self ascendingFormatHHMMSSFromSS:self.player.duration];
+    if (start) {
+        self.timeSource = [self setTimeCounterUseOrigin:NO totalTime:self.player.duration  completionHandler:^(NSString * _Nullable time) {
+            weakself.controlView.currentTimeLabel.text = [weakself ascendingFormatHHMMSSFromSS:weakself.player.currentPlaybackTime];
+            weakself.controlView.videoSlider.value = weakself.player.currentPlaybackTime / weakself.player.duration;
+        }];
+        self.controlView.totalTimeLabel.text = [self ascendingFormatHHMMSSFromSS:self.player.duration];
+    }else{
+        if (self.timeSource) {
+            if (self.timeSource) {
+                dispatch_source_cancel(self.timeSource);
+            }
+            if (self.controlView) {
+                self.controlView.startBtn.selected = YES;
+            }
+        }
+    }
 }
 
 @end
