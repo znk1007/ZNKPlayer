@@ -373,6 +373,7 @@
         // 视频跳转的value
         CGFloat tapValue = point.x / length;
 //        self.tapBlock(tapValue);
+        NSLog(@"tap value%f", tapValue);
         if (_ZNKSliderTap) {
             CGFloat resultValue = _ZNKSliderTap(slider, tapValue);
             if (resultValue == 0) {

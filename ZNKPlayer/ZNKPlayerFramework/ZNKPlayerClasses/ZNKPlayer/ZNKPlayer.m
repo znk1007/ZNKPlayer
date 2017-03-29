@@ -168,13 +168,7 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
     if (self.shouldAutoPlay) {
         [self play];
     }
-    self.controlView.ZNKStartPauseButtonClick = ^(UIButton *startBtn){
-        if (startBtn.selected) {
-            [weakself pause];
-        }else{
-            [weakself play];
-        }
-    };
+    [self eventForControlView];
 
 }
 
@@ -185,6 +179,27 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
         _controlView = [ZNKControlView new];
     }
     return _controlView;
+}
+
+#pragma mark - ZNKControlView 事件
+
+- (void)eventForControlView{
+    if (self.controlView) {
+        ZNKWeakSelf(self);
+        self.controlView.ZNKStartPauseButtonClick = ^(UIButton *startBtn){
+            if (startBtn.selected) {
+                [weakself pause];
+            }else{
+                [weakself play];
+            }
+        };
+        self.controlView.ZNKSliderTap = ^CGFloat(ZNKSlider *slider, CGFloat value){
+            [weakself cancelTimeSource];
+            CGFloat currentTime = weakself.player.duration * value;
+            weakself.player.currentPlaybackTime = currentTime;
+            return value;
+        };
+    }
 }
 
 
@@ -317,6 +332,7 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
         }
         case IJKMPMoviePlaybackStateInterrupted: {
             NSLog(@"IJKMPMoviePlayBackStateDidChange %d: interrupted", (int)_player.playbackState);
+            [self bottomControlView:NO];
             break;
         }
         case IJKMPMoviePlaybackStateSeekingForward:
@@ -350,8 +366,15 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
             }
             if (self.controlView) {
                 self.controlView.startBtn.selected = YES;
+                self.controlView.currentTimeLabel.text = [self ascendingFormatHHMMSSFromSS:self.player.duration];
             }
         }
+    }
+}
+
+- (void)cancelTimeSource{
+    if (self.timeSource) {
+        dispatch_source_cancel(self.timeSource);
     }
 }
 
