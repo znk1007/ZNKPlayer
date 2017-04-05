@@ -112,10 +112,8 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
 - (void)resetPlayer{
     [self removeMovieNotificationObservers];
     if (_player) {
-        if ([_player isPlaying]) {
-            [_player stop];
-            [_player shutdown];
-        }
+        [_player stop];
+        [_player shutdown];
         _player = nil;
     }
     if (_playerView) {
@@ -168,6 +166,11 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
     if (self.shouldAutoPlay) {
         [self play];
     }
+    if ([self.videoUrl.absoluteString.pathExtension containsString:@"m3u8"]) {
+        self.controlView.isLive = YES;
+    }else{
+        self.controlView.isLive = NO;
+    }
     [self eventForControlView];
 
 }
@@ -188,9 +191,9 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
         ZNKWeakSelf(self);
         self.controlView.ZNKStartPauseButtonClick = ^(UIButton *startBtn){
             if (startBtn.selected) {
-                [weakself pause];
-            }else{
                 [weakself play];
+            }else{
+                [weakself pause];
             }
         };
         self.controlView.ZNKSliderTap = ^CGFloat(ZNKSlider *slider, CGFloat value){
@@ -357,6 +360,7 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
         self.timeSource = [self setTimeCounterUseOrigin:NO totalTime:self.player.duration  completionHandler:^(NSString * _Nullable time) {
             weakself.controlView.currentTimeLabel.text = [weakself ascendingFormatHHMMSSFromSS:weakself.player.currentPlaybackTime];
             weakself.controlView.videoSlider.value = weakself.player.currentPlaybackTime / weakself.player.duration;
+            weakself.controlView.startBtn.selected = YES;
         }];
         self.controlView.totalTimeLabel.text = [self ascendingFormatHHMMSSFromSS:self.player.duration];
     }else{
@@ -367,6 +371,7 @@ typedef NS_ENUM(NSInteger, ZNKMPMovieFinishReason) {
             if (self.controlView) {
                 self.controlView.startBtn.selected = YES;
                 self.controlView.currentTimeLabel.text = [self ascendingFormatHHMMSSFromSS:self.player.duration];
+                self.controlView.startBtn.selected = NO;
             }
         }
     }

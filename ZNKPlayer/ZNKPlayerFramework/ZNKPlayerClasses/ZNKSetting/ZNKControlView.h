@@ -62,6 +62,8 @@ typedef enum {
 @property (nonatomic, assign)   BOOL hasBarrage;
 /**是否可以下载*/
 @property (nonatomic, assign)   BOOL canDownload;
+/**是否直播*/
+@property (nonatomic, assign) BOOL isLive;
 /**视频分辨率*/
 @property (nonatomic, assign) ZNKResolustionType resolustionType;
 /**分辨率按钮点击block 此时，ZNKResolustionType = ZNKResolustionTypeLD | ZNKResolustionTypeSD | ZNKResolustionTypeHD | ZNKResolustionTypeBD ONLY!!!*/

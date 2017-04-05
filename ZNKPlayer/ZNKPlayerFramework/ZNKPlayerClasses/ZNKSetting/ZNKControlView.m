@@ -65,6 +65,7 @@
 /**弹幕开关按钮*/
 @property (nonatomic, strong) ZNKBarrageButton        *barrageOCButton;
 
+@property (nonatomic, strong) UITapGestureRecognizer  *sliderTap;
 @end
 
 @implementation ZNKControlView
@@ -111,9 +112,6 @@
         // 添加子控件的约束
         [self makeSubViewsConstraints];
         
-        UITapGestureRecognizer *sliderTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSliderAction:)];
-        [self.videoSlider addGestureRecognizer:sliderTap];
-        
         UITapGestureRecognizer *viewSingleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gestureAction:)];
         [self addGestureRecognizer:viewSingleTap];
         
@@ -135,7 +133,7 @@
     
     [self.topImageView mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
         make.leading.trailing.top.equalTo(weakself);
-        make.height.mas_equalTo(@(80));
+        make.height.mas_equalTo(@(50));
     }];
     
     [self.titleLabel mas_makeConstraints:^(ZNKMASConstraintMaker *make) {
@@ -366,6 +364,9 @@
  */
 - (void)tapSliderAction:(UITapGestureRecognizer *)tap
 {
+    if (self.isLive) {
+        return;
+    }
     if ([tap.view isKindOfClass:[UISlider class]] /*&& self.tapBlock*/) {
         ZNKSlider *slider = (ZNKSlider *)tap.view;
         CGPoint point = [tap locationInView:slider];
@@ -443,16 +444,21 @@
 
 - (void)showControlView
 {
-    self.topImageView.alpha    = 1;
-    self.bottomImageView.alpha = 1;
-    self.lockBtn.alpha         = 1;
+    [UIView animateWithDuration:ZNKPlayerControlBarAutoFadeOutTimeInterval animations:^{
+        self.topImageView.alpha    = 1;
+        self.bottomImageView.alpha = 1;
+        self.lockBtn.alpha         = 1;
+    }];
 }
 
 - (void)hideControlView
 {
-    self.topImageView.alpha    = 0;
-    self.bottomImageView.alpha = 0;
-    self.lockBtn.alpha         = 0;
+    
+    [UIView animateWithDuration:ZNKPlayerControlBarAutoFadeOutTimeInterval animations:^{
+        self.topImageView.alpha    = 0;
+        self.bottomImageView.alpha = 0;
+        self.lockBtn.alpha         = 0;
+    }];
     // 隐藏resolutionView
     self.resolutionBtn.selected = YES;
     [self resolutionAction:self.resolutionBtn];
@@ -539,6 +545,22 @@
                 make.trailing.equalTo(weakself.barrageOCButton).offset(-40);
                 make.height.mas_equalTo(30);
             }];
+        }
+    }
+}
+
+- (void)setIsLive:(BOOL)i_isLive{
+    
+    if (_isLive != i_isLive) {
+        _isLive = i_isLive;
+        if (_isLive) {
+            self.sliderTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSliderAction:)];
+            [self.videoSlider addGestureRecognizer:self.sliderTap];
+        }else{
+            if (self.sliderTap) {
+                [self.videoSlider removeGestureRecognizer:self.sliderTap];
+                self.sliderTap = nil;
+            }
         }
     }
 }
